@@ -38,7 +38,8 @@ export async function generateMetadata({
   if (!person) return {};
   return buildMetadata({
     title: person.name,
-    description: person.bio ?? `${person.name}が書いた、黒猫台湾まつり2027ができるまでの記録。`,
+    description:
+      person.bio ?? `${nameWithSan(person)}が書いている、黒猫台湾まつり2027ができるまでの記録です。`,
     path: `/making/people/${person.id}/`,
     image: person.avatar,
   });
@@ -70,7 +71,7 @@ export default async function PersonPage({ params }: { params: Promise<Params> }
           records={personRecords}
           people={[summary]}
           order="asc"
-          emptyText="まだ記録はありません。書いたものから順に、ここに並びます。"
+          emptyText={`${nameWithSan(person)}の記録はまだありません。書いたものから順に、ここに並びます。`}
         />
       </Section>
 

@@ -138,8 +138,9 @@
   --focus-outline-offset: 3px;
   --hero-now-tilt: -1deg;
   --empty-border: 2px dashed #D9C7A6;
-  /* 付箋色。ヘッダーの準備中の印とスキップリンクが使う（design-system 9章には無い。web-designer が整理する） */
-  --color-role-bg: #FFF3B0;
+  /* 付箋（2章の「付箋」の色）: ヘッダーの準備中の印、状態バッジ「準備中」、スキップリンクが使う */
+  --color-sticky-bg: #FFF3B0;
+  --color-sticky-text: #5A4A00;
 }
 
 /* --- リセット（docs/design-lab/v2/lab.css を参考） --- */
@@ -265,7 +266,7 @@ html {
   top: var(--space-1);
   z-index: 100;
   padding: var(--space-1) var(--space-2);
-  background: var(--color-role-bg);
+  background: var(--color-sticky-bg);
   color: var(--color-link);
   border-radius: var(--border-radius);
   font-weight: 700;

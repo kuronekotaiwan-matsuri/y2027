@@ -1,9 +1,21 @@
-/* 顔の並び（リンク版 Faces と ボタン版 FacesFilter で共用）。骨組みのみ */
+/*
+  顔の並び。リンク版（トップ「書いている人たち」）とボタン版（/making/ の「顔で絞る」）で共用。
+  顔（中）の下に名前。押せるものなので 44px 以上の大きさにし、ホバーで薄い輪、選択中は赤い輪と太字の名前。
+  design-system.md 2章「顔で絞る」
+*/
 .faces {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: var(--space-1) calc(var(--spacing-unit) * 1.5);
   margin-bottom: var(--space-4);
+}
+
+/* 説明の一行（ボタン版）。見出しの脇の補足と同じ書式 */
+.facesHint {
+  margin-bottom: var(--space-1);
+  font-family: var(--font-accent);
+  font-size: var(--font-size-small);
+  color: var(--color-text-light);
 }
 
 .face {
@@ -11,24 +23,53 @@
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  min-width: 52px;
-  max-width: 6.5em;
+  min-width: calc(var(--tap-target) + var(--space-1));
+  min-height: var(--tap-target);
+  padding: 4px 4px 6px;
+  border-radius: var(--border-radius);
+  color: inherit;
   text-align: center;
   font-size: 0.75rem;
-  line-height: 1.4;
+  line-height: 1.35;
+  cursor: pointer;
 }
 
+/* 顔の輪は操作への応答で変わる（ホバー・選択）。動きはこれだけ */
+.face > span:first-child {
+  transition: box-shadow var(--transition-speed);
+}
+
+.face:hover > span:first-child {
+  box-shadow: 0 0 0 3px var(--color-border);
+}
+
+/* 名前: 長い組織名は「黒猫台湾まつり／実行委員会」で折れる幅に */
 .faceName {
   display: block;
+  max-width: 7.5em;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--transition-speed);
 }
 
-/* 選択中（FacesFilter）: 顔に輪 */
-.faceActive > span:first-child {
+.face:hover .faceName {
+  text-decoration-color: var(--color-border);
+}
+
+/* 選択中（ボタン版）: 顔に赤い輪、名前は太字。色だけに頼らない */
+.faceActive > span:first-child,
+.faceActive:hover > span:first-child {
   box-shadow: var(--faces-active-ring);
 }
 
-/* 「すべて」の丸（FacesFilter） */
+.faceActive .faceName {
+  font-weight: 700;
+}
+
+/* 「すべて」の丸: 赤い丸に「全部」の文字。人の顔（1文字）と違う見た目にして、人ではないと分かるように */
 .faceAllMark {
   background: var(--avatar-group-bg);
   font-size: 0.7rem;
+  letter-spacing: 0.02em;
 }

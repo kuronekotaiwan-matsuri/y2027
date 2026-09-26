@@ -1,46 +1,56 @@
-/* 書いた人カード: 左に顔（大）、右に名前・立場・自己紹介・リンク。骨組みのみ */
+/*
+  書いた人カード（記録ページの末尾）: 面色の紙に、左に顔（大）、右に名前・立場・自己紹介・記録一覧へのリンク。
+  顔が主役。装飾は罫線と影だけ。design-system.md 2章「書いた人カード」
+*/
 .authorCard {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 6px 14px;
+  gap: var(--space-1) var(--space-2);
   align-items: start;
-  margin-top: var(--space-5);
-  padding: var(--space-2) calc(var(--spacing-unit) * 2.25);
+  margin-top: var(--space-6);
+  padding: var(--space-2) calc(var(--spacing-unit) * 2.5) calc(var(--spacing-unit) * 2.5);
   background: var(--color-surface);
   border: var(--border-width) var(--border-style) var(--color-border);
   border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow);
 }
 
+/* 「書いた人」: カードの見出しにあたる小さな文字。両列にまたがる */
 .authorCardLabel {
   grid-column: 1 / -1;
   font-family: var(--font-accent);
-  font-size: 0.75rem;
+  font-size: var(--font-size-small);
   color: var(--color-text-light);
 }
 
 .authorCardBody {
   min-width: 0;
+  /* 名前の行の高さを顔の上端にそろえる */
+  padding-top: 2px;
 }
 
 .authorCardName {
   font-weight: 700;
   font-size: 1.05rem;
+  line-height: 1.4;
 }
 
 .authorCardRole {
-  margin-left: 8px;
+  margin-left: var(--space-1);
   font-size: var(--font-size-small);
   color: var(--color-role-text);
 }
 
 .authorCardBio {
-  margin-top: 2px;
+  margin-top: 4px;
   font-size: var(--font-size-small);
+  line-height: 1.7;
 }
 
 .authorCardLink {
   display: inline-block;
-  margin-top: 8px;
+  margin-top: calc(var(--spacing-unit) * 1.5);
+  padding: 4px 0;
   font-size: var(--font-size-small);
   color: var(--color-link);
   text-decoration: underline;

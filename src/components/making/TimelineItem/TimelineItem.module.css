@@ -53,15 +53,17 @@
   object-fit: cover;
 }
 
+/* 先頭の行: 署名（左）と日付（右）。情報が少ないぶん、行間と余白で読ませる */
 .timelineMeta {
   display: flex;
   flex-wrap: wrap;
   gap: 6px var(--space-1);
   align-items: center;
-  margin-bottom: 6px;
+  margin-bottom: var(--space-1);
 }
 
 .timelineDate {
+  flex: none;
   font-family: var(--font-accent);
   font-size: var(--font-size-small);
   color: var(--color-text-light);
@@ -72,11 +74,12 @@
   text-wrap: balance;
   font-size: 1.1rem;
   line-height: 1.4;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .timelineSummary {
   font-size: var(--font-size-small);
+  line-height: 1.7;
   color: var(--color-text-light);
 }
 
@@ -98,7 +101,11 @@
   }
 }
 
-/* 先頭の行: 署名を左、日付を右に（design-lab v4 案01） */
+/* 先頭の行: 署名を左、日付を右に（design-lab v4 案01）。署名が長くて折り返しても日付は右端に残る */
 .timelineMetaSplit {
   justify-content: space-between;
+}
+
+.timelineMetaSplit > :first-child {
+  flex: 1 1 auto;
 }

@@ -1,44 +1,66 @@
-/* 作っている人たち: 2列（モバイル1列）の行カード。骨組みのみ */
+/*
+  作っている人たち（/about/）: 書き手を2列（モバイル1列）の行カードで。顔（中）・名前・立場・自己紹介。
+  行全体が書き手ページへのリンク。design-system.md 2章「書き手の一覧」
+*/
 .people {
   display: grid;
-  gap: 14px;
+  gap: calc(var(--spacing-unit) * 1.5);
   grid-template-columns: 1fr;
 }
 
 @media (min-width: 768px) {
   .people {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
   }
 }
 
 .personRow {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 2px 12px;
+  gap: 4px calc(var(--spacing-unit) * 1.5);
   align-items: center;
   height: 100%;
-  padding: 12px 14px;
+  padding: calc(var(--spacing-unit) * 1.5) var(--space-2);
   background: var(--color-surface);
   border: var(--border-width) var(--border-style) var(--color-border);
   border-radius: var(--border-radius-lg);
+  transition: box-shadow var(--transition-speed);
+}
+
+/* 押せることの応答: 影と、名前の下線 */
+.personRow:hover {
+  box-shadow: var(--shadow);
 }
 
 .personRowHead {
   min-width: 0;
 }
 
+/* 名前はリンクの色。下線はホバーで出す */
 .personRowName {
   font-weight: 700;
+  color: var(--color-link);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--transition-speed);
+}
+
+.personRow:hover .personRowName {
+  text-decoration-color: currentColor;
 }
 
 .personRowRole {
-  margin-left: 8px;
+  margin-left: var(--space-1);
   font-size: 0.75rem;
   color: var(--color-role-text);
+  white-space: nowrap;
 }
 
 .personRowBio {
   grid-column: 2;
   font-size: var(--font-size-small);
+  line-height: 1.7;
   color: var(--color-text-light);
 }

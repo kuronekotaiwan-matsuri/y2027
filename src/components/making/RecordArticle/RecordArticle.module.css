@@ -15,7 +15,7 @@
   line-height: 1.35;
 }
 
-/* 署名 ／ 日付（ペン字） ／ 状態タグ（右寄せ）。役割ごとに見た目を分ける */
+/* 署名（顔 + 「イケダ（出店者）」） ／ 日付（ペン字） ／ 状態タグ（右寄せ）。役割ごとに見た目を分ける */
 .articleMeta {
   display: flex;
   flex-wrap: wrap;
@@ -26,6 +26,7 @@
 }
 
 .articleDate {
+  flex: none;
   font-family: var(--font-accent);
   font-size: var(--font-size-small);
   color: var(--color-text-light);
@@ -35,7 +36,7 @@
 .articleByline {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  min-width: 0;
 }
 
 .articleTags {

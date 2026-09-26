@@ -52,7 +52,7 @@
   padding: calc(var(--spacing-unit) * 2.5);
 }
 
-/* 日付・物語バッジ・立場バッジ。役割が違うので見た目も分ける */
+/* 先頭の行: 署名（左）と日付（右）。役割が違うので見た目も分ける */
 .cardMeta {
   display: flex;
   flex-wrap: wrap;
@@ -62,6 +62,7 @@
 }
 
 .cardDate {
+  flex: none;
   font-family: var(--font-accent);
   font-size: var(--font-size-small);
   color: var(--color-text-light);
@@ -86,6 +87,7 @@
 
 .cardSummary {
   font-size: var(--font-size-small);
+  line-height: 1.7;
   color: var(--color-text-light);
 }
 
@@ -97,7 +99,11 @@
   flex-wrap: wrap;
 }
 
-/* 先頭の行: 署名を左、日付を右に（design-lab v4 案01） */
+/* 先頭の行: 署名を左、日付を右に（design-lab v4 案01）。署名が長くて折り返しても日付は右端に残る */
 .cardMetaSplit {
   justify-content: space-between;
+}
+
+.cardMetaSplit > :first-child {
+  flex: 1 1 auto;
 }

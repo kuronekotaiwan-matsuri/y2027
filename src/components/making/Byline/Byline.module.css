@@ -1,31 +1,38 @@
-/* 署名: 顔 + 名前 + 立場。骨組みのみ */
+/*
+  署名: 顔 + 名前 + 立場 を1組で。名前が主、立場は名前に添える小さな情報。
+  design-system.md 2章「顔と署名」
+*/
 .byline {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-1);
   min-width: 0;
 }
 
 .bylineName {
   font-weight: 700;
   font-size: 0.9rem;
+  line-height: 1.4;
 }
 
-/* 立場（カード）: 小さな枠 */
+/* 立場（カード）: 名前の右に小さな枠。名前より薄く、小さく。名前に寄せて1組に見せる */
 .bylineRole {
+  flex: none;
+  margin-left: -2px;
+  padding: 0 5px;
+  border: var(--role-border);
+  border-radius: 3px;
   font-size: 0.7rem;
   line-height: 1.5;
   color: var(--color-role-text);
-  border: var(--role-border);
-  border-radius: 3px;
-  padding: 0 5px;
   white-space: nowrap;
 }
 
-/* 立場（記録ページ）: 「（出店者）」の文字 */
+/* 立場（記録ページ）: 「（出店者）」の文字。全角括弧の分だけ名前に詰める */
 .bylineParen {
+  flex: none;
+  margin-left: calc(var(--space-1) * -1 - 2px);
   font-size: 0.8rem;
   color: var(--color-role-text);
-  margin-left: -4px;
   white-space: nowrap;
 }

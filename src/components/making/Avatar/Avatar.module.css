@@ -1,4 +1,7 @@
-/* 顔（avatar）: 骨組みのみ。意匠は web-designer が docs/design-lab/v4/parts.css を参考に付ける */
+/*
+  顔（avatar）: 丸く切り抜いたシール。面色の縁と細い輪で、クリーム地でも面色の紙の上でも浮いて見える。
+  写真が無ければ名前の1文字目（紺）、組織は黒猫のマーク（赤）。design-system.md 2章「顔と署名」
+*/
 .avatar {
   --avatar-size: var(--avatar-size-sm);
 
@@ -11,10 +14,13 @@
   overflow: hidden;
   background: var(--avatar-bg);
   color: var(--avatar-text);
+  border: var(--avatar-border);
+  box-shadow: var(--avatar-ring);
   font-family: var(--font-accent);
   font-weight: 600;
   line-height: 1;
   font-size: calc(var(--avatar-size) * 0.46);
+  letter-spacing: 0;
 }
 
 .avatarSm {
@@ -27,6 +33,11 @@
 
 .avatarLg {
   --avatar-size: var(--avatar-size-lg);
+}
+
+/* 写真: 縁の内側いっぱいに。縁の色は面色なので、写真の周りに細い白枠が出る */
+.avatarPhoto {
+  background: var(--color-background-alt);
 }
 
 .avatarPhoto img {

@@ -22,7 +22,7 @@ export default function AuthorCard({ person }: { person: PersonSummary }) {
         )}
         {person.bio && <p className={styles.authorCardBio}>{person.bio}</p>}
         <Link className={styles.authorCardLink} href={`/making/people/${person.id}/`}>
-          {nameWithSan(person)}の記録をすべて見る →
+          {nameWithSan(person)}の記録をすべて見る
         </Link>
       </div>
     </aside>

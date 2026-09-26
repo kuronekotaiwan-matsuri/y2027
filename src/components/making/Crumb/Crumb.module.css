@@ -1,12 +1,14 @@
-/* パンくず: 骨組みのみ */
+/* パンくず: 記録ページ・書き手ページの上に「できるまで」へのリンク。小さく、押しやすく */
 .crumb {
-  margin-bottom: 12px;
+  margin-bottom: var(--space-1);
   font-family: var(--font-accent);
   font-size: var(--font-size-small);
   color: var(--color-text-light);
 }
 
 .crumb a {
+  display: inline-block;
+  padding: 6px 0;
   color: var(--color-link);
   text-decoration: underline;
   text-underline-offset: 3px;

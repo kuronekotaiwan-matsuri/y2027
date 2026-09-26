@@ -125,14 +125,14 @@ export default function AboutPage() {
       <Section alt aria-labelledby="people-title">
         <SectionTitle id="people-title">作っている人たち</SectionTitle>
         <p className={styles.text}>
-          主催は{site.organizer}
-          です。これまで主に4人のコアメンバーが企画・運営を担ってきました。2027年は、次の人たちが「できるまで」を書いています。名前を押すと、その人の記録が読めます。
+          祭りを作っているのは{site.organizer}
+          です。2027年は、実行委員だけでなく、出店者など、いろいろな立場の人が「できるまで」に記録を書いていきます。ここに並ぶのは、いま書いている人たちです。顔や名前を押すと、その人の記録をまとめて読めます。
         </p>
         {people.length > 0 ? (
           <PeopleList people={people} />
         ) : (
           <EmptyNote>
-            まだ書き手の登録はありません。動き出したら、関わっている人がここに並びます。
+            書いている人は、まだ登録されていません。記録を書き始めたら、顔と名前がここに並びます。
           </EmptyNote>
         )}
       </Section>

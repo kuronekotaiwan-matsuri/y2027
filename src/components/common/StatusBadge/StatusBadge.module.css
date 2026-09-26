@@ -13,8 +13,8 @@
 }
 
 .statusBadge[data-status='preparing'] {
-  background: var(--color-role-bg);
-  color: var(--color-role-text);
+  background: var(--color-sticky-bg);
+  color: var(--color-sticky-text);
 }
 
 .statusBadge[data-status='published'] {

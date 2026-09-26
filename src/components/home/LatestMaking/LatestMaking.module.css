@@ -12,7 +12,7 @@
   }
 }
 
-/* 書いている人たち（骨組みのみ。意匠は web-designer） */
+/* 書いている人たち: カードの下に顔の列。見出しはセクション見出しより一段小さく、補足を脇に */
 .writers {
   margin-top: var(--space-6);
 }
@@ -21,14 +21,20 @@
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
-  gap: var(--space-1);
-  margin: 0 0 var(--space-2);
-  font-size: var(--font-size-h3);
+  gap: 4px calc(var(--spacing-unit) * 1.5);
+  margin: 0 0 calc(var(--spacing-unit) * 1.5);
+  font-size: 1.2rem;
 }
 
 .writersTitle small {
   font-family: var(--font-accent);
   font-size: var(--font-size-small);
   font-weight: var(--font-weight-body);
+  letter-spacing: 0;
   color: var(--color-text-light);
+}
+
+/* 顔の列は「すべて見る」のボタンに続くので、下の余白は持たない */
+.writers ul {
+  margin-bottom: 0;
 }
