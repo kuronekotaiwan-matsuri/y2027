@@ -8,7 +8,7 @@
 
 ## 使い方
 
-1. `docs/design-lab/index.html` をブラウザで開く（ダブルクリックで可）
+1. `docs/design-lab/v1/index.html`（第1ラウンド）または `docs/design-lab/v2/index.html`（第2ラウンド）をブラウザで開く（ダブルクリックで可）
 2. 上部のセレクトボックス、または数字キー（1〜9, 0）と ← → で案を切り替える
 3. 「並べて見る」でモバイル幅と PC 幅を同時に、「10案一覧」で全案をサムネイルで比較する
 4. 「新しいタブで開く」で見本ページ単体を全画面で見る（URL 末尾の `#03` などで案を指定できる）
@@ -19,20 +19,21 @@ Google Fonts を読み込むため、インターネット接続が必要。
 
 ```text
 docs/design-lab/
-├─ index.html          切り替え・並列表示のコントローラ
-├─ sample.html         見本ページ（このサイト固有の部品を1ページに並べたもの）
-├─ lab.css             見本ページの共通スタイル。10案で共通。トークン以外の値を直書きしない
-├─ themes.js           10案の一覧（id・名前・説明）
-├─ tokens/
-│  ├─ tokens-01.css    案01 のデザイントークン（CSS custom properties）
-│  └─ ... tokens-10.css
-├─ v2/                 第2ラウンド。同じ構成で独立して動く
-│  ├─ index.html
-│  ├─ sample.html
-│  ├─ lab.css
-│  ├─ themes.js
+├─ README.md           この文書（両ラウンド共通）
+├─ v1/                 第1ラウンド（10案）
+│  ├─ index.html       切り替え・並列表示のコントローラ
+│  ├─ sample.html      見本ページ（このサイト固有の部品を1ページに並べたもの）
+│  ├─ lab.css          見本ページの共通スタイル。10案で共通。トークン以外の値を直書きしない
+│  ├─ themes.js        10案の一覧（id・名前・説明）
 │  └─ tokens/
-└─ README.md
+│     ├─ tokens-01.css 案01 のデザイントークン（CSS custom properties）
+│     └─ ... tokens-10.css
+└─ v2/                 第2ラウンド（10案）。同じ構成で独立して動く
+   ├─ index.html
+   ├─ sample.html
+   ├─ lab.css
+   ├─ themes.js
+   └─ tokens/
 ```
 
 見た目の差は、すべて `tokens/tokens-XX.css` のカスタムプロパティで表現している。
