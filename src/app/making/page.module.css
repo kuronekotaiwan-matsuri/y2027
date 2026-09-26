@@ -1,0 +1,6 @@
+/* 骨組みのみ。見た目の作り込みは web-designer */
+.jump {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

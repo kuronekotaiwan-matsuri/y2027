@@ -1,0 +1,71 @@
+/* 骨組みのみ。見た目の作り込みは web-designer */
+.aboutPage {
+  --card-tilt: 0deg;
+  --decor-tape: none;
+}
+
+.lead,
+.text {
+  max-width: var(--prose-max-width);
+  margin-bottom: 28px;
+}
+
+.pillars {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .pillars {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pillars h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.history {
+  display: grid;
+  gap: 12px;
+}
+
+.history li {
+  display: flex;
+  gap: 16px;
+}
+
+.history a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.historyYear {
+  flex: none;
+  width: 5em;
+  font-family: var(--font-accent);
+  color: var(--color-text-light);
+}
+
+.roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  align-items: center;
+}
+
+.email {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  word-break: break-all;
+}

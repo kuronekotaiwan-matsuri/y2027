@@ -1,0 +1,38 @@
+/* 骨組みのみ。見た目の作り込みは web-designer */
+.cardGrid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 1fr;
+}
+
+.cardGrid2 {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .cardGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cardGrid2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.empty {
+  color: var(--color-text-light);
+}
+
+.storiesTitle {
+  margin: 44px 0 16px;
+}
+
+.storiesTitle small {
+  font-family: var(--font-accent);
+  font-size: var(--font-size-small);
+  color: var(--color-text-light);
+  font-weight: 400;
+  margin-left: 8px;
+}

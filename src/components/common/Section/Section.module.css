@@ -1,0 +1,25 @@
+/* 骨組みのみ。見た目の作り込みは web-designer */
+.section {
+  padding: var(--spacing-section) 0;
+}
+
+.sectionAlt {
+  background: var(--color-background-alt);
+}
+
+.sectionInner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-content);
+}
+
+.sectionLead {
+  max-width: var(--prose-max-width);
+  margin: -12px 0 28px;
+  color: var(--color-text-light);
+}
+
+.sectionMore {
+  margin-top: 28px;
+  text-align: center;
+}

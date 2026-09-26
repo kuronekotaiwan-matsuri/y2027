@@ -1,0 +1,73 @@
+/* 骨組みのみ。見た目の作り込みは web-designer */
+.article {
+  max-width: var(--prose-max-width);
+  margin: 0 auto;
+}
+
+.articleHeader {
+  margin-bottom: 32px;
+}
+
+.articleStory {
+  font-family: var(--font-accent);
+  font-size: var(--font-size-small);
+  color: var(--color-link);
+  margin-bottom: 8px;
+}
+
+.articleStory a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.articleTitle {
+  margin-bottom: 12px;
+}
+
+.articleMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: var(--border-width) var(--border-style) var(--color-border);
+}
+
+.articleDate {
+  font-family: var(--font-accent);
+  font-size: var(--font-size-small);
+  color: var(--color-text-light);
+}
+
+.articleAuthor {
+  font-size: var(--font-size-small);
+}
+
+.articleTopics {
+  margin-top: 12px;
+  font-size: var(--font-size-small);
+  color: var(--color-text-light);
+}
+
+.articleTopics a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.articleInstagram {
+  display: grid;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.articleBack {
+  margin-top: 28px;
+  font-size: var(--font-size-small);
+}
+
+.articleBack a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

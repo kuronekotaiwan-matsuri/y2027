@@ -1,0 +1,38 @@
+/* 骨組みのみ。主コンテンツなので傾き・テープは使わない（design-system.md 8章） */
+.cardGrid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .cardGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  background: var(--color-surface);
+  border: var(--border-width) var(--border-style) var(--color-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.cardBody {
+  display: block;
+  padding: 18px;
+}
+
+.cardMeta {
+  margin-bottom: 8px;
+}
+
+.cardTitle {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.cardSummary {
+  font-size: var(--font-size-small);
+  color: var(--color-text-light);
+}

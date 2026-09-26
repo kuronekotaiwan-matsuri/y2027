@@ -1,0 +1,31 @@
+/* 骨組みのみ。見た目の作り込みは web-designer */
+.storyPage {
+  max-width: var(--prose-max-width);
+  margin: 0 auto;
+}
+
+.recordsTitle {
+  margin-bottom: 24px;
+}
+
+.cardGrid2 {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .cardGrid2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.back {
+  font-size: var(--font-size-small);
+}
+
+.back a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

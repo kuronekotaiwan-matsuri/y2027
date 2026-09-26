@@ -1,0 +1,46 @@
+/* 骨組みのみ。見た目の作り込みは web-designer */
+.siteFooter {
+  background: var(--color-footer-bg);
+  color: var(--color-footer-text);
+  padding: 44px 0 28px;
+  margin-top: var(--spacing-section);
+}
+
+.siteFooterInner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-content);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  text-align: center;
+}
+
+.siteFooterLogo {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-display);
+  font-size: 1.1rem;
+}
+
+.siteFooterNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  justify-content: center;
+  font-size: var(--font-size-small);
+}
+
+.navPreparing {
+  font-size: 0.7rem;
+}
+
+.siteFooterMeta {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  font-family: var(--font-accent);
+}
+
+.siteFooterMeta a {
+  text-decoration: underline;
+}

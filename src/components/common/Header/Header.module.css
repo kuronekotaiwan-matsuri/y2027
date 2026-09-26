@@ -1,0 +1,99 @@
+/* 骨組みのみ。見た目の作り込みは web-designer */
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--color-header-bg);
+  color: var(--color-header-text);
+  border-bottom: var(--header-border-bottom);
+}
+
+.siteHeaderInner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 12px var(--spacing-content);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.siteLogo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-display);
+  font-size: 1.15rem;
+  letter-spacing: var(--letter-spacing-heading);
+}
+
+.siteLogo svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* モバイル: ハンバーガーで開閉 */
+.siteNav {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  gap: 4px;
+  order: 3;
+}
+
+.siteNav.isOpen {
+  display: flex;
+}
+
+.siteNav a {
+  padding: 6px 12px;
+  border-radius: var(--border-radius-button);
+  font-size: 0.95rem;
+}
+
+.isActive {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.navPreparing {
+  margin-left: 4px;
+  font-size: 0.7rem;
+  color: var(--color-text-light);
+}
+
+.siteNavInsta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.siteHamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+}
+
+.siteHamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: currentColor;
+}
+
+@media (min-width: 768px) {
+  .siteNav {
+    display: flex;
+    width: auto;
+    flex-direction: row;
+    align-items: center;
+    order: 0;
+  }
+
+  .siteHamburger {
+    display: none;
+  }
+}

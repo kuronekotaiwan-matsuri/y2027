@@ -1,0 +1,33 @@
+/* 骨組みのみ。見た目の作り込みは web-designer */
+.pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.pagerPrev,
+.pagerNext {
+  display: block;
+  padding: 12px 14px;
+  border: var(--border-width) var(--border-style) var(--color-border);
+  border-radius: var(--border-radius);
+  background: var(--color-surface);
+  font-size: var(--font-size-small);
+}
+
+.pagerPrev span,
+.pagerNext span {
+  display: block;
+  color: var(--color-text-light);
+  font-size: 0.75rem;
+  font-family: var(--font-accent);
+}
+
+.pagerNext {
+  text-align: right;
+}
+
+.pagerEmpty {
+  display: block;
+}

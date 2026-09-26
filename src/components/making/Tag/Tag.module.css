@@ -1,0 +1,34 @@
+/* 骨組みのみ。見た目の作り込みは web-designer（判子風、-2deg など） */
+.tag {
+  display: inline-block;
+  padding: 1px 9px;
+  border-radius: var(--border-radius-tag);
+  border: var(--tag-border);
+  font-size: 0.75rem;
+  font-family: var(--font-accent);
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.tag[data-status='consider'],
+.tag[data-status='trial'] {
+  background: var(--color-tag-consider-bg);
+  color: var(--color-tag-consider-text);
+}
+
+.tag[data-status='decided'],
+.tag[data-status='info'] {
+  background: var(--color-tag-decided-bg);
+  color: var(--color-tag-decided-text);
+}
+
+.tag[data-status='rejected'] {
+  background: var(--color-tag-rejected-bg);
+  color: var(--color-tag-rejected-text);
+  text-decoration: var(--tag-rejected-decoration);
+}
+
+.tag[data-status='recruit'] {
+  background: var(--color-tag-recruit-bg);
+  color: var(--color-tag-recruit-text);
+}

@@ -1,0 +1,4 @@
+/* 骨組みのみ。見た目の作り込みは web-designer */
+.text {
+  max-width: var(--prose-max-width);
+}

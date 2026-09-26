@@ -1,0 +1,46 @@
+/* 骨組みのみ。見た目の作り込みは web-designer */
+.storyHeader {
+  margin-bottom: 32px;
+}
+
+.storyCover {
+  margin-bottom: 20px;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+}
+
+.storyCover img {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+}
+
+.storyMeta {
+  margin-bottom: 8px;
+}
+
+.storyTitle {
+  margin-bottom: 8px;
+}
+
+.storySubtitle {
+  color: var(--color-text-light);
+  margin-bottom: 16px;
+}
+
+.storyStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  font-size: var(--font-size-small);
+  font-family: var(--font-accent);
+}
+
+.storyStats div {
+  display: flex;
+  gap: 8px;
+}
+
+.storyStats dt {
+  color: var(--color-text-light);
+}

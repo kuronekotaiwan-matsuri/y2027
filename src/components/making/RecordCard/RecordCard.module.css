@@ -1,0 +1,54 @@
+/* 骨組みのみ。見た目の作り込みは web-designer（傾き、テープなど） */
+.card {
+  position: relative;
+  background: var(--color-surface);
+  border: var(--border-width) var(--border-style) var(--color-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.cardThumb {
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+  overflow: hidden;
+}
+
+.cardThumb img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.cardBody {
+  padding: 18px;
+}
+
+.cardMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.cardDate {
+  font-family: var(--font-accent);
+  font-size: var(--font-size-small);
+  color: var(--color-text-light);
+}
+
+.cardTitle {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.cardSummary {
+  font-size: var(--font-size-small);
+  color: var(--color-text-light);
+}
+
+.cardTags {
+  margin-top: 10px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}

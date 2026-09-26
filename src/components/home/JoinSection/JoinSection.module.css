@@ -1,0 +1,19 @@
+/* 骨組みのみ。見た目の作り込みは web-designer */
+.text {
+  max-width: var(--prose-max-width);
+  margin-bottom: 20px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  align-items: center;
+}
+
+.email {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  word-break: break-all;
+}

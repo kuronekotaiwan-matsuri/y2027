@@ -1,0 +1,97 @@
+/* 骨組みのみ。見た目の作り込みは web-designer */
+.hero {
+  background: var(--hero-bg);
+  color: var(--hero-text);
+  text-align: var(--hero-align);
+  min-height: var(--hero-min-height);
+  display: flex;
+  align-items: center;
+}
+
+.heroInner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: calc(var(--spacing-unit) * 8) var(--spacing-content);
+  width: 100%;
+}
+
+.heroEyebrow {
+  font-family: var(--font-accent);
+  font-size: var(--font-size-small);
+  margin-bottom: 10px;
+}
+
+.heroTitle {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-display);
+  margin-bottom: 12px;
+}
+
+.heroCatch {
+  font-size: 1.3rem;
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-heading);
+  margin-bottom: 28px;
+}
+
+.heroNow {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 20px;
+  background: var(--hero-now-bg);
+  color: var(--hero-now-text);
+  border: var(--hero-now-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.heroNowLabel {
+  font-size: var(--font-size-small);
+  opacity: 0.8;
+}
+
+.heroNowMonth {
+  font-family: var(--font-accent);
+  font-size: 1.6rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.heroNowTitle {
+  font-size: 1rem;
+}
+
+.heroEvent {
+  font-size: var(--font-size-small);
+  margin-bottom: 28px;
+}
+
+.heroEventInfo {
+  margin-bottom: 28px;
+}
+
+.heroHeld {
+  font-size: 1.2rem;
+  margin-bottom: 28px;
+}
+
+.heroCta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: var(--hero-justify);
+}
+
+.heroMakingLink {
+  margin-top: 16px;
+  font-size: var(--font-size-small);
+}
+
+.heroMakingLink a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

@@ -1,0 +1,55 @@
+/* 骨組みのみ。見た目の作り込みは web-designer（付箋、判子など） */
+.timeline {
+  position: relative;
+  padding-left: 36px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  border-left: var(--timeline-line-width) var(--timeline-line-style) var(--timeline-line-color);
+}
+
+.timelineEmpty {
+  color: var(--color-text-light);
+  margin-bottom: 22px;
+}
+
+.timelineMonth {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin: 8px 0 16px -36px;
+  padding: 4px 14px;
+  background: var(--timeline-month-bg);
+  color: var(--timeline-month-text);
+  border: var(--timeline-month-border);
+  border-radius: var(--border-radius-tag);
+  font-family: var(--font-accent);
+  font-weight: 700;
+}
+
+.timelineGoal {
+  position: relative;
+  z-index: 1;
+  margin: 8px 0 0 -36px;
+  padding: 16px 20px;
+  background: var(--timeline-goal-bg);
+  color: var(--timeline-goal-text);
+  border: var(--timeline-goal-border);
+  border-radius: var(--border-radius);
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-display);
+  font-size: 1.1rem;
+}
+
+.timelineGoal small {
+  display: block;
+  font-family: var(--font-accent);
+  font-weight: 400;
+  font-size: var(--font-size-small);
+  opacity: 0.85;
+}

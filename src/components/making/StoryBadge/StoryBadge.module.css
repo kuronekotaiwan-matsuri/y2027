@@ -1,0 +1,25 @@
+/* 骨組みのみ。色は --badge-bg / --badge-text（物語ごとに inline で渡す） */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px;
+  border-radius: var(--border-radius-tag);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.badgeStory {
+  background: var(--badge-bg, var(--color-story-official));
+  color: var(--badge-text, var(--color-story-official-text));
+}
+
+.personalMark {
+  font-size: 0.65rem;
+  font-weight: 400;
+  padding: 0 4px;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+}
