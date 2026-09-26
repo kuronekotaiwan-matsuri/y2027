@@ -1,0 +1,130 @@
+/* ==============================================================
+   v4 追加: 「誰が書いたか」「どこに来たか」の見せ方の部品（案02 を土台に整理）
+   - 案ごとの差は variants.js のマークアップで表現する
+   - 物語（公式／個人）の区別は持たないので、紙の色分け・注記・「〇〇さんの『…』」は無い
+   ============================================================== */
+
+/* --- 顔（avatar）。写真が無ければ名前の1文字目、組織は黒猫のマーク --- */
+.avatar {
+  flex: none;
+  display: inline-grid; place-items: center;
+  width: var(--avatar-size, 32px); height: var(--avatar-size, 32px);
+  border-radius: 50%; overflow: hidden;
+  background: var(--color-secondary); color: var(--color-primary-contrast);
+  font-family: var(--font-accent); font-weight: 600; line-height: 1;
+  font-size: calc(var(--avatar-size, 32px) * 0.46);
+  border: 2px solid var(--color-surface);
+  box-shadow: 0 0 0 1px var(--color-border);
+}
+.avatar--sm { --avatar-size: 30px; }
+.avatar--md { --avatar-size: 40px; }
+.avatar--lg { --avatar-size: 72px; }
+.avatar--photo {
+  background: linear-gradient(135deg, #e2b48c 0%, #b26f4c 55%, #6d3e2c 100%);
+  color: #fff; font: 600 0.55rem/1 system-ui, sans-serif; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+.avatar--photo2 { background: linear-gradient(160deg, #9bc2b3 0%, #4f7f7a 50%, #2c4a48 100%); }
+.avatar--photo3 { background: linear-gradient(135deg, #f0c9a0 0%, #c9705a 60%, #7c2f2a 100%); }
+.avatar--lg.avatar--photo { font-size: 0.8rem; }
+.avatar--group { background: var(--color-primary); }
+.avatar--group svg { width: 64%; height: 64%; }
+
+/* --- 署名（byline）: 顔 + 名前 + 立場 を1組で --- */
+.byline { display: inline-flex; align-items: center; gap: 8px; min-width: 0; }
+.byline__name { font-weight: 700; font-size: 0.9rem; }
+.byline__role {
+  font-size: 0.7rem; line-height: 1.5; color: var(--color-text-light);
+  border: 1px solid var(--color-border); border-radius: 3px; padding: 0 5px;
+  white-space: nowrap;
+}
+.byline__paren { font-size: 0.8rem; color: var(--color-text-light); margin-left: -4px; white-space: nowrap; }
+.timeline__meta--split { justify-content: space-between; }
+.timeline__foot, .card__foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.timeline__foot .timeline__tags, .card__foot .card__tags { margin-top: 0; }
+.timeline__foot .byline, .card__foot .byline { margin-left: auto; }
+
+/* --- 書いた人カード（記録ページの末尾）--- */
+.author-card {
+  display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; align-items: start;
+  margin-top: 44px; padding: 16px 18px;
+  background: var(--color-surface);
+  border: var(--border-width) var(--border-style) var(--color-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow);
+}
+.author-card__label { grid-column: 1 / -1; font-family: var(--font-accent); font-size: 0.75rem; color: var(--color-text-light); letter-spacing: 0.08em; }
+.author-card__name { font-weight: 700; font-size: 1.05rem; }
+.author-card__role { font-size: var(--font-size-small); color: var(--color-text-light); margin-left: 8px; }
+.author-card__bio { font-size: var(--font-size-small); margin-top: 2px; }
+.author-card__link { display: inline-block; margin-top: 8px; font-size: var(--font-size-small); color: var(--color-link); text-decoration: underline; text-underline-offset: 3px; }
+
+/* --- 書き手パネル（案04: PC で記事の横に置く）--- */
+.article--side { max-width: none; }
+.author-panel { display: none; }
+@media (min-width: 1024px) {
+  .article--side { display: grid; grid-template-columns: 250px minmax(0, var(--prose-max-width)); gap: 48px; justify-content: center; }
+  .article--side .author-card { display: none; }
+  .author-panel {
+    display: block; position: sticky; top: calc(var(--header-height, 64px) + 24px); align-self: start;
+    padding: 18px 18px 20px;
+    background: var(--color-surface);
+    border: var(--border-width) var(--border-style) var(--color-border);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow);
+  }
+}
+.author-panel__label { font-family: var(--font-accent); font-size: 0.75rem; color: var(--color-text-light); letter-spacing: 0.08em; margin-bottom: 10px; }
+.author-panel__head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.author-panel__name { font-weight: 700; font-size: 1.05rem; display: block; }
+.author-panel__role { font-size: var(--font-size-small); color: var(--color-text-light); }
+.author-panel__bio { font-size: var(--font-size-small); }
+.author-panel__link { display: inline-block; margin-top: 10px; font-size: var(--font-size-small); color: var(--color-link); text-decoration: underline; text-underline-offset: 3px; }
+.author-panel__others { margin-top: 16px; padding-top: 12px; border-top: var(--border-width) var(--border-style) var(--color-border); }
+.author-panel__others h3 { font-size: 0.8rem; font-family: var(--font-accent); font-weight: 400; color: var(--color-text-light); margin-bottom: 6px; }
+.author-panel__others li { font-size: var(--font-size-small); line-height: 1.5; margin-top: 6px; }
+.author-panel__others li span { display: block; font-family: var(--font-accent); font-size: 0.75rem; color: var(--color-text-light); }
+.author-panel__others a { color: var(--color-link); }
+
+/* --- パンくず --- */
+.crumb { font-family: var(--font-accent); font-size: var(--font-size-small); color: var(--color-text-light); margin-bottom: 12px; }
+.crumb a { color: var(--color-link); text-decoration: underline; text-underline-offset: 3px; }
+.crumb span::before { content: " › "; }
+.article__back { margin-top: 28px; font-size: var(--font-size-small); }
+.article__back a { color: var(--color-link); text-decoration: underline; text-underline-offset: 3px; }
+.article__topics { font-size: var(--font-size-small); color: var(--color-text-light); margin: -20px 0 28px; }
+.article__topics a { color: var(--color-link); text-decoration: underline; text-underline-offset: 3px; }
+.article__byline { display: inline-flex; align-items: center; gap: 10px; }
+
+/* --- 顔で絞る（全案共通のオン・オフ）--- */
+.faces { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 28px; }
+.face { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 0.75rem; min-width: 52px; text-align: center; }
+.face--active .avatar { box-shadow: 0 0 0 3px var(--color-primary); }
+.face--all .avatar { background: var(--color-primary); font-size: 0.7rem; }
+
+/* --- トップ: 書いている人たち --- */
+.writers { margin-top: 36px; }
+.writers__title { font-size: 1.05rem; margin-bottom: 12px; }
+.writers__title small { font-family: var(--font-accent); font-weight: 400; font-size: var(--font-size-small); color: var(--color-text-light); margin-left: 8px; }
+.writers .faces { margin-bottom: 0; }
+
+/* --- 作っている人たち --- */
+.people { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 768px) { .people { grid-template-columns: repeat(2, 1fr); } }
+.person-row {
+  display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; align-items: center;
+  padding: 12px 14px;
+  background: var(--color-surface);
+  border: var(--border-width) var(--border-style) var(--color-border);
+  border-radius: var(--border-radius-lg);
+}
+.person-row__name { font-weight: 700; }
+.person-row__role { font-size: 0.75rem; color: var(--color-text-light); margin-left: 8px; }
+.person-row__bio { font-size: var(--font-size-small); color: var(--color-text-light); grid-column: 2; }
+
+/* --- 書き手ページのヘッダー --- */
+.person-header { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; align-items: center; margin-bottom: 32px; }
+.person-header h1 { font-size: 1.9rem; line-height: 1.3; }
+.person-header__role { font-size: var(--font-size-small); color: var(--color-text-light); }
+.person-header__bio { grid-column: 1 / -1; max-width: var(--prose-max-width); }
+.person-header__insta { grid-column: 1 / -1; font-size: var(--font-size-small); }
+.person-header__insta a { color: var(--color-link); text-decoration: underline; text-underline-offset: 3px; }

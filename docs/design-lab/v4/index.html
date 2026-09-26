@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>design-lab v4 | 黒猫台湾まつり2027</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: #e9e7e3;
+    color: #222;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  figure { margin: 0; }
+  [hidden] { display: none !important; }
+
+  .bar {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+    padding: 8px 14px; background: #2b2b2b; color: #eee;
+  }
+  .bar h1 { font-size: 14px; margin: 0 8px 0 0; font-weight: 600; }
+  .bar select, .bar button, .bar a.btn, .bar label.chk {
+    font: inherit; padding: 5px 10px; border-radius: 6px;
+    border: 1px solid #555; background: #3a3a3a; color: #eee; cursor: pointer; text-decoration: none;
+  }
+  .bar label.chk { display: inline-flex; align-items: center; gap: 5px; }
+  .bar label.chk input { margin: 0; }
+  .bar select { min-width: 220px; }
+  .bar button.active { background: #f2f2f2; color: #222; border-color: #f2f2f2; }
+  .bar .group { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+  .bar .label { font-size: 12px; color: #aaa; margin-right: 2px; }
+  .bar .hint { margin-left: auto; font-size: 12px; color: #aaa; }
+
+  .desc { padding: 6px 14px; background: #f7f6f3; border-bottom: 1px solid #ddd; font-size: 13px; }
+  .desc b { margin-right: 8px; }
+
+  .stage { flex: 1; min-height: 0; overflow: auto; }
+
+  .all { display: flex; gap: 16px; padding: 16px; height: 100%; align-items: stretch; width: max-content; min-width: 100%; }
+  .pane { display: flex; flex-direction: column; min-width: 0; }
+  .pane figcaption { font-size: 12px; color: #444; margin-bottom: 6px; width: 390px; }
+  .pane figcaption b { display: block; font-size: 13px; }
+  .pane figcaption small { color: #777; display: block; line-height: 1.4; }
+  .pane iframe {
+    border: 0; background: #fff; flex: 1; width: 100%;
+    box-shadow: 0 2px 12px rgba(0,0,0,.15); border-radius: 8px;
+  }
+  .pane--mobile { flex: none; width: 390px; }
+  .pane--desktop { flex: 1; }
+  .pane--desktop iframe { max-width: var(--desk, 1280px); margin: 0 auto; }
+
+  .compare { display: flex; gap: 16px; padding: 16px; height: 100%; align-items: stretch; }
+</style>
+</head>
+<body>
+  <div class="bar">
+    <h1>design-lab v4 ／ 案02 を土台にした第2ラウンド</h1>
+    <div class="group" id="views">
+      <button data-view="all">全案を並べる</button>
+      <button data-view="one">1案を詳しく</button>
+    </div>
+    <div class="group" id="oneCtl">
+      <button id="prev" title="前の案 (←)">‹</button>
+      <select id="theme" aria-label="案"></select>
+      <button id="next" title="次の案 (→)">›</button>
+      <span class="label">PC幅</span>
+      <button data-w="1024">1024</button>
+      <button data-w="1280">1280</button>
+    </div>
+    <div class="group" id="jumps">
+      <span class="label">場所</span>
+      <button data-sec="timeline">できるまで</button>
+      <button data-sec="record">記録</button>
+      <button data-sec="record-b">イケダの記録</button>
+      <button data-sec="home">トップ</button>
+      <button data-sec="people">人たち</button>
+      <button data-sec="person">書き手ページ</button>
+    </div>
+    <label class="chk"><input type="checkbox" id="faces"> 顔で絞るを付ける</label>
+    <a class="btn" id="open" target="_blank" rel="noopener">新しいタブで開く</a>
+    <a class="btn" href="../v3/index.html">v3を見る</a>
+    <span class="hint">キー: 1〜4 で案を選択 ／ ← → で前後</span>
+  </div>
+  <div class="desc"><b id="descName"></b><span id="descNote"></span></div>
+
+  <div class="stage">
+    <div class="all" id="all"></div>
+    <div class="compare" id="compare" hidden>
+      <figure class="pane pane--mobile">
+        <figcaption>モバイル 390px</figcaption>
+        <iframe id="ifMobile" title="モバイル表示"></iframe>
+      </figure>
+      <figure class="pane pane--desktop">
+        <figcaption id="capDesk">PC</figcaption>
+        <iframe id="ifDesk" title="PC表示"></iframe>
+      </figure>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="variants.js"></script>
+  <script>
+  (function () {
+    var VARIANTS = window.LAB_VARIANTS;
+    var ids = VARIANTS.map(function (v) { return v.id; });
+    var state = { theme: "01", view: "all", width: 1280, section: "timeline", faces: false };
+    try {
+      var saved = JSON.parse(localStorage.getItem("design-lab-v4") || "{}");
+      if (saved && typeof saved === "object") {
+        if (ids.indexOf(saved.theme) >= 0) state.theme = saved.theme;
+        if (saved.view === "all" || saved.view === "one") state.view = saved.view;
+        if ([1024, 1280].indexOf(saved.width) >= 0) state.width = saved.width;
+        if (typeof saved.faces === "boolean") state.faces = saved.faces;
+      }
+    } catch (e) {}
+    var qTheme = location.search.match(/theme=([0-9]{2})/);
+    if (qTheme && ids.indexOf(qTheme[1]) >= 0) state.theme = qTheme[1];
+    var qView = location.search.match(/view=(all|one)/);
+    if (qView) state.view = qView[1];
+
+    var $ = function (id) { return document.getElementById(id); };
+    var select = $("theme");
+    var all = $("all");
+    var allBuilt = false;
+
+    VARIANTS.forEach(function (v) {
+      var opt = document.createElement("option");
+      opt.value = v.id;
+      opt.textContent = "案" + v.id + "  " + v.name;
+      select.appendChild(opt);
+    });
+
+    function byId(id) { return VARIANTS.filter(function (v) { return v.id === id; })[0]; }
+    function save() { try { localStorage.setItem("design-lab-v4", JSON.stringify(state)); } catch (e) {} }
+    function url(id) { return "sample.html#" + id + "/" + state.section + (state.faces ? "/faces" : ""); }
+    function setSrc(iframe, src) { if (iframe.getAttribute("src") !== src) iframe.src = src; }
+
+    function buildAll() {
+      VARIANTS.forEach(function (v) {
+        var fig = document.createElement("figure");
+        fig.className = "pane pane--mobile";
+        fig.dataset.id = v.id;
+        fig.innerHTML = '<figcaption><b>案' + v.id + " " + v.name + "</b><small></small></figcaption>" +
+          '<iframe title="案' + v.id + '"></iframe>';
+        fig.querySelector("small").textContent = v.note;
+        all.appendChild(fig);
+      });
+      allBuilt = true;
+    }
+
+    function render() {
+      var v = byId(state.theme);
+      select.value = state.theme;
+      $("descName").textContent = state.view === "one" ? "案" + v.id + " " + v.name : "全案を並べて比較";
+      $("descNote").textContent = state.view === "one" ? v.note : "同じ内容を、案ごとに違う見せ方で。横にスクロールして比べる。「場所」で全案を同じ場所へ移動する。案04 の違いは PC 幅の記録ページにだけ出る。";
+      $("open").href = url(state.theme);
+      $("faces").checked = state.faces;
+
+      Array.prototype.forEach.call(document.querySelectorAll("#views button"), function (b) {
+        b.classList.toggle("active", b.dataset.view === state.view);
+      });
+      Array.prototype.forEach.call(document.querySelectorAll("#oneCtl [data-w]"), function (b) {
+        b.classList.toggle("active", Number(b.dataset.w) === state.width);
+      });
+      Array.prototype.forEach.call(document.querySelectorAll("#jumps button"), function (b) {
+        b.classList.toggle("active", b.dataset.sec === state.section);
+      });
+      $("oneCtl").hidden = state.view !== "one";
+
+      var isAll = state.view === "all";
+      $("compare").hidden = isAll;
+      all.hidden = !isAll;
+      if (isAll) {
+        if (!allBuilt) buildAll();
+        Array.prototype.forEach.call(all.children, function (fig) {
+          setSrc(fig.querySelector("iframe"), url(fig.dataset.id));
+        });
+      } else {
+        setSrc($("ifMobile"), url(state.theme));
+        setSrc($("ifDesk"), url(state.theme));
+        document.documentElement.style.setProperty("--desk", state.width + "px");
+        $("capDesk").textContent = "PC " + state.width + "px";
+      }
+      save();
+    }
+
+    function step(delta) {
+      var idx = ids.indexOf(state.theme);
+      state.theme = ids[(idx + delta + ids.length) % ids.length];
+      render();
+    }
+
+    select.addEventListener("change", function () { state.theme = select.value; render(); });
+    $("prev").addEventListener("click", function () { step(-1); });
+    $("next").addEventListener("click", function () { step(1); });
+    $("faces").addEventListener("change", function (e) { state.faces = e.target.checked; render(); });
+    Array.prototype.forEach.call(document.querySelectorAll("#views button"), function (b) {
+      b.addEventListener("click", function () { state.view = b.dataset.view; render(); });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("#oneCtl [data-w]"), function (b) {
+      b.addEventListener("click", function () { state.width = Number(b.dataset.w); render(); });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("#jumps button"), function (b) {
+      b.addEventListener("click", function () { state.section = b.dataset.sec; render(); });
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.target && (e.target.tagName === "SELECT" || e.target.tagName === "INPUT")) return;
+      if (e.key === "ArrowLeft") { step(-1); e.preventDefault(); return; }
+      if (e.key === "ArrowRight") { step(1); e.preventDefault(); return; }
+      if (/^[1-4]$/.test(e.key)) { state.theme = "0" + e.key; if (state.view === "all") state.view = "one"; render(); }
+    });
+
+    render();
+  })();
+  </script>
+</body>
+</html>
