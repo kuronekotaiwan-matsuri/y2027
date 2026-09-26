@@ -638,12 +638,15 @@ design-lab（`docs/design-lab/`）で2ラウンドの比較を行い、第2ラ�
 - 日付は出来事の日。あとからまとめて書いてもよい
 - Instagramに投稿した内容は、URLを添えて短く記録に残す
 - 出店・会場など主コンテンツに関わる話には `topics` を付ける。準備中ページに自動で載る
+- 画像のキャプションは `![代替文](/images/... "キャプション")` の title で書く。本文に生の HTML は書けない（無視される）
+- `instagram` は `https://` で始まる URL のみ。`tags` と `instagram` は1つなら文字列、複数なら配列でよい
+- 手順の詳細と front-matter の雛形は `docs/writing-guide.md`
 
 ### 8.5 公開の流れ
 
 - ブランチ運用: `main` へのpushで本番公開。作業は任意のブランチで行い、`main` にマージする
-- 下書き: `draft: true` の記録はビルドから除外される。書きかけをpushしても公開されない
-- 確認: ローカルで `npm run dev` で確認できる。ビルド検証は `npm run build`
+- 下書き: `draft: true` の記録・物語は公開ビルドから除外される。書きかけをpushしても公開されない。`npm run dev` では下書きも表示される
+- 確認: ローカルで `npm run dev` で確認できる。ビルド検証は `npm run build`。下書き込みでビルドを確かめたいときは `CONTENT_INCLUDE_DRAFTS=1 npm run build`（公開ビルドでは使わない）
 
 ---
 
@@ -656,6 +659,8 @@ design-lab（`docs/design-lab/`）で2ラウンドの比較を行い、第2ラ�
 - スタイル: CSS Modules + CSS custom properties（デザイントークン）
 - Markdown処理: ビルド時に `content/` を読み、front-matterを解析し、HTMLに変換する（gray-matter + remark/rehype 系）
 - パッケージ管理: npm
+- lint は `eslint .`（Next 16 で `next lint` は廃止）。型チェックは `npm run typecheck`（`next typegen` を前置する）。`next-env.d.ts` は生成物なので追跡しない
+- テストは Vitest（unified 系が ESM 前提のため）
 
 ### 9.2 静的生成
 
@@ -664,6 +669,7 @@ design-lab（`docs/design-lab/`）で2ラウンドの比較を行い、第2ラ�
 - タイムラインの物語フィルタはクライアント側で動作させる（データは全件をページに含める）
 - 主コンテンツの一覧・フィルタ（出店情報など）は 2026年と同様、定数データをページに含めてクライアント側で絞り込む
 - `trailingSlash: true` とし、GitHub Pagesのディレクトリ形式URLに合わせる
+- `output: 'export'` では動的ルートの `generateStaticParams` が最低1件を返す必要がある。記録・物語が0件のあいだはダミーの slug `_empty` を返し、そのページは not-found として出力する（sitemap には含めない）。0件でもビルドは通る
 
 ### 9.3 basePathと画像パス
 
@@ -687,7 +693,7 @@ design-lab（`docs/design-lab/`）で2ラウンドの比較を行い、第2ラ�
 - JSON-LD: サイト共通に Organization + WebSite。開催日が確定したら Festival（Event）を追加する。記録ページには Article を付ける
 - `sitemap.xml` をビルド時に生成する（主コンテンツ、記録、物語を含む）
 - `robots.txt`、`llms.txt` を用意する（2026年に準じる）
-- Google Analytics（2026年と同じ測定IDを継続するか、公開前に確認）
+- Google Analytics（2026年と同じ測定IDを継続するか、公開前に確認）。`src/config/site.ts` の `gaMeasurementId` に測定IDを入れると有効になる
 
 ### 9.6 アクセシビリティ
 
