@@ -1,4 +1,5 @@
 import Button from '@/components/common/Button/Button';
+import EmptyNote from '@/components/common/EmptyNote/EmptyNote';
 import Section, { SectionLead, SectionMore } from '@/components/common/Section/Section';
 import SectionTitle from '@/components/common/SectionTitle/SectionTitle';
 import RecordCard from '@/components/making/RecordCard/RecordCard';
@@ -39,7 +40,9 @@ export default function LatestMaking({ phase, records, stories, counts }: Latest
           })}
         </div>
       ) : (
-        <p className={styles.empty}>まだ記録はありません。</p>
+        <EmptyNote>
+          まだ記録はありません。動き出したら、決まったことも決まっていないことも、ここに順番に載せていきます。
+        </EmptyNote>
       )}
 
       <h3 className={styles.storiesTitle}>

@@ -1,0 +1,10 @@
+/* 空の状態: まだ何も貼っていない台紙。「いつ・何が載るか」を書く */
+.emptyNote {
+  max-width: var(--prose-max-width);
+  padding: var(--space-3);
+  border: var(--empty-border);
+  border-radius: var(--border-radius);
+  color: var(--color-text-light);
+  font-size: var(--font-size-small);
+  line-height: 1.8;
+}

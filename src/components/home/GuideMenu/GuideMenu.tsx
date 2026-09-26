@@ -13,13 +13,13 @@ export default function GuideMenu({ items }: GuideMenuProps) {
     <ul className={styles.cardGrid}>
       {items.map((item) => (
         <li key={item.key} className={styles.card}>
-          <Link href={item.href} className={styles.cardBody}>
-            <div className={styles.cardMeta}>
-              <StatusBadge status={item.status} />
-            </div>
-            <h3 className={styles.cardTitle}>{item.title}</h3>
-            <p className={styles.cardSummary}>{item.description}</p>
-          </Link>
+          <div className={styles.cardHead}>
+            <h3 className={styles.cardTitle}>
+              <Link href={item.href}>{item.title}</Link>
+            </h3>
+            <StatusBadge status={item.status} />
+          </div>
+          <p className={styles.cardSummary}>{item.description}</p>
         </li>
       ))}
     </ul>

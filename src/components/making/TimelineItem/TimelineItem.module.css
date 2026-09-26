@@ -1,15 +1,18 @@
-/* 骨組みのみ。見た目の作り込みは web-designer（ドット、判子など） */
+/* タイムラインの1項目: 線の上に判子のドット、右にカード。カード全体がリンク */
 .timelineItem {
   position: relative;
-  margin-bottom: 22px;
+  margin-bottom: var(--space-3);
 }
 
+/* ドット: 面色に赤の二重線（判子） */
 .timelineItem::before {
   content: '';
   position: absolute;
   z-index: 1;
-  left: calc(-26px + var(--timeline-line-width) / 2);
-  top: 16px;
+  left: calc(
+    var(--timeline-line-x, 10px) - var(--timeline-gutter, 36px) + var(--timeline-line-width) / 2
+  );
+  top: 18px;
   width: var(--timeline-dot-size);
   height: var(--timeline-dot-size);
   transform: translateX(-50%);
@@ -22,24 +25,26 @@
 .timelineCard {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: calc(var(--spacing-unit) * 1.5);
+  padding: var(--space-2) calc(var(--spacing-unit) * 2.5);
   background: var(--color-surface);
   border: var(--border-width) var(--border-style) var(--color-border);
   border-radius: var(--border-radius);
-  padding: 14px 16px;
   box-shadow: var(--shadow);
+  transition: box-shadow var(--transition-speed);
 }
 
-@media (min-width: 768px) {
-  .timelineCardThumb {
-    grid-template-columns: 1fr 150px;
-  }
+.timelineCard:hover {
+  box-shadow: var(--shadow-hover);
 }
 
+/* サムネイル。モバイルでは写真を先に（上に）置く */
 .timelineThumb {
-  border-radius: var(--image-frame-radius);
-  overflow: hidden;
+  order: -1;
   align-self: start;
+  overflow: hidden;
+  border: var(--border-width) var(--border-style) var(--color-border);
+  border-radius: var(--image-frame-radius);
 }
 
 .timelineThumb img {
@@ -51,7 +56,7 @@
 .timelineMeta {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 10px;
+  gap: 6px var(--space-1);
   align-items: center;
   margin-bottom: 6px;
 }
@@ -60,10 +65,12 @@
   font-family: var(--font-accent);
   font-size: var(--font-size-small);
   color: var(--color-text-light);
+  font-variant-numeric: tabular-nums;
 }
 
 .timelineTitle {
   font-size: 1.1rem;
+  line-height: 1.4;
   margin-bottom: 4px;
 }
 
@@ -73,8 +80,19 @@
 }
 
 .timelineTags {
-  margin-top: 8px;
+  margin-top: var(--space-1);
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
+}
+
+/* PC では本文の右に 150px で置く */
+@media (min-width: 768px) {
+  .timelineCardThumb {
+    grid-template-columns: 1fr 150px;
+  }
+
+  .timelineThumb {
+    order: 0;
+  }
 }

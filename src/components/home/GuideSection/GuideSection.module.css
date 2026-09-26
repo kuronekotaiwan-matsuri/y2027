@@ -1,4 +1,4 @@
-/* 骨組みのみ。見た目の作り込みは web-designer */
+/* 開催情報と案内メニューの間 */
 .eventInfo {
-  margin-bottom: 28px;
+  margin-bottom: var(--space-5);
 }

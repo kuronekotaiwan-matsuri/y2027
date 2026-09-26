@@ -1,16 +1,13 @@
-/* 骨組みのみ。見た目の作り込みは web-designer */
+/* 物語ページ: ヘッダーと説明は本文幅。記録はタイムライン、他の物語はカード2列 */
 .storyPage {
   max-width: var(--prose-max-width);
   margin: 0 auto;
 }
 
-.recordsTitle {
-  margin-bottom: 24px;
-}
-
 .cardGrid2 {
+  align-items: start;
   display: grid;
-  gap: 22px;
+  gap: var(--space-3);
   grid-template-columns: 1fr;
 }
 
@@ -18,6 +15,11 @@
   .cardGrid2 {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+/* 戻るリンクだけの区画。上の余白を詰める */
+.backSection {
+  padding-top: var(--space-4);
 }
 
 .back {

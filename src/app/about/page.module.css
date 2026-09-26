@@ -1,40 +1,49 @@
-/* 骨組みのみ。見た目の作り込みは web-designer */
+/* まつりとは（主コンテンツ）: 傾き・テープなし。見出しと余白で読ませる */
 .aboutPage {
   --card-tilt: 0deg;
   --decor-tape: none;
 }
 
-.lead,
-.text {
+.lead {
   max-width: var(--prose-max-width);
-  margin-bottom: 28px;
+  margin-bottom: var(--space-5);
+  font-size: 1.05rem;
 }
 
+.text {
+  max-width: var(--prose-max-width);
+  margin-bottom: var(--space-4);
+}
+
+/* 3つの柱・3つの挑戦: 枠で囲まず、列と見出しで分ける */
 .pillars {
   display: grid;
-  gap: 22px;
+  gap: var(--space-4);
   grid-template-columns: 1fr;
 }
 
 @media (min-width: 768px) {
   .pillars {
     grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
   }
 }
 
 .pillars h3 {
-  font-size: 1.2rem;
-  margin-bottom: 8px;
+  margin-bottom: var(--space-1);
+  font-size: 1.25rem;
 }
 
+/* これまでの歩み: 年表。年はペン字で */
 .history {
-  display: grid;
-  gap: 12px;
+  max-width: var(--prose-max-width);
 }
 
 .history li {
   display: flex;
-  gap: 16px;
+  gap: var(--space-2);
+  padding: calc(var(--spacing-unit) * 1.25) 0;
+  border-bottom: var(--border-width) var(--border-style) var(--color-border);
 }
 
 .history a {
@@ -48,18 +57,19 @@
   width: 5em;
   font-family: var(--font-accent);
   color: var(--color-text-light);
+  font-variant-numeric: tabular-nums;
 }
 
 .roles {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: var(--space-1);
 }
 
 .actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px 20px;
+  gap: calc(var(--spacing-unit) * 1.5) var(--space-3);
   align-items: center;
 }
 

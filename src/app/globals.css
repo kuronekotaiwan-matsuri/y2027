@@ -123,6 +123,20 @@
   --timeline-goal-bg: #B7332A;
   --timeline-goal-text: #FFFBF2;
   --timeline-goal-border: 0;
+
+  /* --- 実装で追加（第2段階） --- */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --tap-target: 44px;
+  --header-height: 64px;
+  --focus-outline: 2px solid #1F3A5F;
+  --focus-outline-offset: 3px;
+  --hero-now-tilt: -1deg;
+  --empty-border: 2px dashed #D9C7A6;
 }
 
 /* --- リセット（docs/design-lab/v2/lab.css を参考） --- */
@@ -213,4 +227,30 @@ figure {
 
 main {
   display: block;
+}
+
+/* --- 固定ヘッダーぶん、ページ内リンクの着地点を下げる --- */
+html {
+  scroll-padding-top: calc(var(--header-height) + var(--space-2));
+}
+
+/* --- フォーカス: キーボード操作で見える枠（紺）。紺地では各部品が金に上書きする --- */
+:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* --- 動きを減らす設定を尊重する。傾きは静止した形なので残す --- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

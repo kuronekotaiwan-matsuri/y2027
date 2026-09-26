@@ -1,4 +1,4 @@
-/* 骨組みのみ。見た目の作り込みは web-designer */
+/* まつりとは（要約）: 本文の行長を抑える */
 .text {
   max-width: var(--prose-max-width);
 }

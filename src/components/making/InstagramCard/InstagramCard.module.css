@@ -1,13 +1,19 @@
-/* 骨組みのみ。見た目の作り込みは web-designer */
+/* Instagram 投稿へのリンクカード */
 .instaCard {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
+  gap: calc(var(--spacing-unit) * 1.5);
+  min-height: var(--tap-target);
+  padding: calc(var(--spacing-unit) * 1.5) var(--space-2);
   border: var(--border-width) var(--border-style) var(--color-border);
   border-radius: var(--border-radius);
   background: var(--color-surface);
   box-shadow: var(--shadow);
+  transition: box-shadow var(--transition-speed);
+}
+
+.instaCard:hover {
+  box-shadow: var(--shadow-hover);
 }
 
 .instaCardIcon {
@@ -34,12 +40,8 @@
 }
 
 .instaCardUrl {
+  font-family: var(--font-accent);
   font-size: var(--font-size-small);
   color: var(--color-text-light);
   word-break: break-all;
-  font-family: var(--font-accent);
-}
-
-.instaCardArrow {
-  color: var(--color-text-light);
 }

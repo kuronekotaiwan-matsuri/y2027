@@ -43,19 +43,26 @@ export default function RecordArticle({
           {story.kind === 'personal' && '（個人）'}
         </p>
         <h1 className={styles.articleTitle}>{record.title}</h1>
+        {/* 日付 ／ 書き手と立場 ／ 状態タグ。役割ごとにまとめる */}
         <div className={styles.articleMeta}>
           <time className={styles.articleDate} dateTime={record.date}>
             {formatDate(record.date)}
           </time>
-          <span className={styles.articleAuthor}>{record.author.name}</span>
-          <RoleBadge role={record.author.role} />
-          {record.tags.map((tag) => (
-            <Tag key={tag} label={tag} />
-          ))}
+          <span className={styles.articleByline}>
+            {record.author.name}
+            <RoleBadge role={record.author.role} />
+          </span>
+          {record.tags.length > 0 && (
+            <span className={styles.articleTags}>
+              {record.tags.map((tag) => (
+                <Tag key={tag} label={tag} />
+              ))}
+            </span>
+          )}
         </div>
         {topics.length > 0 && (
           <p className={styles.articleTopics}>
-            関連:{' '}
+            関連する案内:{' '}
             {topics.map((topic, index) => (
               <Fragment key={topic.key}>
                 {index > 0 && '、'}

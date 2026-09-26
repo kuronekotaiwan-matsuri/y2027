@@ -1,13 +1,16 @@
-/* 骨組みのみ。見た目の作り込みは web-designer（判子風、-2deg など） */
+/* 状態タグ: 判子に見せる（二重線の丸い枠、少し傾ける）。ボツは打ち消し線 */
 .tag {
   display: inline-block;
   padding: 1px 9px;
   border-radius: var(--border-radius-tag);
   border: var(--tag-border);
-  font-size: 0.75rem;
+  transform: rotate(var(--tag-tilt));
   font-family: var(--font-accent);
+  font-size: 0.75rem;
   line-height: 1.6;
+  letter-spacing: 0.04em;
   white-space: nowrap;
+  color: var(--color-text-light);
 }
 
 .tag[data-status='consider'],

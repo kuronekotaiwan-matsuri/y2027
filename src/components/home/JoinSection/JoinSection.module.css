@@ -1,13 +1,13 @@
-/* 骨組みのみ。見た目の作り込みは web-designer */
+/* 関わる・見守る: Instagram とメールの入口 */
 .text {
   max-width: var(--prose-max-width);
-  margin-bottom: 20px;
+  margin-bottom: var(--space-3);
 }
 
 .actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px 20px;
+  gap: calc(var(--spacing-unit) * 1.5) var(--space-3);
   align-items: center;
 }
 

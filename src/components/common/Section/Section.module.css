@@ -1,4 +1,4 @@
-/* 骨組みのみ。見た目の作り込みは web-designer */
+/* ページ内の区画。内側で最大幅と左右余白をそろえる */
 .section {
   padding: var(--spacing-section) 0;
 }
@@ -13,13 +13,20 @@
   padding: 0 var(--spacing-content);
 }
 
+/* 見出しの下に置くリード文。見出しに近づける */
 .sectionLead {
   max-width: var(--prose-max-width);
-  margin: -12px 0 28px;
+  margin: calc(var(--space-1) * -1) 0 var(--space-4);
   color: var(--color-text-light);
 }
 
 .sectionMore {
-  margin-top: 28px;
+  margin-top: var(--space-4);
   text-align: center;
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding: var(--space-6) 0;
+  }
 }

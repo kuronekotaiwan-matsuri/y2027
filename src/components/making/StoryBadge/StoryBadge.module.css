@@ -1,4 +1,4 @@
-/* 骨組みのみ。色は --badge-bg / --badge-text（物語ごとに inline で渡す） */
+/* 物語バッジ: 物語の色を背景に。色は --badge-bg / --badge-text（物語ごとに inline で渡す） */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -16,10 +16,12 @@
   color: var(--badge-text, var(--color-story-official-text));
 }
 
+/* 「個人」の印。色だけに頼らず文字で示す（仕様書 3.8） */
 .personalMark {
-  font-size: 0.65rem;
-  font-weight: 400;
   padding: 0 4px;
   border: 1px solid currentColor;
   border-radius: 3px;
+  font-size: 0.65rem;
+  font-weight: 400;
+  line-height: 1.5;
 }

@@ -4,6 +4,7 @@ import SectionTitle from '@/components/common/SectionTitle/SectionTitle';
 import StatusBadge from '@/components/common/StatusBadge/StatusBadge';
 import Timeline from '@/components/making/Timeline/Timeline';
 import { site, type PreparingStatus, type TopicKey } from '@/config/site';
+import { formatDate } from '@/lib/content/select';
 import type { RecordSummary, StorySummary } from '@/lib/content/types';
 import styles from './PreparingPage.module.css';
 
@@ -30,7 +31,7 @@ export default function PreparingPage({ status, records, stories }: PreparingPag
           </h2>
           <p className={styles.statusText}>{status.text}</p>
           <p className={styles.updated}>
-            更新日: <time dateTime={status.updated}>{status.updated}</time>
+            更新日: <time dateTime={status.updated}>{formatDate(status.updated)}</time>
           </p>
         </section>
 
@@ -42,7 +43,7 @@ export default function PreparingPage({ status, records, stories }: PreparingPag
             records={records}
             stories={stories}
             order="desc"
-            emptyText="まだ記録はありません。"
+            emptyText="この話題の記録はまだありません。決まるまでの経緯を、書いたものから順にここに載せます。"
           />
         </section>
 

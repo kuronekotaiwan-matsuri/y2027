@@ -1,10 +1,37 @@
-/* 骨組みのみ。見た目の作り込みは web-designer（傾き、テープなど） */
+/* 記録カード（サブコンテンツ）: わずかに傾け、テープで留める。偶数番目は逆に傾く */
 .card {
   position: relative;
+  display: flex;
+  flex-direction: column;
   background: var(--color-surface);
   border: var(--border-width) var(--border-style) var(--color-border);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow);
+  transform: rotate(var(--card-tilt));
+  transition: box-shadow var(--transition-speed);
+}
+
+.card:nth-child(even) {
+  transform: rotate(calc(var(--card-tilt) * -1));
+}
+
+.card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+/* テープ（主コンテンツでは --decor-tape: none で消える） */
+.card::before {
+  content: '';
+  display: var(--decor-tape);
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  z-index: 2;
+  width: 90px;
+  height: 22px;
+  transform: translateX(-50%) rotate(-3deg);
+  background: var(--color-tape);
+  pointer-events: none;
 }
 
 .cardThumb {
@@ -19,26 +46,41 @@
 }
 
 .cardBody {
-  padding: 18px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--spacing-unit) * 2.5);
 }
 
+/* 日付・物語バッジ・立場バッジ。役割が違うので見た目も分ける */
 .cardMeta {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 10px;
+  gap: 6px var(--space-1);
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: var(--space-1);
 }
 
 .cardDate {
   font-family: var(--font-accent);
   font-size: var(--font-size-small);
   color: var(--color-text-light);
+  font-variant-numeric: tabular-nums;
 }
 
 .cardTitle {
   font-size: 1.1rem;
+  line-height: 1.4;
   margin-bottom: 6px;
+}
+
+/* カード全体をリンクにする（タイトルのリンクを広げる） */
+.cardTitle a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: var(--border-radius-lg);
 }
 
 .cardSummary {
@@ -47,7 +89,8 @@
 }
 
 .cardTags {
-  margin-top: 10px;
+  margin-top: auto;
+  padding-top: calc(var(--spacing-unit) * 1.5);
   display: flex;
   gap: 6px;
   flex-wrap: wrap;

@@ -1,18 +1,18 @@
-/* 骨組みのみ。見た目の作り込みは web-designer */
+/* 記録ページ: 本文の行長を抑え、主役は本文と写真 */
 .article {
   max-width: var(--prose-max-width);
   margin: 0 auto;
 }
 
 .articleHeader {
-  margin-bottom: 32px;
+  margin-bottom: var(--space-4);
 }
 
 .articleStory {
+  margin-bottom: var(--space-1);
   font-family: var(--font-accent);
   font-size: var(--font-size-small);
   color: var(--color-link);
-  margin-bottom: 8px;
 }
 
 .articleStory a {
@@ -21,15 +21,18 @@
 }
 
 .articleTitle {
-  margin-bottom: 12px;
+  font-size: var(--font-size-h2);
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+  line-height: 1.35;
 }
 
+/* 日付（ペン字）／ 書き手と立場 ／ 状態タグ（右寄せ）。役割ごとに見た目を分ける */
 .articleMeta {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 12px;
+  gap: var(--space-1) var(--space-2);
   align-items: center;
-  padding-bottom: 16px;
+  padding-bottom: var(--space-2);
   border-bottom: var(--border-width) var(--border-style) var(--color-border);
 }
 
@@ -37,14 +40,25 @@
   font-family: var(--font-accent);
   font-size: var(--font-size-small);
   color: var(--color-text-light);
+  font-variant-numeric: tabular-nums;
 }
 
-.articleAuthor {
+.articleByline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: var(--font-size-small);
 }
 
+.articleTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-left: auto;
+}
+
 .articleTopics {
-  margin-top: 12px;
+  margin-top: calc(var(--spacing-unit) * 1.5);
   font-size: var(--font-size-small);
   color: var(--color-text-light);
 }
@@ -57,12 +71,12 @@
 
 .articleInstagram {
   display: grid;
-  gap: 12px;
-  margin-top: 28px;
+  gap: calc(var(--spacing-unit) * 1.5);
+  margin-top: var(--space-4);
 }
 
 .articleBack {
-  margin-top: 28px;
+  margin-top: var(--space-4);
   font-size: var(--font-size-small);
 }
 

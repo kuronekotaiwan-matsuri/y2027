@@ -1,4 +1,4 @@
-/* 骨組みのみ。見た目の作り込みは web-designer */
+/* トップのヒーロー。主役は「いま」の付箋。看板（サイト名）は大きく、ほかは静かに */
 .hero {
   background: var(--hero-bg);
   color: var(--hero-text);
@@ -11,82 +11,103 @@
 .heroInner {
   max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: calc(var(--spacing-unit) * 8) var(--spacing-content);
+  padding: var(--space-6) var(--spacing-content);
   width: 100%;
 }
 
 .heroEyebrow {
   font-family: var(--font-accent);
   font-size: var(--font-size-small);
-  margin-bottom: 10px;
+  color: var(--color-text-light);
+  margin-bottom: var(--space-1);
 }
 
 .heroTitle {
   font-family: var(--font-display);
   font-weight: var(--font-weight-display);
-  margin-bottom: 12px;
+  margin-bottom: var(--space-1);
 }
 
 .heroCatch {
-  font-size: 1.3rem;
   font-family: var(--font-heading);
   font-weight: var(--font-weight-heading);
-  margin-bottom: 28px;
+  font-size: 1.25rem;
+  margin-bottom: var(--space-4);
 }
 
+/* 「いま」の付箋。少し傾けて貼る。最新の記録があればリンク */
 .heroNow {
   display: inline-flex;
   flex-direction: column;
   gap: 2px;
-  padding: 12px 20px;
+  max-width: 100%;
+  padding: calc(var(--spacing-unit) * 1.5) var(--space-3);
+  margin-bottom: var(--space-2);
   background: var(--hero-now-bg);
   color: var(--hero-now-text);
   border: var(--hero-now-border);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
-  margin-bottom: 16px;
+  transform: rotate(var(--hero-now-tilt));
   text-align: left;
+  transition: box-shadow var(--transition-speed);
+}
+
+a.heroNow:hover {
+  box-shadow: var(--shadow-hover);
 }
 
 .heroNowLabel {
+  font-family: var(--font-accent);
   font-size: var(--font-size-small);
   opacity: 0.8;
 }
 
 .heroNowMonth {
   font-family: var(--font-accent);
+  font-weight: var(--font-weight-display);
   font-size: 1.6rem;
   line-height: 1.2;
-  font-weight: 700;
 }
 
 .heroNowTitle {
   font-size: 1rem;
 }
 
+/* 記録 0 件のときの補足（付箋の中） */
+.heroNowNote {
+  font-family: var(--font-accent);
+  font-size: var(--font-size-small);
+  opacity: 0.8;
+}
+
 .heroEvent {
   font-size: var(--font-size-small);
-  margin-bottom: 28px;
+  color: var(--color-text-light);
+  margin-bottom: var(--space-4);
 }
 
 .heroEventInfo {
-  margin-bottom: 28px;
+  max-width: var(--prose-max-width);
+  margin-bottom: var(--space-4);
 }
 
 .heroHeld {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-heading);
   font-size: 1.2rem;
-  margin-bottom: 28px;
+  margin-bottom: var(--space-4);
 }
 
 .heroCta {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: calc(var(--spacing-unit) * 1.5);
   justify-content: var(--hero-justify);
 }
 
 .heroMakingLink {
-  margin-top: 16px;
+  margin-top: var(--space-2);
   font-size: var(--font-size-small);
 }
 
@@ -94,4 +115,10 @@
   color: var(--color-link);
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+@media (min-width: 768px) {
+  .heroNow {
+    min-width: 320px;
+  }
 }

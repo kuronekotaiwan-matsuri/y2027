@@ -44,7 +44,8 @@ export default function Hero({ phase, latest }: HeroProps) {
           ) : (
             <div className={styles.heroNow}>
               <span className={styles.heroNowLabel}>いま</span>
-              <span className={styles.heroNowTitle}>準備を始めたところです</span>
+              <span className={styles.heroNowTitle}>動き始めたところです</span>
+              <span className={styles.heroNowNote}>最初の記録を書いたら、ここに出ます。</span>
             </div>
           ))}
         {plan.showNow && (

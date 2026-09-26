@@ -13,9 +13,6 @@ export default function InstagramCard({ url }: { url: string }) {
         <span className={styles.instaCardLabel}>Instagramで見る</span>
         <span className={styles.instaCardUrl}>{display}</span>
       </span>
-      <span className={styles.instaCardArrow} aria-hidden="true">
-        →
-      </span>
     </a>
   );
 }

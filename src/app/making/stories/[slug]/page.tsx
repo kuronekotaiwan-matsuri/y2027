@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Notice from '@/components/common/Notice/Notice';
 import Section from '@/components/common/Section/Section';
+import SectionTitle from '@/components/common/SectionTitle/SectionTitle';
 import Prose from '@/components/making/Prose/Prose';
 import StoryCard from '@/components/making/StoryCard/StoryCard';
 import StoryHeader from '@/components/making/StoryHeader/StoryHeader';
@@ -63,22 +64,18 @@ export default async function StoryPage({ params }: { params: Promise<Params> })
       </Section>
 
       <Section alt aria-labelledby="story-records-title">
-        <h2 id="story-records-title" className={styles.recordsTitle}>
-          この物語の記録
-        </h2>
+        <SectionTitle id="story-records-title">この物語の記録</SectionTitle>
         <Timeline
           records={storyRecords}
           stories={[story]}
           order="asc"
-          emptyText="この物語の記録はまだありません。"
+          emptyText="この物語の記録はまだありません。書いたものから順に、ここに並びます。"
         />
       </Section>
 
       {others.length > 0 && (
         <Section aria-labelledby="other-stories-title">
-          <h2 id="other-stories-title" className={styles.recordsTitle}>
-            他の物語
-          </h2>
+          <SectionTitle id="other-stories-title">他の物語</SectionTitle>
           <div className={styles.cardGrid2}>
             {others.map((other) => (
               <StoryCard key={other.slug} story={other} recordCount={counts.get(other.slug) ?? 0} />
@@ -87,7 +84,7 @@ export default async function StoryPage({ params }: { params: Promise<Params> })
         </Section>
       )}
 
-      <Section>
+      <Section className={styles.backSection}>
         <p className={styles.back}>
           <Link href="/making/">← できるまでへ戻る</Link>
         </p>

@@ -1,7 +1,7 @@
-/* 骨組みのみ。見た目の作り込みは web-designer */
+/* 開催情報ブロック: 項目名は薄く、値は本文。未定は薄い文字のまま */
 .eventInfo {
   display: grid;
-  gap: 8px 24px;
+  gap: 0 var(--space-4);
   grid-template-columns: 1fr;
 }
 
@@ -13,8 +13,8 @@
 
 .eventInfoItem {
   display: flex;
-  gap: 12px;
-  padding: 8px 0;
+  gap: calc(var(--spacing-unit) * 1.5);
+  padding: calc(var(--spacing-unit) * 1.25) 0;
   border-bottom: var(--border-width) var(--border-style) var(--color-border);
 }
 
@@ -23,6 +23,14 @@
   width: 5em;
   color: var(--color-text-light);
   font-family: var(--font-accent);
+}
+
+.eventInfoItem dd {
+  flex: 1;
+}
+
+.eventInfoItem[data-decided='true'] dd {
+  font-weight: 700;
 }
 
 .eventInfoItem[data-decided='false'] dd {

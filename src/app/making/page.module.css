@@ -1,4 +1,4 @@
-/* 骨組みのみ。見た目の作り込みは web-designer */
+/* できるまで: 見出し脇の「最新の記録へ」 */
 .jump {
   color: var(--color-link);
   text-decoration: underline;

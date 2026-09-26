@@ -89,7 +89,7 @@ design-lab 第2ラウンドの案02 を採用したもの（`docs/design-lab/v2/
 ## 4. スペーシング・レイアウト
 
 - 基本単位: `8px`
-- セクション間余白: `76px`
+- セクション間余白: `76px`（モバイルは `48px`）
 - コンテンツ内余白（左右）: `24px`
 - コンテンツ最大幅: `1080px`
 - 記録本文の最大幅: `700px`
@@ -111,8 +111,11 @@ design-lab 第2ラウンドの案02 を採用したもの（`docs/design-lab/v2/
 - テープ: カード上端中央と写真上端中央に `rgba(217,166,46,0.75)` の帯（90〜110px × 22〜24px、少し回転）
 - 写真の台紙: 白 `#FFFBF2`、内側余白 `10px 10px 28px`（下を広く）、角丸 `2px`、シャドウあり
 - セクション見出し: 文字の下 38% に付箋色 `#FFF3B0` のマーカー
-- 「いま」ボックス（ヒーロー）: 付箋色の背景、枠なし
+- 「いま」ボックス（ヒーロー）: 付箋色の背景、枠なし。`-1deg` 傾けて貼る
 - 月ラベル: 付箋色の背景、`-1.5deg` 傾け、薄いシャドウ
+- フォーカス: `2px solid #1F3A5F`、外側に `3px` 離す。紺地（フッター）では金 `#D9A62E`
+- 空の状態（記録 0 件など）: 点線の枠 `2px dashed #D9C7A6` の中に「いつ・何が載るか」を書く。「まだない」で終わらせない
+- 押せるものは 44px 四方以上（ボタン、ナビ、チップ）
 
 ## 6. タイムライン
 
@@ -264,5 +267,19 @@ design-lab 第2ラウンドの案02 を採用したもの（`docs/design-lab/v2/
   --timeline-goal-bg: #B7332A;
   --timeline-goal-text: #FFFBF2;
   --timeline-goal-border: 0;
+
+  /* --- 実装で追加（第2段階） --- */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --tap-target: 44px;
+  --header-height: 64px;
+  --focus-outline: 2px solid #1F3A5F;
+  --focus-outline-offset: 3px;
+  --hero-now-tilt: -1deg;
+  --empty-border: 2px dashed #D9C7A6;
 }
 ```

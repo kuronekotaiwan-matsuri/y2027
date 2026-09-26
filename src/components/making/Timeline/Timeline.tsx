@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import EmptyNote from '@/components/common/EmptyNote/EmptyNote';
 import TimelineItem from '@/components/making/TimelineItem/TimelineItem';
 import type { GoalMarker } from '@/config/site';
 import { groupByMonth, sortRecordsByDate, type SortOrder } from '@/lib/content/select';
@@ -25,7 +26,7 @@ export default function Timeline({
   stories,
   order = 'asc',
   goal,
-  emptyText = 'まだ記録はありません。',
+  emptyText = 'まだ記録はありません。書いたものから順に、ここに並びます。',
   latestId,
 }: TimelineProps) {
   const storyMap = new Map(stories.map((story) => [story.slug, story]));
@@ -35,7 +36,11 @@ export default function Timeline({
 
   return (
     <div className={styles.timeline}>
-      {sorted.length === 0 && <p className={styles.timelineEmpty}>{emptyText}</p>}
+      {sorted.length === 0 && (
+        <div className={styles.timelineEmpty}>
+          <EmptyNote>{emptyText}</EmptyNote>
+        </div>
+      )}
       {groups.map((group) => (
         <Fragment key={group.month}>
           <div className={styles.timelineMonth}>{group.label}</div>

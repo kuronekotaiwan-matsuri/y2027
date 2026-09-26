@@ -1,35 +1,51 @@
-/* 骨組みのみ。主コンテンツなので傾き・テープは使わない（design-system.md 8章） */
+/* 案内メニューカード。主コンテンツなので傾き・テープは使わない（design-system.md 8章） */
 .cardGrid {
   display: grid;
-  gap: 22px;
+  gap: var(--space-3);
   grid-template-columns: 1fr;
 }
 
 @media (min-width: 768px) {
   .cardGrid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   }
 }
 
+/* カード全体がリンク（タイトルのリンクを ::after で広げる） */
 .card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: calc(var(--spacing-unit) * 2.5);
   background: var(--color-surface);
   border: var(--border-width) var(--border-style) var(--color-border);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow);
+  transition: box-shadow var(--transition-speed);
 }
 
-.cardBody {
-  display: block;
-  padding: 18px;
+.card:hover {
+  box-shadow: var(--shadow-hover);
 }
 
-.cardMeta {
-  margin-bottom: 8px;
+.cardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
 }
 
 .cardTitle {
-  font-size: 1.1rem;
-  margin-bottom: 6px;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+.cardTitle a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--border-radius-lg);
 }
 
 .cardSummary {

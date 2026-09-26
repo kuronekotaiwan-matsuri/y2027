@@ -1,42 +1,52 @@
-/* 骨組みのみ。見た目の作り込みは web-designer（付箋、判子など） */
+/* タイムライン: 左に点線、右に記録。月の区切りは付箋、最下部はゴール */
 .timeline {
+  /* 線の位置と、線からカードまでの幅（TimelineItem のドットも参照する） */
+  --timeline-gutter: 36px;
+  --timeline-line-x: 10px;
+
   position: relative;
-  padding-left: 36px;
+  padding-left: var(--timeline-gutter);
 }
 
 .timeline::before {
   content: '';
   position: absolute;
-  left: 10px;
+  left: var(--timeline-line-x);
   top: 0;
   bottom: 0;
   border-left: var(--timeline-line-width) var(--timeline-line-style) var(--timeline-line-color);
 }
 
 .timelineEmpty {
-  color: var(--color-text-light);
-  margin-bottom: 22px;
+  position: relative;
+  z-index: 1;
+  margin: 0 0 var(--space-3);
 }
 
+/* 月ラベル（付箋）: 少し傾け、薄い影 */
 .timelineMonth {
   position: relative;
   z-index: 1;
   display: inline-block;
-  margin: 8px 0 16px -36px;
-  padding: 4px 14px;
+  margin: var(--space-1) 0 var(--space-2) calc(var(--timeline-gutter) * -1);
+  padding: calc(var(--spacing-unit) / 2) var(--space-2);
   background: var(--timeline-month-bg);
   color: var(--timeline-month-text);
   border: var(--timeline-month-border);
   border-radius: var(--border-radius-tag);
+  box-shadow: var(--timeline-month-shadow);
+  transform: rotate(var(--timeline-month-tilt));
   font-family: var(--font-accent);
-  font-weight: 700;
+  font-weight: var(--font-weight-display);
+  letter-spacing: 0.06em;
 }
 
+/* ゴールマーカー: 2027.05 開催（予定） */
 .timelineGoal {
   position: relative;
   z-index: 1;
-  margin: 8px 0 0 -36px;
-  padding: 16px 20px;
+  margin: var(--space-1) 0 0 calc(var(--timeline-gutter) * -1);
+  padding: var(--space-2) var(--space-3);
   background: var(--timeline-goal-bg);
   color: var(--timeline-goal-text);
   border: var(--timeline-goal-border);
@@ -44,12 +54,15 @@
   font-family: var(--font-display);
   font-weight: var(--font-weight-display);
   font-size: 1.1rem;
+  letter-spacing: var(--letter-spacing-heading);
 }
 
 .timelineGoal small {
   display: block;
+  margin-top: 2px;
   font-family: var(--font-accent);
-  font-weight: 400;
+  font-weight: var(--font-weight-body);
   font-size: var(--font-size-small);
+  letter-spacing: 0;
   opacity: 0.85;
 }

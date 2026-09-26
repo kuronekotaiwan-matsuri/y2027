@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useSyncExternalStore } from 'react';
+import { useCallback, useSyncExternalStore, type CSSProperties } from 'react';
 import Timeline from '@/components/making/Timeline/Timeline';
 import type { GoalMarker } from '@/config/site';
 import type { RecordSummary, StorySummary } from '@/lib/content/types';
@@ -77,11 +77,14 @@ export default function MakingTimeline({ records, stories, goal, latestId }: Mak
             type="button"
             className={chipClass(selected === story.slug)}
             aria-pressed={selected === story.slug}
+            style={
+              { '--chip-color': story.color.bg, '--chip-text': story.color.text } as CSSProperties
+            }
             onClick={() => select(story.slug)}
           >
             <span
               className={styles.chipDot}
-              style={{ background: story.color.bg }}
+              style={{ background: 'var(--chip-color)' }}
               aria-hidden="true"
             />
             {story.title}
@@ -95,7 +98,11 @@ export default function MakingTimeline({ records, stories, goal, latestId }: Mak
         order="asc"
         goal={goal}
         latestId={latestId}
-        emptyText="この物語の記録はまだありません。"
+        emptyText={
+          selected === ALL
+            ? 'まだ記録はありません。書いたものから順に、ここに並びます。'
+            : 'この物語の記録はまだありません。'
+        }
       />
     </>
   );

@@ -1,0 +1,4 @@
+/* 404: 本文の行長を抑える */
+.text {
+  max-width: var(--prose-max-width);
+}

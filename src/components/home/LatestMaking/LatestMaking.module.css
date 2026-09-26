@@ -1,13 +1,15 @@
-/* 骨組みのみ。見た目の作り込みは web-designer */
+/* トップ「できるまで」: 最新の記録カード（3列）と物語カード（2列） */
 .cardGrid {
+  align-items: start;
   display: grid;
-  gap: 22px;
+  gap: var(--space-3);
   grid-template-columns: 1fr;
 }
 
 .cardGrid2 {
+  align-items: start;
   display: grid;
-  gap: 22px;
+  gap: var(--space-3);
   grid-template-columns: 1fr;
 }
 
@@ -21,18 +23,18 @@
   }
 }
 
-.empty {
-  color: var(--color-text-light);
-}
-
 .storiesTitle {
-  margin: 44px 0 16px;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin: var(--space-6) 0 var(--space-2);
+  font-size: var(--font-size-h3);
 }
 
 .storiesTitle small {
   font-family: var(--font-accent);
   font-size: var(--font-size-small);
+  font-weight: var(--font-weight-body);
   color: var(--color-text-light);
-  font-weight: 400;
-  margin-left: 8px;
 }

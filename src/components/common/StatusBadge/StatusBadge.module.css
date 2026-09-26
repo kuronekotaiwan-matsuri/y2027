@@ -1,12 +1,14 @@
-/* 骨組みのみ。見た目の作り込みは web-designer（design-system.md 8章: 準備中は付箋色、公開中は赤の判子） */
+/* 主コンテンツの状態バッジ。準備中は付箋色、公開中は赤の判子（design-system.md 8章） */
 .statusBadge {
   display: inline-block;
   padding: 1px 9px;
   border-radius: var(--border-radius-tag);
   border: var(--tag-border);
-  font-size: 0.75rem;
+  transform: rotate(var(--tag-tilt));
   font-family: var(--font-accent);
+  font-size: 0.75rem;
   line-height: 1.6;
+  letter-spacing: 0.04em;
   white-space: nowrap;
 }
 
