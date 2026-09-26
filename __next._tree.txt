@@ -1,5 +1,4 @@
-:HL["/y2027/_next/static/chunks/3i9emv6ded3ac.css","style"]
-:HL["/y2027/_next/static/chunks/02cn-68xtn6js.css","style"]
-:HL["/y2027/_next/static/chunks/30p1300cmkgse.css","style"]
+:HL["/y2027/_next/static/chunks/34wq4yb08e4ab.css","style"]
+:HL["/y2027/_next/static/chunks/3f79g4i-d8cq5.css","style"]
 :HL["https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Klee+One:wght@400;600&display=swap","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4224,"slots":null}}},"staleTime":300,"buildId":"3E1CtFflID6OxBGVJzGLe"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4224,"slots":null}}},"staleTime":300,"buildId":"83We4iIlUaRWpJVER3F6g"}
