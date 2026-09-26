@@ -1,0 +1,115 @@
+/* 案09 商店街レトロ
+   クリーム・赤・紺と判子風のタグ。昭和の商店街の看板。
+   日よけの縞、二重線、丸い判子。大山街道の商店街に寄せる。 */
+@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=RocknRoll+One&display=swap");
+
+:root {
+  /* --- カラー --- */
+  --color-primary: #B7332A;
+  --color-primary-contrast: #FFFBF2;
+  --color-secondary: #1F3A5F;
+  --color-accent: #D9A62E;
+  --color-background: #FBF3E4;
+  --color-background-alt: #F3E4C8;
+  --color-surface: #FFFBF2;
+  --color-text: #2B2118;
+  --color-text-light: #6A5A48;
+  --color-border: #D9C7A6;
+  --color-link: #1F3A5F;
+  --color-header-bg: #B7332A;
+  --color-header-text: #FFFBF2;
+  --color-footer-bg: #1F3A5F;
+  --color-footer-text: #F3E4C8;
+  --color-button-primary-bg: #B7332A;
+  --color-button-primary-text: #FFFBF2;
+  --color-button-secondary-bg: transparent;
+  --color-button-secondary-text: #1F3A5F;
+  --color-button-secondary-border: #1F3A5F;
+
+  /* --- 物語・立場・タグ --- */
+  --color-story-official: #B7332A;
+  --color-story-official-text: #FFFBF2;
+  --color-story-personal: #1F3A5F;
+  --color-story-personal-text: #F3E4C8;
+  --color-role-bg: #1F3A5F;
+  --color-role-text: #F3E4C8;
+  --role-border: 0;
+  --color-tag-consider-bg: transparent;
+  --color-tag-consider-text: #B7332A;
+  --color-tag-decided-bg: #B7332A;
+  --color-tag-decided-text: #FFFBF2;
+  --color-tag-rejected-bg: transparent;
+  --color-tag-rejected-text: #6A5A48;
+  --tag-rejected-decoration: line-through;
+  --color-tag-recruit-bg: #D9A62E;
+  --color-tag-recruit-text: #2B2118;
+  --tag-border: 2px solid currentColor;
+  --color-notice-bg: #FFF3D6;
+  --color-notice-border: #D9A62E;
+  --color-notice-text: #5A4300;
+
+  /* --- タイポグラフィ --- */
+  --font-heading: "RocknRoll One", "Zen Maru Gothic", sans-serif;
+  --font-body: "Zen Maru Gothic", sans-serif;
+  --font-accent: "RocknRoll One", "Zen Maru Gothic", sans-serif;
+  --font-size-base: 16px;
+  --font-size-h1: 2.75rem;
+  --font-size-h2: 2rem;
+  --font-size-h3: 1.4rem;
+  --font-size-small: 0.875rem;
+  --font-weight-heading: 400;
+  --font-weight-body: 400;
+  --line-height-body: 1.8;
+  --letter-spacing-heading: 0.05em;
+
+  /* --- スペーシング・レイアウト --- */
+  --spacing-unit: 8px;
+  --spacing-section: 76px;
+  --spacing-content: 24px;
+  --content-max-width: 1100px;
+  --prose-max-width: 720px;
+  --hero-min-height: 55vh;
+  --hero-align: center;
+  --hero-justify: center;
+
+  /* --- 形 --- */
+  --border-radius: 6px;
+  --border-radius-lg: 8px;
+  --border-radius-button: 6px;
+  --border-radius-tag: 50px;
+  --border-width: 2px;
+  --border-style: solid;
+  --button-border-width: 2px;
+  --shadow: 0 3px 0 #D9C7A6;
+  --shadow-hover: 0 5px 0 #D9C7A6;
+  --transition-speed: 0.2s;
+
+  /* --- 装飾 --- */
+  --bg-texture: repeating-linear-gradient(45deg, rgba(183, 51, 42, 0.04) 0 8px, transparent 8px 16px);
+  --bg-texture-size: auto;
+  --hero-bg: repeating-linear-gradient(90deg, #B7332A 0 40px, #A32B23 40px 80px);
+  --hero-text: #FFFBF2;
+  --header-border-bottom: 4px double #D9A62E;
+  --card-tilt: 0deg;
+  --decor-tape: none;
+  --color-tape: transparent;
+  --image-frame-border: 2px solid #D9C7A6;
+  --image-frame-radius: 6px;
+  --image-frame-shadow: 0 3px 0 #D9C7A6;
+  --image-frame-padding: 0;
+
+  /* --- タイムライン --- */
+  --timeline-line-width: 4px;
+  --timeline-line-style: solid;
+  --timeline-line-color: #D9C7A6;
+  --timeline-dot-size: 18px;
+  --timeline-dot-radius: 50%;
+  --timeline-dot-bg: #FFFBF2;
+  --timeline-dot-border: 4px double #B7332A;
+  --timeline-dot-shadow: none;
+  --timeline-month-bg: #1F3A5F;
+  --timeline-month-text: #F3E4C8;
+  --timeline-goal-bg: #D9A62E;
+  --timeline-goal-text: #2B2118;
+  --timeline-goal-border: 2px solid #B7332A;
+}

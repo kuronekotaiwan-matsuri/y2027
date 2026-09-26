@@ -1,0 +1,114 @@
+/* 案01 継承
+   2026年のデザインシステムをそのまま引き継ぐ。比較の基準。 */
+@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap");
+
+:root {
+  /* --- カラー --- */
+  --color-primary: #C0392B;
+  --color-primary-contrast: #FFFFFF;
+  --color-secondary: #F9B9B2;
+  --color-accent: #D4A017;
+  --color-background: #FDF6F0;
+  --color-background-alt: #F9B9B2;
+  --color-surface: #FFFFFF;
+  --color-text: #2C1810;
+  --color-text-light: #6B4C3B;
+  --color-border: #E8C8B8;
+  --color-link: #C0392B;
+  --color-header-bg: #C0392B;
+  --color-header-text: #FFFFFF;
+  --color-footer-bg: #2C1810;
+  --color-footer-text: #F9E6D5;
+  --color-button-primary-bg: #C0392B;
+  --color-button-primary-text: #FFFFFF;
+  --color-button-secondary-bg: transparent;
+  --color-button-secondary-text: #C0392B;
+  --color-button-secondary-border: #C0392B;
+
+  /* --- 物語・立場・タグ --- */
+  --color-story-official: #C0392B;
+  --color-story-official-text: #FFFFFF;
+  --color-story-personal: #2E6F95;
+  --color-story-personal-text: #FFFFFF;
+  --color-role-bg: #FDE9E6;
+  --color-role-text: #8A2A20;
+  --role-border: 0;
+  --color-tag-consider-bg: #FFF1C2;
+  --color-tag-consider-text: #6B4C00;
+  --color-tag-decided-bg: #DDF1E0;
+  --color-tag-decided-text: #1F5B2E;
+  --color-tag-rejected-bg: #E9E4E1;
+  --color-tag-rejected-text: #5A4E48;
+  --tag-rejected-decoration: none;
+  --color-tag-recruit-bg: #C0392B;
+  --color-tag-recruit-text: #FFFFFF;
+  --tag-border: 0;
+  --color-notice-bg: #FFF8E6;
+  --color-notice-border: #D4A017;
+  --color-notice-text: #5A4300;
+
+  /* --- タイポグラフィ --- */
+  --font-heading: "Zen Maru Gothic", sans-serif;
+  --font-body: "Zen Maru Gothic", sans-serif;
+  --font-accent: "Zen Maru Gothic", sans-serif;
+  --font-size-base: 16px;
+  --font-size-h1: 2.75rem;
+  --font-size-h2: 2rem;
+  --font-size-h3: 1.5rem;
+  --font-size-small: 0.875rem;
+  --font-weight-heading: 700;
+  --font-weight-body: 400;
+  --line-height-body: 1.8;
+  --letter-spacing-heading: 0.03em;
+
+  /* --- スペーシング・レイアウト --- */
+  --spacing-unit: 8px;
+  --spacing-section: 76px;
+  --spacing-content: 24px;
+  --content-max-width: 1100px;
+  --prose-max-width: 720px;
+  --hero-min-height: 55vh;
+  --hero-align: center;
+  --hero-justify: center;
+
+  /* --- 形 --- */
+  --border-radius: 14px;
+  --border-radius-lg: 18px;
+  --border-radius-button: 50px;
+  --border-radius-tag: 50px;
+  --border-width: 1px;
+  --border-style: solid;
+  --button-border-width: 2px;
+  --shadow: 0 2px 6px rgba(44, 24, 16, 0.08);
+  --shadow-hover: 0 6px 18px rgba(44, 24, 16, 0.14);
+  --transition-speed: 0.25s;
+
+  /* --- 装飾 --- */
+  --bg-texture: none;
+  --bg-texture-size: auto;
+  --hero-bg: linear-gradient(135deg, #C0392B 0%, #A93226 100%);
+  --hero-text: #FFFFFF;
+  --header-border-bottom: none;
+  --card-tilt: 0deg;
+  --decor-tape: none;
+  --color-tape: transparent;
+  --image-frame-border: 0;
+  --image-frame-radius: 14px;
+  --image-frame-shadow: none;
+  --image-frame-padding: 0;
+
+  /* --- タイムライン --- */
+  --timeline-line-width: 3px;
+  --timeline-line-style: solid;
+  --timeline-line-color: #E8C8B8;
+  --timeline-dot-size: 16px;
+  --timeline-dot-radius: 50%;
+  --timeline-dot-bg: #C0392B;
+  --timeline-dot-border: 3px solid #FDF6F0;
+  --timeline-dot-shadow: none;
+  --timeline-month-bg: #C0392B;
+  --timeline-month-text: #FFFFFF;
+  --timeline-goal-bg: #D4A017;
+  --timeline-goal-text: #2C1810;
+  --timeline-goal-border: 0;
+}

@@ -1,0 +1,115 @@
+/* 案08 編集部
+   明朝の見出しと白背景、細い罫線。赤は最小限。ドキュメンタリー誌の紙面。
+   「祭り全体の編集部」というコンセプトを、紙面の作法で表す。 */
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap");
+
+:root {
+  /* --- カラー --- */
+  --color-primary: #B3261E;
+  --color-primary-contrast: #FFFFFF;
+  --color-secondary: #EFE9E3;
+  --color-accent: #B3261E;
+  --color-background: #FFFFFF;
+  --color-background-alt: #F5F2EE;
+  --color-surface: #FFFFFF;
+  --color-text: #1F1A17;
+  --color-text-light: #6A625C;
+  --color-border: #1F1A17;
+  --color-link: #B3261E;
+  --color-header-bg: #FFFFFF;
+  --color-header-text: #1F1A17;
+  --color-footer-bg: #1F1A17;
+  --color-footer-text: #EFE9E3;
+  --color-button-primary-bg: #1F1A17;
+  --color-button-primary-text: #FFFFFF;
+  --color-button-secondary-bg: transparent;
+  --color-button-secondary-text: #1F1A17;
+  --color-button-secondary-border: #1F1A17;
+
+  /* --- 物語・立場・タグ --- */
+  --color-story-official: #B3261E;
+  --color-story-official-text: #FFFFFF;
+  --color-story-personal: #1F1A17;
+  --color-story-personal-text: #FFFFFF;
+  --color-role-bg: transparent;
+  --color-role-text: #1F1A17;
+  --role-border: 1px solid #1F1A17;
+  --color-tag-consider-bg: #FFFFFF;
+  --color-tag-consider-text: #8A6D00;
+  --color-tag-decided-bg: #FFFFFF;
+  --color-tag-decided-text: #1F5B2E;
+  --color-tag-rejected-bg: #FFFFFF;
+  --color-tag-rejected-text: #6A625C;
+  --tag-rejected-decoration: line-through;
+  --color-tag-recruit-bg: #B3261E;
+  --color-tag-recruit-text: #FFFFFF;
+  --tag-border: 1px solid currentColor;
+  --color-notice-bg: #F5F2EE;
+  --color-notice-border: #1F1A17;
+  --color-notice-text: #1F1A17;
+
+  /* --- タイポグラフィ --- */
+  --font-heading: "Shippori Mincho", serif;
+  --font-body: "Noto Sans JP", sans-serif;
+  --font-accent: "Shippori Mincho", serif;
+  --font-size-base: 16px;
+  --font-size-h1: 2.6rem;
+  --font-size-h2: 1.9rem;
+  --font-size-h3: 1.35rem;
+  --font-size-small: 0.85rem;
+  --font-weight-heading: 700;
+  --font-weight-body: 400;
+  --line-height-body: 1.9;
+  --letter-spacing-heading: 0.08em;
+
+  /* --- スペーシング・レイアウト --- */
+  --spacing-unit: 8px;
+  --spacing-section: 88px;
+  --spacing-content: 24px;
+  --content-max-width: 960px;
+  --prose-max-width: 660px;
+  --hero-min-height: 50vh;
+  --hero-align: left;
+  --hero-justify: flex-start;
+
+  /* --- 形 --- */
+  --border-radius: 0;
+  --border-radius-lg: 0;
+  --border-radius-button: 0;
+  --border-radius-tag: 0;
+  --border-width: 1px;
+  --border-style: solid;
+  --button-border-width: 1px;
+  --shadow: none;
+  --shadow-hover: none;
+  --transition-speed: 0.2s;
+
+  /* --- 装飾 --- */
+  --bg-texture: none;
+  --bg-texture-size: auto;
+  --hero-bg: linear-gradient(#FFFFFF, #FFFFFF);
+  --hero-text: #1F1A17;
+  --header-border-bottom: 1px solid #1F1A17;
+  --card-tilt: 0deg;
+  --decor-tape: none;
+  --color-tape: transparent;
+  --image-frame-border: 0;
+  --image-frame-radius: 0;
+  --image-frame-shadow: none;
+  --image-frame-padding: 0;
+
+  /* --- タイムライン --- */
+  --timeline-line-width: 1px;
+  --timeline-line-style: solid;
+  --timeline-line-color: #1F1A17;
+  --timeline-dot-size: 10px;
+  --timeline-dot-radius: 0;
+  --timeline-dot-bg: #1F1A17;
+  --timeline-dot-border: 0;
+  --timeline-dot-shadow: none;
+  --timeline-month-bg: #FFFFFF;
+  --timeline-month-text: #1F1A17;
+  --timeline-goal-bg: #1F1A17;
+  --timeline-goal-text: #FFFFFF;
+  --timeline-goal-border: 0;
+}

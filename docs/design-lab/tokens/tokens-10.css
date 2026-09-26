@@ -1,0 +1,115 @@
+/* 案10 芽吹き
+   赤に若葉色を合わせ、つる状の点線タイムライン、葉の形のドット。
+   「何もない状態から育っていく」物語を、色と形で表す。 */
+@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap");
+
+:root {
+  /* --- カラー --- */
+  --color-primary: #C0392B;
+  --color-primary-contrast: #FFFFFF;
+  --color-secondary: #8FB36A;
+  --color-accent: #D4A017;
+  --color-background: #FAF7EF;
+  --color-background-alt: #EEF3E4;
+  --color-surface: #FFFFFF;
+  --color-text: #2C2A1E;
+  --color-text-light: #6B6A55;
+  --color-border: #DDE3CC;
+  --color-link: #4F7F4A;
+  --color-header-bg: #FFFFFF;
+  --color-header-text: #2C2A1E;
+  --color-footer-bg: #3F5A3A;
+  --color-footer-text: #EEF3E4;
+  --color-button-primary-bg: #C0392B;
+  --color-button-primary-text: #FFFFFF;
+  --color-button-secondary-bg: transparent;
+  --color-button-secondary-text: #4F7F4A;
+  --color-button-secondary-border: #8FB36A;
+
+  /* --- 物語・立場・タグ --- */
+  --color-story-official: #C0392B;
+  --color-story-official-text: #FFFFFF;
+  --color-story-personal: #4F7F4A;
+  --color-story-personal-text: #FFFFFF;
+  --color-role-bg: #EEF3E4;
+  --color-role-text: #3F5A3A;
+  --role-border: 0;
+  --color-tag-consider-bg: #FFF1C2;
+  --color-tag-consider-text: #6B4C00;
+  --color-tag-decided-bg: #DDEFC9;
+  --color-tag-decided-text: #2F5A25;
+  --color-tag-rejected-bg: #ECEAE2;
+  --color-tag-rejected-text: #6B6A55;
+  --tag-rejected-decoration: none;
+  --color-tag-recruit-bg: #C0392B;
+  --color-tag-recruit-text: #FFFFFF;
+  --tag-border: 0;
+  --color-notice-bg: #FFF8E6;
+  --color-notice-border: #D4A017;
+  --color-notice-text: #5A4300;
+
+  /* --- タイポグラフィ --- */
+  --font-heading: "Zen Maru Gothic", sans-serif;
+  --font-body: "Zen Maru Gothic", sans-serif;
+  --font-accent: "Zen Maru Gothic", sans-serif;
+  --font-size-base: 16px;
+  --font-size-h1: 2.75rem;
+  --font-size-h2: 2rem;
+  --font-size-h3: 1.5rem;
+  --font-size-small: 0.875rem;
+  --font-weight-heading: 700;
+  --font-weight-body: 400;
+  --line-height-body: 1.8;
+  --letter-spacing-heading: 0.03em;
+
+  /* --- スペーシング・レイアウト --- */
+  --spacing-unit: 8px;
+  --spacing-section: 80px;
+  --spacing-content: 24px;
+  --content-max-width: 1100px;
+  --prose-max-width: 720px;
+  --hero-min-height: 55vh;
+  --hero-align: center;
+  --hero-justify: center;
+
+  /* --- 形 --- */
+  --border-radius: 16px;
+  --border-radius-lg: 20px;
+  --border-radius-button: 50px;
+  --border-radius-tag: 50px;
+  --border-width: 1px;
+  --border-style: solid;
+  --button-border-width: 2px;
+  --shadow: 0 2px 8px rgba(63, 90, 58, 0.10);
+  --shadow-hover: 0 6px 18px rgba(63, 90, 58, 0.16);
+  --transition-speed: 0.25s;
+
+  /* --- 装飾 --- */
+  --bg-texture: none;
+  --bg-texture-size: auto;
+  --hero-bg: linear-gradient(180deg, #FFFFFF 0%, #EEF3E4 100%);
+  --hero-text: #2C2A1E;
+  --header-border-bottom: 3px solid #8FB36A;
+  --card-tilt: 0deg;
+  --decor-tape: none;
+  --color-tape: transparent;
+  --image-frame-border: 0;
+  --image-frame-radius: 16px;
+  --image-frame-shadow: none;
+  --image-frame-padding: 0;
+
+  /* --- タイムライン --- */
+  --timeline-line-width: 3px;
+  --timeline-line-style: dashed;
+  --timeline-line-color: #8FB36A;
+  --timeline-dot-size: 16px;
+  --timeline-dot-radius: 50% 0 50% 0;
+  --timeline-dot-bg: #8FB36A;
+  --timeline-dot-border: 2px solid #4F7F4A;
+  --timeline-dot-shadow: none;
+  --timeline-month-bg: #4F7F4A;
+  --timeline-month-text: #FFFFFF;
+  --timeline-goal-bg: #C0392B;
+  --timeline-goal-text: #FFFFFF;
+  --timeline-goal-border: 0;
+}

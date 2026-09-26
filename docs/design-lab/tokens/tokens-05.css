@@ -1,0 +1,115 @@
+/* 案05 花磚（台湾タイル）
+   台湾の花磚から青緑と赤。幾何学の背景、角の少ない直線的な形。
+   書体を角ゴシックに替えて、2026年との距離を測る。 */
+@import url("https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap");
+
+:root {
+  /* --- カラー --- */
+  --color-primary: #C0392B;
+  --color-primary-contrast: #FFFFFF;
+  --color-secondary: #2A8C87;
+  --color-accent: #E0A526;
+  --color-background: #F7F3EA;
+  --color-background-alt: #E6F0EE;
+  --color-surface: #FFFFFF;
+  --color-text: #22302E;
+  --color-text-light: #5B6B68;
+  --color-border: #CFDAD6;
+  --color-link: #1F6F6B;
+  --color-header-bg: #2A8C87;
+  --color-header-text: #FFFFFF;
+  --color-footer-bg: #22302E;
+  --color-footer-text: #E6F0EE;
+  --color-button-primary-bg: #C0392B;
+  --color-button-primary-text: #FFFFFF;
+  --color-button-secondary-bg: transparent;
+  --color-button-secondary-text: #1F6F6B;
+  --color-button-secondary-border: #2A8C87;
+
+  /* --- 物語・立場・タグ --- */
+  --color-story-official: #C0392B;
+  --color-story-official-text: #FFFFFF;
+  --color-story-personal: #2A8C87;
+  --color-story-personal-text: #FFFFFF;
+  --color-role-bg: #E6F0EE;
+  --color-role-text: #1F6F6B;
+  --role-border: 0;
+  --color-tag-consider-bg: #FFF0C2;
+  --color-tag-consider-text: #6B4C00;
+  --color-tag-decided-bg: #D7EEE9;
+  --color-tag-decided-text: #1F6F6B;
+  --color-tag-rejected-bg: #E7E4DE;
+  --color-tag-rejected-text: #5B6B68;
+  --tag-rejected-decoration: none;
+  --color-tag-recruit-bg: #C0392B;
+  --color-tag-recruit-text: #FFFFFF;
+  --tag-border: 0;
+  --color-notice-bg: #FFF6E0;
+  --color-notice-border: #E0A526;
+  --color-notice-text: #5A4300;
+
+  /* --- タイポグラフィ --- */
+  --font-heading: "Zen Kaku Gothic New", sans-serif;
+  --font-body: "Zen Kaku Gothic New", sans-serif;
+  --font-accent: "Zen Maru Gothic", sans-serif;
+  --font-size-base: 16px;
+  --font-size-h1: 2.5rem;
+  --font-size-h2: 1.9rem;
+  --font-size-h3: 1.4rem;
+  --font-size-small: 0.875rem;
+  --font-weight-heading: 700;
+  --font-weight-body: 400;
+  --line-height-body: 1.8;
+  --letter-spacing-heading: 0.06em;
+
+  /* --- スペーシング・レイアウト --- */
+  --spacing-unit: 8px;
+  --spacing-section: 80px;
+  --spacing-content: 24px;
+  --content-max-width: 1100px;
+  --prose-max-width: 720px;
+  --hero-min-height: 55vh;
+  --hero-align: center;
+  --hero-justify: center;
+
+  /* --- 形 --- */
+  --border-radius: 8px;
+  --border-radius-lg: 10px;
+  --border-radius-button: 8px;
+  --border-radius-tag: 4px;
+  --border-width: 1px;
+  --border-style: solid;
+  --button-border-width: 2px;
+  --shadow: 0 2px 8px rgba(34, 48, 46, 0.10);
+  --shadow-hover: 0 6px 18px rgba(34, 48, 46, 0.16);
+  --transition-speed: 0.25s;
+
+  /* --- 装飾 --- */
+  --bg-texture: radial-gradient(circle at 0 0, rgba(42, 140, 135, 0.10) 6px, transparent 7px), radial-gradient(circle at 16px 16px, rgba(192, 57, 43, 0.08) 6px, transparent 7px);
+  --bg-texture-size: 32px 32px;
+  --hero-bg: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.10) 8px, transparent 9px), radial-gradient(circle at 24px 24px, rgba(255, 255, 255, 0.10) 8px, transparent 9px), linear-gradient(135deg, #2A8C87 0%, #1F6F6B 100%);
+  --hero-text: #FFFFFF;
+  --header-border-bottom: 4px solid #C0392B;
+  --card-tilt: 0deg;
+  --decor-tape: none;
+  --color-tape: transparent;
+  --image-frame-border: 4px solid #FFFFFF;
+  --image-frame-radius: 4px;
+  --image-frame-shadow: 0 2px 8px rgba(34, 48, 46, 0.14);
+  --image-frame-padding: 0;
+
+  /* --- タイムライン --- */
+  --timeline-line-width: 3px;
+  --timeline-line-style: solid;
+  --timeline-line-color: #2A8C87;
+  --timeline-dot-size: 16px;
+  --timeline-dot-radius: 2px;
+  --timeline-dot-bg: #C0392B;
+  --timeline-dot-border: 3px solid #F7F3EA;
+  --timeline-dot-shadow: none;
+  --timeline-month-bg: #2A8C87;
+  --timeline-month-text: #FFFFFF;
+  --timeline-goal-bg: #E0A526;
+  --timeline-goal-text: #22302E;
+  --timeline-goal-border: 0;
+}

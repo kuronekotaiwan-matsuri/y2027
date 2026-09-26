@@ -1,0 +1,115 @@
+/* 案04 夜市
+   濃い茶のダーク基調に、提灯の赤とゴールド。夜の屋台の光。
+   2026年の赤とゴールドを残し、背景を反転させる。 */
+@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap");
+
+:root {
+  /* --- カラー --- */
+  --color-primary: #E04E3A;
+  --color-primary-contrast: #FFFFFF;
+  --color-secondary: #F9B9B2;
+  --color-accent: #F0C14B;
+  --color-background: #1B1210;
+  --color-background-alt: #241815;
+  --color-surface: #2A1D19;
+  --color-text: #F6E9D8;
+  --color-text-light: #C9B3A0;
+  --color-border: #4A352D;
+  --color-link: #F0C14B;
+  --color-header-bg: #120C0A;
+  --color-header-text: #F6E9D8;
+  --color-footer-bg: #0F0908;
+  --color-footer-text: #C9B3A0;
+  --color-button-primary-bg: #E04E3A;
+  --color-button-primary-text: #FFFFFF;
+  --color-button-secondary-bg: transparent;
+  --color-button-secondary-text: #F0C14B;
+  --color-button-secondary-border: #F0C14B;
+
+  /* --- 物語・立場・タグ --- */
+  --color-story-official: #E04E3A;
+  --color-story-official-text: #FFFFFF;
+  --color-story-personal: #F0C14B;
+  --color-story-personal-text: #1B1210;
+  --color-role-bg: #3A2A24;
+  --color-role-text: #F6E9D8;
+  --role-border: 0;
+  --color-tag-consider-bg: #4A3A12;
+  --color-tag-consider-text: #F0C14B;
+  --color-tag-decided-bg: #1F4A2C;
+  --color-tag-decided-text: #B8EBC5;
+  --color-tag-rejected-bg: #3A3230;
+  --color-tag-rejected-text: #B3A79E;
+  --tag-rejected-decoration: line-through;
+  --color-tag-recruit-bg: #E04E3A;
+  --color-tag-recruit-text: #FFFFFF;
+  --tag-border: 0;
+  --color-notice-bg: #2E2312;
+  --color-notice-border: #F0C14B;
+  --color-notice-text: #F6E9D8;
+
+  /* --- タイポグラフィ --- */
+  --font-heading: "Zen Maru Gothic", sans-serif;
+  --font-body: "Zen Maru Gothic", sans-serif;
+  --font-accent: "Zen Maru Gothic", sans-serif;
+  --font-size-base: 16px;
+  --font-size-h1: 2.75rem;
+  --font-size-h2: 2rem;
+  --font-size-h3: 1.5rem;
+  --font-size-small: 0.875rem;
+  --font-weight-heading: 700;
+  --font-weight-body: 400;
+  --line-height-body: 1.8;
+  --letter-spacing-heading: 0.04em;
+
+  /* --- スペーシング・レイアウト --- */
+  --spacing-unit: 8px;
+  --spacing-section: 76px;
+  --spacing-content: 24px;
+  --content-max-width: 1100px;
+  --prose-max-width: 720px;
+  --hero-min-height: 60vh;
+  --hero-align: center;
+  --hero-justify: center;
+
+  /* --- 形 --- */
+  --border-radius: 12px;
+  --border-radius-lg: 16px;
+  --border-radius-button: 50px;
+  --border-radius-tag: 50px;
+  --border-width: 1px;
+  --border-style: solid;
+  --button-border-width: 2px;
+  --shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --transition-speed: 0.25s;
+
+  /* --- 装飾 --- */
+  --bg-texture: radial-gradient(rgba(240, 193, 75, 0.10) 1px, transparent 1.5px);
+  --bg-texture-size: 28px 28px;
+  --hero-bg: radial-gradient(circle at 20% 10%, rgba(240, 193, 75, 0.28), transparent 40%), radial-gradient(circle at 85% 80%, rgba(224, 78, 58, 0.35), transparent 45%), linear-gradient(160deg, #3A1512, #1B1210);
+  --hero-text: #F6E9D8;
+  --header-border-bottom: 2px solid #E04E3A;
+  --card-tilt: 0deg;
+  --decor-tape: none;
+  --color-tape: transparent;
+  --image-frame-border: 1px solid #4A352D;
+  --image-frame-radius: 12px;
+  --image-frame-shadow: none;
+  --image-frame-padding: 0;
+
+  /* --- タイムライン --- */
+  --timeline-line-width: 2px;
+  --timeline-line-style: solid;
+  --timeline-line-color: #4A352D;
+  --timeline-dot-size: 16px;
+  --timeline-dot-radius: 50%;
+  --timeline-dot-bg: #F0C14B;
+  --timeline-dot-border: 3px solid #1B1210;
+  --timeline-dot-shadow: 0 0 14px rgba(240, 193, 75, 0.75);
+  --timeline-month-bg: #E04E3A;
+  --timeline-month-text: #FFFFFF;
+  --timeline-goal-bg: #F0C14B;
+  --timeline-goal-text: #1B1210;
+  --timeline-goal-border: 0;
+}

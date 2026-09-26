@@ -1,0 +1,115 @@
+/* 案03 ジン／ざら紙
+   マーカーの見出し、黒の太線、ハードな影、マスキングテープ。コピー本の空気。
+   赤はインクの色として残す。 */
+@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Yusei+Magic&display=swap");
+
+:root {
+  /* --- カラー --- */
+  --color-primary: #B8271B;
+  --color-primary-contrast: #FFFFFF;
+  --color-secondary: #F2C6BD;
+  --color-accent: #F7D648;
+  --color-background: #F3ECDF;
+  --color-background-alt: #E9E0CF;
+  --color-surface: #FBF6EC;
+  --color-text: #1E1A17;
+  --color-text-light: #5C524B;
+  --color-border: #1E1A17;
+  --color-link: #B8271B;
+  --color-header-bg: #F3ECDF;
+  --color-header-text: #1E1A17;
+  --color-footer-bg: #1E1A17;
+  --color-footer-text: #F3ECDF;
+  --color-button-primary-bg: #B8271B;
+  --color-button-primary-text: #FFFFFF;
+  --color-button-secondary-bg: transparent;
+  --color-button-secondary-text: #1E1A17;
+  --color-button-secondary-border: #1E1A17;
+
+  /* --- 物語・立場・タグ --- */
+  --color-story-official: #B8271B;
+  --color-story-official-text: #FFFFFF;
+  --color-story-personal: #2B5D8A;
+  --color-story-personal-text: #FFFFFF;
+  --color-role-bg: #1E1A17;
+  --color-role-text: #F3ECDF;
+  --role-border: 0;
+  --color-tag-consider-bg: #F7D648;
+  --color-tag-consider-text: #1E1A17;
+  --color-tag-decided-bg: #B8271B;
+  --color-tag-decided-text: #FFFFFF;
+  --color-tag-rejected-bg: #D9D2C7;
+  --color-tag-rejected-text: #1E1A17;
+  --tag-rejected-decoration: line-through;
+  --color-tag-recruit-bg: #1E1A17;
+  --color-tag-recruit-text: #F7D648;
+  --tag-border: 2px solid #1E1A17;
+  --color-notice-bg: #F7D648;
+  --color-notice-border: #1E1A17;
+  --color-notice-text: #1E1A17;
+
+  /* --- タイポグラフィ --- */
+  --font-heading: "Yusei Magic", "Zen Maru Gothic", sans-serif;
+  --font-body: "Zen Maru Gothic", sans-serif;
+  --font-accent: "Yusei Magic", "Zen Maru Gothic", sans-serif;
+  --font-size-base: 16px;
+  --font-size-h1: 3rem;
+  --font-size-h2: 2.1rem;
+  --font-size-h3: 1.5rem;
+  --font-size-small: 0.875rem;
+  --font-weight-heading: 400;
+  --font-weight-body: 400;
+  --line-height-body: 1.8;
+  --letter-spacing-heading: 0.02em;
+
+  /* --- スペーシング・レイアウト --- */
+  --spacing-unit: 8px;
+  --spacing-section: 68px;
+  --spacing-content: 24px;
+  --content-max-width: 1040px;
+  --prose-max-width: 680px;
+  --hero-min-height: 50vh;
+  --hero-align: left;
+  --hero-justify: flex-start;
+
+  /* --- 形 --- */
+  --border-radius: 2px;
+  --border-radius-lg: 2px;
+  --border-radius-button: 2px;
+  --border-radius-tag: 2px;
+  --border-width: 2px;
+  --border-style: solid;
+  --button-border-width: 2px;
+  --shadow: 4px 4px 0 #1E1A17;
+  --shadow-hover: 6px 6px 0 #1E1A17;
+  --transition-speed: 0.15s;
+
+  /* --- 装飾 --- */
+  --bg-texture: radial-gradient(rgba(30, 26, 23, 0.06) 1px, transparent 1.2px);
+  --bg-texture-size: 6px 6px;
+  --hero-bg: linear-gradient(#1E1A17, #1E1A17);
+  --hero-text: #F3ECDF;
+  --header-border-bottom: 3px solid #1E1A17;
+  --card-tilt: 0deg;
+  --decor-tape: block;
+  --color-tape: rgba(247, 214, 72, 0.9);
+  --image-frame-border: 2px solid #1E1A17;
+  --image-frame-radius: 0;
+  --image-frame-shadow: 4px 4px 0 #1E1A17;
+  --image-frame-padding: 0;
+
+  /* --- タイムライン --- */
+  --timeline-line-width: 3px;
+  --timeline-line-style: solid;
+  --timeline-line-color: #1E1A17;
+  --timeline-dot-size: 14px;
+  --timeline-dot-radius: 0;
+  --timeline-dot-bg: #B8271B;
+  --timeline-dot-border: 2px solid #1E1A17;
+  --timeline-dot-shadow: none;
+  --timeline-month-bg: #1E1A17;
+  --timeline-month-text: #F3ECDF;
+  --timeline-goal-bg: #B8271B;
+  --timeline-goal-text: #FFFFFF;
+  --timeline-goal-border: 2px solid #1E1A17;
+}
