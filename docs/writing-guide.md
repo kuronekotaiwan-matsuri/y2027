@@ -5,8 +5,8 @@ Markdown ファイルを1つ書いて GitHub に push すると、サイトの�
 
 ## 1. 前提
 
-- 記録は `content/stories/<物語>/` の中に、1出来事 = 1ファイルで置く
-- 物語は `content/stories/<物語>/story.md` で定義する。最初は「祭りをつくる」（`matsuri`）だけ
+- 記録は `content/records/` に、1出来事 = 1ファイルで置く
+- 書き手は `content/people/<自分のID>.md` に登録しておく。初めての人は先に「4. 書き手を登録する」
 - `main` に push すると数分で公開される。書きかけは `draft: true` にしておけば公開されない
 - 迷ったら短くてよい。写真1枚と3行で成立する
 
@@ -14,8 +14,8 @@ Markdown ファイルを1つ書いて GitHub に push すると、サイトの�
 
 ### 手順
 
-1. 画像があれば `public/images/stories/<物語>/<記録slug>/` に置く（例: `public/images/stories/matsuri/2026-10-05-kickoff/01.jpg`）
-2. `content/stories/<物語>/` に `YYYY-MM-DD-<短い英語名>.md` を作る（例: `2026-10-05-kickoff.md`）。日付は出来事が起きた日
+1. 画像があれば `public/images/records/<記録slug>/` に置く（例: `public/images/records/2026-10-05-kickoff/01.jpg`）
+2. `content/records/` に `YYYY-MM-DD-<短い英語名>.md` を作る（例: `2026-10-05-kickoff.md`）。日付は出来事が起きた日
 3. 下の雛形を貼り、front-matter と本文を書く
 4. `main` に push する（またはPull Requestをマージする）
 
@@ -25,13 +25,11 @@ Markdown ファイルを1つ書いて GitHub に push すると、サイトの�
 ---
 title: 今年も動き始めました
 date: 2026-10-05
-author:
-  name: 池田
-  role: committee
+author: ikeda
 summary: 2027年に向けて、まず4人で集まりました。まだ何も決まっていません。
 tags: [検討中]
 topics: [event]
-thumbnail: /images/stories/matsuri/2026-10-05-kickoff/01.jpg
+thumbnail: /images/records/2026-10-05-kickoff/01.jpg
 instagram:
   - https://www.instagram.com/p/xxxxxxxx/
 draft: false
@@ -39,7 +37,7 @@ draft: false
 
 本文はここから。Markdown で書く。
 
-![打ち合わせの様子](/images/stories/matsuri/2026-10-05-kickoff/01.jpg "最初の顔合わせ。まだ何も決まっていない")
+![打ち合わせの様子](/images/records/2026-10-05-kickoff/01.jpg "最初の顔合わせ。まだ何も決まっていない")
 
 写真は1段落に1枚だけ置くと、台紙付きの図として表示される。
 `"..."` の部分がキャプションになる。
@@ -51,27 +49,13 @@ draft: false
 |---|---|---|
 | `title` | 必須 | 出来事がわかる文。「〇〇しました」「〇〇を迷っています」 |
 | `date` | 必須 | `YYYY-MM-DD`。出来事の日（書いた日ではない） |
-| `author.name` | 必須 | 公開してよい名前。ニックネーム可 |
-| `author.role` | 必須 | 下の「立場」から1つ |
+| `author` | 必須 | 自分の書き手ID（`content/people/` のファイル名）。公式発表は `committee` |
 | `summary` | 必須 | 一行の要約。タイムラインに出る |
 | `tags` | 任意 | 下の「状態タグ」から。1つなら `tags: 検討中`、複数なら `tags: [検討中, 募集中]` |
 | `topics` | 任意 | 下の「トピック」から。主コンテンツ（出店情報など）に関係する話に付ける |
 | `thumbnail` | 任意 | 代表画像。`/images/...` から書く。タイムラインと SNS の共有画像に使う |
 | `instagram` | 任意 | 関連する投稿の URL（`https://` から）。1つでも複数でも可 |
 | `draft` | 任意 | `true` にすると公開されない。既定は `false` |
-
-### 立場（`author.role`）
-
-| 値 | 表示 |
-|---|---|
-| `committee` | 実行委員 |
-| `youth` | 若者チーム |
-| `shop` | 出店者 |
-| `performer` | 出演者 |
-| `volunteer` | ボランティア |
-| `local` | 地域の人・地域店舗 |
-| `taiwan` | 台湾関係者 |
-| `other` | その他 |
 
 ### 状態タグ（`tags`）
 
@@ -98,17 +82,18 @@ draft: false
 | `volunteer` | ボランティア募集 |
 | `poster` | ポスター・チラシなど広報物 |
 
-付けると、対応する準備中ページの「関連する記録」に自動で載る（公式の物語の記録のみ）。
+付けると、対応する準備中ページの「関連する記録」に自動で載る。
 
 ## 3. 本文の書き方
 
 - 見出しは `##` から（`#` はページのタイトルに使うので使わない）
-- 写真: `![代替文](/images/stories/<物語>/<記録slug>/01.jpg "キャプション")`。1段落に1枚だけ置くと台紙付きになる。代替文には写真の内容を書く
+- 写真: `![代替文](/images/records/<記録slug>/01.jpg "キャプション")`。1段落に1枚だけ置くと台紙付きになる。代替文には写真の内容を書く
 - 引用: `> 〇〇と言われました。`
 - 箇条書き: `- 候補1`
 - リンク: `[黒猫豆花](https://...)`
 - 生の HTML（`<div>` など）は書けない
 - 敬体（です・ます）で書く。短い文でよい
+- 自分が誰かは書き手の自己紹介に書いてあるので、本文は出来事から始めてよい
 
 ### 画像のサイズ
 
@@ -116,49 +101,79 @@ draft: false
 - 手書きメモやスケッチの写真もそのまま置いてよい
 - ファイル名は英数字（`01.jpg`, `memo.jpg`）
 
-## 4. 物語を足す
+## 4. 書き手を登録する
 
-誰かが長期的に何かを作り始めたら、物語を1本足す。
+初めて書く人は、先に自分を登録する。登録すると「作っている人たち」「書いている人たち」「顔で絞る」と、自分の記録が並ぶページ（`/making/people/<id>/`）が自動でできる。
 
-1. `content/stories/<新しいslug>/` を作る（英小文字・数字・ハイフン。例 `youth-project`）
-2. その中に `story.md` を作る:
+1. `content/people/<id>.md` を作る（IDは英小文字・数字・ハイフン。例 `haru`）
+2. 下の雛形を貼る
+3. 顔写真があれば `public/images/people/<id>.jpg` に置く
 
 ```markdown
 ---
-title: 店をつくる
-subtitle: 実行委員の一人が、個人として店を作る物語
-kind: personal
-owner: 池田
-startDate: 2026-10-20
-status: active
-order: 2
-cover: /images/stories/ikeda-shop/cover.jpg
+name: ハル
+role: youth
+avatar: /images/people/haru.jpg
+bio: 若者チーム。高校2年生。2026年はボランティアで参加して、今年は自分たちの企画を作ります。
+instagram: https://www.instagram.com/xxxx/
+draft: false
 ---
 
-なぜ始めたか、何を作ろうとしているかを書く。
+長めの自己紹介はここに書く（任意）。
 ```
 
-3. `kind` は `official`（黒猫台湾まつり公式）か `personal`（個人・団体の活動）。`personal` にすると、そのページと記録に「公式の企画ではない」注記が自動で付く
-4. `order` は一覧の並び順（公式が 1）
-5. `color` は任意。指定しなければ順番に自動で色が付く
-6. 記録はこのフォルダに置く。push するとトップの物語一覧、タイムラインの絞り込み、物語ページが自動で増える
+### 各項目
+
+| 項目 | 必須 | 書き方 |
+|---|---|---|
+| `name` | 必須 | 公開してよい名前。ニックネーム可 |
+| `role` | 必須 | 下の「立場」から1つ |
+| `kind` | 任意 | 組織なら `group`。名前だけが出て、顔は黒猫のマークになる。既定は `person` |
+| `avatar` | 任意 | 顔写真。正方形、400px四方・200KB程度まで。無ければ名前の1文字目が出る |
+| `bio` | 任意（推奨） | 1〜2文の自己紹介。カードとページに出る |
+| `instagram` | 任意 | 自分のアカウントの URL |
+| `order` | 任意 | 一覧での並び順（小さいほど先）。無ければID順 |
+| `draft` | 任意 | `true` にすると本人も記録も公開されない。既定は `false` |
+
+### 立場（`role`）
+
+| 値 | 表示 |
+|---|---|
+| `committee` | 実行委員 |
+| `youth` | 若者チーム |
+| `shop` | 出店者 |
+| `performer` | 出演者 |
+| `volunteer` | ボランティア |
+| `local` | 地域の人・お店 |
+| `taiwan` | 台湾関係者 |
+| `other` | その他 |
+
+### 公式の発表と、中の人の話
+
+- 出店者募集、日程の決定など、実行委員会としての発表は `committee`（黒猫台湾まつり実行委員会）の名前で書く
+- 実行委員が中の人として書く話（迷っていること、ボツになったこと）は、自分の名前（例: `ikeda`）で書く
+
+### 一人で二つの立場で書くとき
+
+実行委員が自分の店を出すなど、立場が二つあるときは、書き手を2つ登録する（例: `ikeda` = 池田（実行委員）、`ikeda-shop` = イケダ（出店者））。
+最初の記録で「実行委員の池田と同じ人です」と明かし、両方の自己紹介にもそう書く。注記や色分けは要らない。
 
 ## 5. 確認と公開
 
 - 手元で見る: リポジトリで `npm install`（初回のみ）→ `npm run dev` → ブラウザで `http://localhost:3000/y2027/`。下書き（`draft: true`）も表示される
 - 公開: `main` に push。GitHub Actions が数分でビルドして `https://kuronekotaiwan-matsuri.github.io/y2027/` に反映する
-- ビルドが失敗したとき: GitHub の Actions のログに `content/stories/matsuri/2026-10-05-kickoff.md [author.role]: ...` のように、ファイルと項目名が出る。そこを直して push し直す
+- ビルドが失敗したとき: GitHub の Actions のログに `content/records/2026-10-05-kickoff.md [author]: ...` のように、ファイルと項目名が出る。そこを直して push し直す
 
 ### よくある失敗
 
 | メッセージ | 直し方 |
 |---|---|
 | `必須項目 summary がありません` | front-matter にその項目を足す |
-| `author.role は次のいずれかです: committee, youth, ...（現在: "..."）` | 上の「立場」の表から選ぶ |
+| `author "..." は content/people/ にありません（登録されているID: ...）` | 自分のIDの綴りを確認する。未登録なら「4. 書き手を登録する」 |
+| `role は次のいずれかです: committee, youth, ...（現在: "..."）` | 上の「立場」の表から選ぶ |
 | `topics は次のいずれかです: event, shops, ...（現在: "..."）` | 上の「トピック」の表から選ぶ |
 | `日付は YYYY-MM-DD の形式で書いてください` | `date` を `2026-10-05` の形にする |
-| `記録 slug "..." が ... と重複しています` | 同じファイル名の記録が別の物語にある。英語名を変える |
-| `story.md がありません` | フォルダに `story.md` を置く |
+| `記録 slug "..." が重複しています` | 同じファイル名の記録がすでにある。英語名を変える |
 | `画像 ... が public にありません`（警告） | `public/images/...` にファイルがあるか、パスの綴りを確認する。警告だけなら公開はされる |
 
 ## 6. 書くときのコツ
@@ -167,4 +182,4 @@ cover: /images/stories/ikeda-shop/cover.jpg
 - 失敗やボツも記録にする。タグ「ボツ」
 - 日付は出来事の日。あとからまとめて書いてもよい
 - Instagram に投稿した内容は、URL を添えて短く残す
-- 開催日が決まった、出店情報を公開した、のような主コンテンツの変化は、必ず記録にもする
+- 開催日が決まった、出店情報を公開した、のような主コンテンツの変化は、必ず記録にもする（`committee` の名前で）
