@@ -1,4 +1,4 @@
-:HL["/y2027/_next/static/chunks/34wq4yb08e4ab.css","style"]
-:HL["/y2027/_next/static/chunks/3f79g4i-d8cq5.css","style"]
+:HL["/y2027/_next/static/chunks/0s67qrsih65kl.css","style"]
+:HL["/y2027/_next/static/chunks/3l092m1_k9kr_.css","style"]
 :HL["https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Klee+One:wght@400;600&display=swap","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"making","param":null,"prefetchHints":4160,"slots":{"children":{"name":"people","param":null,"prefetchHints":4192,"slots":{"children":{"name":"id","param":{"type":"d","key":"committee","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}}}},"staleTime":300,"buildId":"83We4iIlUaRWpJVER3F6g"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"making","param":null,"prefetchHints":4160,"slots":{"children":{"name":"people","param":null,"prefetchHints":4192,"slots":{"children":{"name":"id","param":{"type":"d","key":"committee","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}}}},"staleTime":300,"buildId":"EcmIQw7KMjPNI1Lf2WTkQ"}
