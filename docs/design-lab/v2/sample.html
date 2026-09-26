@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="ja" data-theme="01">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>見本ページ | design-lab v2</title>
+<link id="tokens" rel="stylesheet" href="tokens/tokens-01.css">
+<link rel="stylesheet" href="lab.css">
+</head>
+<body>
+
+<!-- ===== ヘッダー ===== -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-logo" href="#">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path fill="currentColor" d="M5 3l7 6h8l7-6v12a11 11 0 0 1-22 0z"/>
+        <circle cx="12" cy="17" r="1.7" fill="var(--color-header-bg)"/>
+        <circle cx="20" cy="17" r="1.7" fill="var(--color-header-bg)"/>
+      </svg>
+      黒猫台湾まつり2027
+    </a>
+    <nav class="site-nav" aria-label="メインナビゲーション">
+      <a href="#" class="is-active">トップ</a>
+      <a href="#">できるまで</a>
+      <a href="#">黒猫台湾まつりとは</a>
+      <a href="#" class="site-nav__insta">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        Instagram
+      </a>
+    </nav>
+    <button class="site-hamburger" type="button" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+
+<!-- ===== トップ: ヒーロー ===== -->
+<div class="lab-note">トップ ／ ヒーロー</div>
+<section class="hero" id="hero">
+  <div class="hero__inner">
+    <p class="hero__eyebrow">第5回 ／ 川崎・二子新地 ／ 2027年5月 開催予定</p>
+    <h1 class="hero__title">黒猫台湾まつり2027</h1>
+    <p class="hero__catch">黒猫台湾まつりは、5月に始まるのではない。</p>
+    <div class="hero__now">
+      <span class="hero__now-label">いま</span>
+      <span class="hero__now-month">2026.10</span>
+      <span class="hero__now-title">今年も動き始めました</span>
+    </div>
+    <p class="hero__event">開催日・会場は未定です。決まったら、ここに書きます。</p>
+    <div class="hero__cta">
+      <a class="btn btn--primary" href="#">できるまでを見る</a>
+      <a class="btn btn--secondary" href="#">Instagramで日々の様子を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== トップ: 最新の記録 ===== -->
+<div class="lab-note">トップ ／ 最新の記録</div>
+<section class="section" id="latest">
+  <div class="section__inner">
+    <h2 class="section-title"><span class="section-title__text">最新の記録 </span><span class="section-title__sub">いちばん新しい3件</span></h2>
+    <div class="card-grid">
+      <article class="card">
+        <div class="card__thumb"><div class="ph ph--photo3">スマホ写真（仮）</div></div>
+        <div class="card__body">
+          <div class="card__meta">
+            <span class="card__date">2026.11.28</span>
+            <span class="badge badge--official">祭りをつくる</span>
+            <span class="badge badge--role">実行委員</span>
+          </div>
+          <h3 class="card__title">ポスター案、1回目はボツになりました</h3>
+          <p class="card__summary">若者チームの案と実行委員の案、両方とも「これじゃない」となりました。理由を書いておきます。</p>
+          <div class="card__tags"><span class="tag" data-status="rejected">ボツ</span></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card__thumb"><div class="ph ph--memo">手書きメモ（仮）</div></div>
+        <div class="card__body">
+          <div class="card__meta">
+            <span class="card__date">2026.11.15</span>
+            <span class="badge badge--official">祭りをつくる</span>
+            <span class="badge badge--role">若者チーム</span>
+          </div>
+          <h3 class="card__title">若者メンバーが企画を始めました</h3>
+          <p class="card__summary">「自分たちで台湾の夜市ゲームをやりたい」。まず、何が必要かを書き出しました。</p>
+          <div class="card__tags"><span class="tag" data-status="trial">試作中</span></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card__thumb"><div class="ph ph--photo2">スマホ写真（仮）</div></div>
+        <div class="card__body">
+          <div class="card__meta">
+            <span class="card__date">2026.10.20</span>
+            <span class="badge badge--personal">店をつくる</span>
+            <span class="badge badge--role">実行委員</span>
+          </div>
+          <h3 class="card__title">何を売るか、まだ決まっていません</h3>
+          <p class="card__summary">候補は3つ。豆花、魯肉飯、それとも雑貨。悩んでいるところから記録します。</p>
+          <div class="card__tags"><span class="tag" data-status="consider">検討中</span></div>
+        </div>
+      </article>
+    </div>
+    <p class="section-more"><a class="btn btn--secondary" href="#">すべての記録を見る</a></p>
+  </div>
+</section>
+
+<!-- ===== トップ: 物語一覧 ===== -->
+<div class="lab-note">トップ ／ 物語一覧</div>
+<section class="section section--alt" id="stories">
+  <div class="section__inner">
+    <h2 class="section-title"><span class="section-title__text">物語 </span><span class="section-title__sub">いま進んでいるもの</span></h2>
+    <div class="card-grid card-grid--2">
+      <article class="card">
+        <div class="card__thumb"><div class="ph ph--photo ph--cover">カバー写真（仮）</div></div>
+        <div class="card__body">
+          <div class="card__meta"><span class="badge badge--official">公式</span></div>
+          <h3 class="card__title">祭りをつくる</h3>
+          <p class="card__summary">黒猫台湾まつり2027全体の物語。企画を考え、人に相談し、試して、作り直す。</p>
+          <div class="card__stats"><span>黒猫台湾まつり実行委員会</span><span>2026.10〜 進行中</span><span>記録 5件</span></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card__thumb"><div class="ph ph--photo2 ph--cover">カバー写真（仮）</div></div>
+        <div class="card__body">
+          <div class="card__meta"><span class="badge badge--personal">個人の活動</span></div>
+          <h3 class="card__title">店をつくる</h3>
+          <p class="card__summary">実行委員の一人が、個人として店を作る物語。何を売るかも決まっていないところから。</p>
+          <div class="card__stats"><span>池田</span><span>2026.10〜 進行中</span><span>記録 1件</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== できるまで: タイムライン ===== -->
+<div class="lab-note">できるまで ／ タイムライン</div>
+<section class="section" id="timeline">
+  <div class="section__inner">
+    <h2 class="section-title"><span class="section-title__text">黒猫台湾まつりができるまで </span><a class="timeline__jump section-title__sub" href="#">最新の記録へ</a></h2>
+    <p class="section-lead">2026年の秋から、5月の祭りまで。決まったことも、決まっていないことも、順番に残していきます。</p>
+    <div class="chips">
+      <button class="chip chip--active" type="button">すべて</button>
+      <button class="chip" type="button"><span class="chip__dot" style="background: var(--color-story-official)"></span>祭りをつくる</button>
+      <button class="chip" type="button"><span class="chip__dot" style="background: var(--color-story-personal)"></span>店をつくる（個人）</button>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline__month">2026.10</div>
+
+      <article class="timeline__item">
+        <a class="timeline__card timeline__card--thumb" href="#">
+          <div>
+            <div class="timeline__meta">
+              <span class="timeline__date">10.05</span>
+              <span class="badge badge--official">祭りをつくる</span>
+              <span class="badge badge--role">実行委員</span>
+            </div>
+            <h3 class="timeline__title">今年も動き始めました</h3>
+            <p class="timeline__summary">2027年に向けて、まず4人で集まりました。まだ何も決まっていません。</p>
+            <div class="timeline__tags"><span class="tag" data-status="consider">検討中</span></div>
+          </div>
+          <div class="timeline__thumb"><div class="ph ph--photo">スマホ写真（仮）</div></div>
+        </a>
+      </article>
+
+      <article class="timeline__item">
+        <a class="timeline__card" href="#">
+          <div>
+            <div class="timeline__meta">
+              <span class="timeline__date">10.20</span>
+              <span class="badge badge--personal">店をつくる</span>
+              <span class="badge badge--role">実行委員</span>
+            </div>
+            <h3 class="timeline__title">何を売るか、まだ決まっていません</h3>
+            <p class="timeline__summary">候補は3つ。豆花、魯肉飯、それとも雑貨。悩んでいるところから記録します。</p>
+            <div class="timeline__tags"><span class="tag" data-status="consider">検討中</span></div>
+          </div>
+        </a>
+      </article>
+
+      <div class="timeline__month">2026.11</div>
+
+      <article class="timeline__item">
+        <a class="timeline__card timeline__card--thumb" href="#">
+          <div>
+            <div class="timeline__meta">
+              <span class="timeline__date">11.02</span>
+              <span class="badge badge--official">祭りをつくる</span>
+              <span class="badge badge--role">実行委員</span>
+            </div>
+            <h3 class="timeline__title">今年やりたいことを話しました</h3>
+            <p class="timeline__summary">出た案を全部書き出しました。決めたのは「まだ決めないこと」です。</p>
+            <div class="timeline__tags"><span class="tag" data-status="consider">検討中</span></div>
+          </div>
+          <div class="timeline__thumb"><div class="ph ph--memo">手書きメモ（仮）</div></div>
+        </a>
+      </article>
+
+      <article class="timeline__item">
+        <a class="timeline__card" href="#">
+          <div>
+            <div class="timeline__meta">
+              <span class="timeline__date">11.15</span>
+              <span class="badge badge--official">祭りをつくる</span>
+              <span class="badge badge--role">若者チーム</span>
+            </div>
+            <h3 class="timeline__title">若者メンバーが企画を始めました</h3>
+            <p class="timeline__summary">「自分たちで台湾の夜市ゲームをやりたい」。まず、何が必要かを書き出しました。</p>
+            <div class="timeline__tags"><span class="tag" data-status="trial">試作中</span><span class="tag" data-status="recruit">募集中</span></div>
+          </div>
+        </a>
+      </article>
+
+      <article class="timeline__item">
+        <a class="timeline__card timeline__card--thumb" href="#">
+          <div>
+            <div class="timeline__meta">
+              <span class="timeline__date">11.28</span>
+              <span class="badge badge--official">祭りをつくる</span>
+              <span class="badge badge--role">実行委員</span>
+            </div>
+            <h3 class="timeline__title">ポスター案、1回目はボツになりました</h3>
+            <p class="timeline__summary">若者チームの案と実行委員の案、両方とも「これじゃない」となりました。理由を書いておきます。</p>
+            <div class="timeline__tags"><span class="tag" data-status="rejected">ボツ</span></div>
+          </div>
+          <div class="timeline__thumb"><div class="ph ph--sketch">ボツ案スケッチ（仮）</div></div>
+        </a>
+      </article>
+
+      <div class="timeline__goal">
+        2027.05 黒猫台湾まつり2027 開催（予定）
+        <small>日程が決まったら、ここに日付が入ります。</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 記録ページ ===== -->
+<div class="lab-note">記録ページ ／ 個人の物語の例</div>
+<section class="section section--alt" id="record">
+  <div class="section__inner">
+    <article class="article">
+      <div class="notice">この物語は、池田が個人として取り組んでいる活動の記録です。黒猫台湾まつり実行委員会の公式な販売・企画ではありません。</div>
+      <p class="article__story">物語: 店をつくる</p>
+      <h1 class="article__title">何を売るか、まだ決まっていません</h1>
+      <div class="article__meta">
+        <span class="card__date">2026.10.20</span>
+        <span class="article__author">池田</span>
+        <span class="badge badge--role">実行委員</span>
+        <span class="tag" data-status="consider">検討中</span>
+      </div>
+      <div class="prose">
+        <p>祭りの運営とは別に、今年は自分でも一つ店を出してみようと思っています。ただ、何を売るかが決まっていません。</p>
+        <figure class="figure">
+          <div class="figure__frame"><div class="ph ph--photo ph--wide">スマホ写真（仮）</div></div>
+          <figcaption>候補のひとつ、豆花。家で試作した1回目。</figcaption>
+        </figure>
+        <p>候補は3つあります。</p>
+        <ul>
+          <li>豆花（作ったことはある。ただ、会場内に黒猫豆花がある）</li>
+          <li>魯肉飯（仕込みが大変。でも一番食べたい）</li>
+          <li>台湾の文房具や雑貨（仕入れの当てがない）</li>
+        </ul>
+        <figure class="figure">
+          <div class="figure__frame"><div class="ph ph--memo">手書きメモ（仮）</div></div>
+          <figcaption>打ち合わせの帰りに書いたメモ。「売りたいもの」と「売れるもの」が違う、と書いてある。</figcaption>
+        </figure>
+        <blockquote>「祭りの中で、いち出店者としてどう見えるか」を先に考えたほうがいい、と言われました。</blockquote>
+        <p>次回は、実際に一つ作って人に食べてもらいます。決まったら、ここに書きます。</p>
+        <a class="insta-card" href="#">
+          <span class="insta-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </span>
+          <span class="insta-card__text">
+            <span class="insta-card__label">Instagramで見る</span><br>
+            <span class="insta-card__url">instagram.com/p/xxxxxxxx/</span>
+          </span>
+          <span class="insta-card__arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+      <nav class="pager" aria-label="前後の記録">
+        <a href="#"><span>← 前の記録</span>今年も動き始めました</a>
+        <a href="#"><span>次の記録 →</span>今年やりたいことを話しました</a>
+      </nav>
+    </article>
+  </div>
+</section>
+
+<!-- ===== 部品一覧 ===== -->
+<div class="lab-note">部品一覧</div>
+<section class="section" id="parts">
+  <div class="section__inner parts">
+    <h2 class="section-title"><span class="section-title__text">部品</span></h2>
+
+    <div class="parts__row">
+      <span class="parts__label">ボタン</span>
+      <a class="btn btn--primary" href="#">プライマリ</a>
+      <a class="btn btn--secondary" href="#">セカンダリ</a>
+      <button class="chip chip--active" type="button">チップ（選択中）</button>
+      <button class="chip" type="button">チップ</button>
+    </div>
+
+    <div class="parts__row">
+      <span class="parts__label">状態タグ</span>
+      <span class="tag" data-status="consider">検討中</span>
+      <span class="tag" data-status="trial">試作中</span>
+      <span class="tag" data-status="decided">決定</span>
+      <span class="tag" data-status="rejected">ボツ</span>
+      <span class="tag" data-status="recruit">募集中</span>
+      <span class="tag" data-status="info">開催情報</span>
+    </div>
+
+    <div class="parts__row">
+      <span class="parts__label">物語バッジ</span>
+      <span class="badge badge--official">祭りをつくる</span>
+      <span class="badge badge--personal">店をつくる</span>
+    </div>
+
+    <div class="parts__row">
+      <span class="parts__label">立場バッジ</span>
+      <span class="badge badge--role">実行委員</span>
+      <span class="badge badge--role">若者チーム</span>
+      <span class="badge badge--role">出店者</span>
+      <span class="badge badge--role">出演者</span>
+      <span class="badge badge--role">ボランティア</span>
+      <span class="badge badge--role">地域の人</span>
+      <span class="badge badge--role">台湾関係者</span>
+    </div>
+
+    <div>
+      <span class="parts__label">色</span>
+      <div class="swatches">
+        <div class="swatch"><div class="swatch__color" style="background: var(--color-primary)"></div><div class="swatch__name">primary</div></div>
+        <div class="swatch"><div class="swatch__color" style="background: var(--color-secondary)"></div><div class="swatch__name">secondary</div></div>
+        <div class="swatch"><div class="swatch__color" style="background: var(--color-accent)"></div><div class="swatch__name">accent</div></div>
+        <div class="swatch"><div class="swatch__color" style="background: var(--color-background)"></div><div class="swatch__name">background</div></div>
+        <div class="swatch"><div class="swatch__color" style="background: var(--color-background-alt)"></div><div class="swatch__name">background-alt</div></div>
+        <div class="swatch"><div class="swatch__color" style="background: var(--color-surface)"></div><div class="swatch__name">surface</div></div>
+        <div class="swatch"><div class="swatch__color" style="background: var(--color-text)"></div><div class="swatch__name">text</div></div>
+        <div class="swatch"><div class="swatch__color" style="background: var(--color-text-light)"></div><div class="swatch__name">text-light</div></div>
+        <div class="swatch"><div class="swatch__color" style="background: var(--color-border)"></div><div class="swatch__name">border</div></div>
+        <div class="swatch"><div class="swatch__color" style="background: var(--color-story-official)"></div><div class="swatch__name">story-official</div></div>
+        <div class="swatch"><div class="swatch__color" style="background: var(--color-story-personal)"></div><div class="swatch__name">story-personal</div></div>
+        <div class="swatch"><div class="swatch__color" style="background: var(--color-footer-bg)"></div><div class="swatch__name">footer-bg</div></div>
+      </div>
+    </div>
+
+    <div>
+      <span class="parts__label">文字</span>
+      <h1>見出し1 黒猫台湾まつり2027</h1>
+      <h2>見出し2 今年やりたいことを話しました</h2>
+      <h3>見出し3 候補は3つあります</h3>
+      <p>本文。黒猫台湾まつりは開催日の2日間だけではなく、前年秋ごろから少しずつ作られている。企画を考える。人に相談する。試してみる。失敗する。作り直す。</p>
+      <p class="accent">アクセント書体。2026.10.05 ／ 手書きメモ ／ 日付やキャプションに使う。</p>
+      <p class="small text-light">小さい文字。補足や注記に使う。</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== フッター ===== -->
+<div class="lab-note">フッター</div>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p class="site-footer__logo">黒猫台湾まつり2027</p>
+    <nav class="site-footer__nav" aria-label="フッターナビゲーション">
+      <a href="#">トップ</a><a href="#">できるまで</a><a href="#">黒猫台湾まつりとは</a><a href="#">Instagram</a><a href="#">メール</a>
+    </nav>
+    <p class="site-footer__meta">過去のサイト: <a href="#">2025</a> ／ <a href="#">2026</a></p>
+    <p class="site-footer__meta">最終更新日: 2026-11-28 ／ © 2027 黒猫台湾まつり実行委員会</p>
+  </div>
+</footer>
+
+<div class="lab-theme" id="labTheme"></div>
+
+<script src="themes.js"></script>
+<script>
+(function () {
+  var link = document.getElementById("tokens");
+  var label = document.getElementById("labTheme");
+  function apply() {
+    var m = (location.search + " " + location.hash).match(/theme=([0-9]{2})|#([0-9]{2})/);
+    var id = m ? (m[1] || m[2]) : "01";
+    var theme = (window.LAB_THEMES || []).filter(function (t) { return t.id === id; })[0];
+    if (!theme) { id = "01"; theme = window.LAB_THEMES[0]; }
+    var href = "tokens/tokens-" + id + ".css";
+    if (link.getAttribute("href") !== href) link.setAttribute("href", href);
+    document.documentElement.setAttribute("data-theme", id);
+    if (/compact=1/.test(location.search)) document.documentElement.classList.add("lab-compact");
+    label.textContent = "案" + id + " " + theme.name;
+  }
+  window.addEventListener("hashchange", apply);
+  apply();
+})();
+</script>
+</body>
+</html>

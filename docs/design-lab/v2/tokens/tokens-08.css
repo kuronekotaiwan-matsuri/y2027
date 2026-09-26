@@ -1,0 +1,128 @@
+/* v2 案08 台帳
+   横罫の帳簿。手書き見出し（02）に赤い二重の罫線、判子（09）。角丸なし。商店街の大福帳。 */
+@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Zen+Kurenaido&display=swap");
+
+:root {
+  /* --- カラー --- */
+  --color-primary: #BE3527;
+  --color-primary-contrast: #FFFFFF;
+  --color-secondary: #F2C6BD;
+  --color-accent: #2F4A6E;
+  --color-background: #FAF5EA;
+  --color-background-alt: #F3EBDC;
+  --color-surface: #FFFDF8;
+  --color-text: #2B2118;
+  --color-text-light: #6A5A48;
+  --color-border: #CDBBA0;
+  --color-link: #2F4A6E;
+  --color-header-bg: #FAF5EA;
+  --color-header-text: #2B2118;
+  --color-footer-bg: #2B2118;
+  --color-footer-text: #F3EBDC;
+  --color-button-primary-bg: #BE3527;
+  --color-button-primary-text: #FFFFFF;
+  --color-button-secondary-bg: transparent;
+  --color-button-secondary-text: #2B2118;
+  --color-button-secondary-border: #2B2118;
+
+  /* --- 物語・立場・タグ --- */
+  --color-story-official: #BE3527;
+  --color-story-official-text: #FFFFFF;
+  --color-story-personal: #2F4A6E;
+  --color-story-personal-text: #FFFFFF;
+  --color-role-bg: transparent;
+  --color-role-text: #2B2118;
+  --role-border: 1.5px solid #2B2118;
+  --color-tag-consider-bg: transparent;
+  --color-tag-consider-text: #BE3527;
+  --color-tag-decided-bg: #BE3527;
+  --color-tag-decided-text: #FFFFFF;
+  --color-tag-rejected-bg: transparent;
+  --color-tag-rejected-text: #6A5A48;
+  --tag-rejected-decoration: line-through;
+  --color-tag-recruit-bg: transparent;
+  --color-tag-recruit-text: #2F4A6E;
+  --tag-border: 2px double currentColor;
+  --color-notice-bg: #FFF8E6;
+  --color-notice-border: #D4A017;
+  --color-notice-text: #5A4300;
+
+  /* --- タイポグラフィ --- */
+  --font-heading: "Zen Kurenaido", "Zen Maru Gothic", sans-serif;
+  --font-body: "Zen Maru Gothic", sans-serif;
+  --font-accent: "Zen Kurenaido", "Zen Maru Gothic", sans-serif;
+  --font-size-base: 16px;
+  --font-size-h1: 3rem;
+  --font-size-h2: 2.2rem;
+  --font-size-h3: 1.6rem;
+  --font-size-small: 0.875rem;
+  --font-weight-heading: 400;
+  --font-weight-body: 400;
+  --line-height-body: 1.9;
+  --letter-spacing-heading: 0.04em;
+
+  /* --- スペーシング・レイアウト --- */
+  --spacing-unit: 8px;
+  --spacing-section: 72px;
+  --spacing-content: 24px;
+  --content-max-width: 1000px;
+  --prose-max-width: 660px;
+  --hero-min-height: 50vh;
+  --hero-align: left;
+  --hero-justify: flex-start;
+
+  /* --- 形 --- */
+  --border-radius: 2px;
+  --border-radius-lg: 4px;
+  --border-radius-button: 2px;
+  --border-radius-tag: 50px;
+  --border-width: 1px;
+  --border-style: solid;
+  --button-border-width: 2px;
+  --shadow: none;
+  --shadow-hover: 0 4px 12px rgba(43, 33, 24, 0.12);
+  --transition-speed: 0.25s;
+
+  /* --- 装飾 --- */
+  --bg-texture: linear-gradient(transparent 27px, rgba(47, 74, 110, 0.16) 27px);
+  --bg-texture-size: 100% 28px;
+  --hero-bg: linear-gradient(#FAF5EA, #FAF5EA);
+  --hero-text: #2B2118;
+  --header-border-bottom: 3px double #BE3527;
+  --card-tilt: 0deg;
+  --decor-tape: none;
+  --color-tape: transparent;
+  --image-frame-border: 1px solid #2B2118;
+  --image-frame-radius: 0;
+  --image-frame-shadow: none;
+  --image-frame-padding: 6px;
+
+  /* --- タイムライン --- */
+  --timeline-line-width: 5px;
+  --timeline-line-style: double;
+  --timeline-line-color: #BE3527;
+  --timeline-dot-size: 12px;
+  --timeline-dot-radius: 0;
+  --timeline-dot-bg: #FFFDF8;
+  --timeline-dot-border: 2px solid #BE3527;
+  --timeline-dot-shadow: none;
+  --timeline-month-bg: transparent;
+  --timeline-month-text: #BE3527;
+  --timeline-goal-bg: #FFF3B0;
+  --timeline-goal-text: #2B2118;
+  --timeline-goal-border: 1px solid #2B2118;
+
+  /* --- v2 追加 --- */
+  --font-display: "Zen Kurenaido", "Zen Maru Gothic", sans-serif;
+  --font-weight-display: 400;
+  --section-title-bg: none;
+  --section-title-border-bottom: 3px double #BE3527;
+  --hero-now-bg: #FFFDF8;
+  --hero-now-border: 1px solid #2B2118;
+  --hero-now-text: #2B2118;
+  --timeline-month-border: 0;
+  --timeline-month-tilt: 0deg;
+  --timeline-month-shadow: none;
+  --tag-tilt: -2deg;
+  --figure-tape: none;
+}

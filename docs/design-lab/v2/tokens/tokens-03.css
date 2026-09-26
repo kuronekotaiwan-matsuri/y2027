@@ -1,0 +1,128 @@
+/* v2 案03 看板と手書き
+   看板（ロゴ・見出し）は 09 のレトロ書体、記録のタイトルは 07 のペン字。方眼紙の上に日よけの縞。 */
+@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Klee+One:wght@400;600&family=RocknRoll+One&display=swap");
+
+:root {
+  /* --- カラー --- */
+  --color-primary: #B7332A;
+  --color-primary-contrast: #FFFBF2;
+  --color-secondary: #1F3A5F;
+  --color-accent: #D9A62E;
+  --color-background: #FBF3E4;
+  --color-background-alt: #F3E4C8;
+  --color-surface: #FFFBF2;
+  --color-text: #2B2118;
+  --color-text-light: #6A5A48;
+  --color-border: #D9C7A6;
+  --color-link: #1F3A5F;
+  --color-header-bg: #B7332A;
+  --color-header-text: #FFFBF2;
+  --color-footer-bg: #1F3A5F;
+  --color-footer-text: #F3E4C8;
+  --color-button-primary-bg: #B7332A;
+  --color-button-primary-text: #FFFBF2;
+  --color-button-secondary-bg: transparent;
+  --color-button-secondary-text: #1F3A5F;
+  --color-button-secondary-border: #1F3A5F;
+
+  /* --- 物語・立場・タグ --- */
+  --color-story-official: #B7332A;
+  --color-story-official-text: #FFFBF2;
+  --color-story-personal: #1F3A5F;
+  --color-story-personal-text: #F3E4C8;
+  --color-role-bg: #FFF3B0;
+  --color-role-text: #5A4A00;
+  --role-border: 0;
+  --color-tag-consider-bg: #FFF3B0;
+  --color-tag-consider-text: #5A4A00;
+  --color-tag-decided-bg: #CDEFD3;
+  --color-tag-decided-text: #1F5B2E;
+  --color-tag-rejected-bg: #F1EDE8;
+  --color-tag-rejected-text: #6A5A48;
+  --tag-rejected-decoration: line-through;
+  --color-tag-recruit-bg: #F9B9B2;
+  --color-tag-recruit-text: #8A2A20;
+  --tag-border: 0;
+  --color-notice-bg: #FFF3D6;
+  --color-notice-border: #D9A62E;
+  --color-notice-text: #5A4300;
+
+  /* --- タイポグラフィ --- */
+  --font-heading: "Klee One", "Zen Maru Gothic", sans-serif;
+  --font-body: "Zen Maru Gothic", sans-serif;
+  --font-accent: "Klee One", "Zen Maru Gothic", sans-serif;
+  --font-size-base: 16px;
+  --font-size-h1: 2.75rem;
+  --font-size-h2: 2rem;
+  --font-size-h3: 1.5rem;
+  --font-size-small: 0.875rem;
+  --font-weight-heading: 600;
+  --font-weight-body: 400;
+  --line-height-body: 1.85;
+  --letter-spacing-heading: 0.05em;
+
+  /* --- スペーシング・レイアウト --- */
+  --spacing-unit: 8px;
+  --spacing-section: 76px;
+  --spacing-content: 24px;
+  --content-max-width: 1100px;
+  --prose-max-width: 720px;
+  --hero-min-height: 55vh;
+  --hero-align: center;
+  --hero-justify: center;
+
+  /* --- 形 --- */
+  --border-radius: 6px;
+  --border-radius-lg: 8px;
+  --border-radius-button: 6px;
+  --border-radius-tag: 2px;
+  --border-width: 1px;
+  --border-style: solid;
+  --button-border-width: 2px;
+  --shadow: 0 3px 0 #D9C7A6;
+  --shadow-hover: 0 5px 0 #D9C7A6;
+  --transition-speed: 0.2s;
+
+  /* --- 装飾 --- */
+  --bg-texture: linear-gradient(rgba(183, 51, 42, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(183, 51, 42, 0.07) 1px, transparent 1px);
+  --bg-texture-size: 24px 24px;
+  --hero-bg: repeating-linear-gradient(90deg, #B7332A 0 40px, #A32B23 40px 80px);
+  --hero-text: #FFFBF2;
+  --header-border-bottom: 4px double #D9A62E;
+  --card-tilt: 0deg;
+  --decor-tape: block;
+  --color-tape: rgba(255, 243, 176, 0.9);
+  --image-frame-border: 2px solid #D9C7A6;
+  --image-frame-radius: 4px;
+  --image-frame-shadow: 0 3px 0 #D9C7A6;
+  --image-frame-padding: 0;
+
+  /* --- タイムライン --- */
+  --timeline-line-width: 2px;
+  --timeline-line-style: dashed;
+  --timeline-line-color: #2B2118;
+  --timeline-dot-size: 16px;
+  --timeline-dot-radius: 50%;
+  --timeline-dot-bg: #FFFBF2;
+  --timeline-dot-border: 3px double #B7332A;
+  --timeline-dot-shadow: none;
+  --timeline-month-bg: #1F3A5F;
+  --timeline-month-text: #F3E4C8;
+  --timeline-goal-bg: #D9A62E;
+  --timeline-goal-text: #2B2118;
+  --timeline-goal-border: 2px solid #B7332A;
+
+  /* --- v2 追加 --- */
+  --font-display: "RocknRoll One", "Zen Maru Gothic", sans-serif;
+  --font-weight-display: 400;
+  --section-title-bg: none;
+  --section-title-border-bottom: 4px double #B7332A;
+  --hero-now-bg: #FFFBF2;
+  --hero-now-border: 0;
+  --hero-now-text: #2B2118;
+  --timeline-month-border: 0;
+  --timeline-month-tilt: 0deg;
+  --timeline-month-shadow: none;
+  --tag-tilt: 0deg;
+  --figure-tape: block;
+}

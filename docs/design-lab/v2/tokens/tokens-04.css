@@ -1,0 +1,128 @@
+/* v2 案04 方眼ノート改
+   02 を読みやすく調整。記録タイトルは丸ゴシック太字、月ラベルを付箋に、カードにテープ。 */
+@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Zen+Kurenaido&display=swap");
+
+:root {
+  /* --- カラー --- */
+  --color-primary: #C0392B;
+  --color-primary-contrast: #FFFFFF;
+  --color-secondary: #F9B9B2;
+  --color-accent: #3B6EA8;
+  --color-background: #FBF8F1;
+  --color-background-alt: #F4EEE2;
+  --color-surface: #FFFFFF;
+  --color-text: #2C1810;
+  --color-text-light: #6B4C3B;
+  --color-border: #D9CFC2;
+  --color-link: #3B6EA8;
+  --color-header-bg: #FFFFFF;
+  --color-header-text: #C0392B;
+  --color-footer-bg: #2C1810;
+  --color-footer-text: #F9E6D5;
+  --color-button-primary-bg: #C0392B;
+  --color-button-primary-text: #FFFFFF;
+  --color-button-secondary-bg: transparent;
+  --color-button-secondary-text: #C0392B;
+  --color-button-secondary-border: #C0392B;
+
+  /* --- 物語・立場・タグ --- */
+  --color-story-official: #C0392B;
+  --color-story-official-text: #FFFFFF;
+  --color-story-personal: #3B6EA8;
+  --color-story-personal-text: #FFFFFF;
+  --color-role-bg: #FFFFFF;
+  --color-role-text: #2C1810;
+  --role-border: 1.5px dashed #B9A79B;
+  --color-tag-consider-bg: #FFF6B8;
+  --color-tag-consider-text: #5A4A00;
+  --color-tag-decided-bg: #DCEFD8;
+  --color-tag-decided-text: #245A28;
+  --color-tag-rejected-bg: transparent;
+  --color-tag-rejected-text: #6B4C3B;
+  --tag-rejected-decoration: line-through;
+  --color-tag-recruit-bg: #3B6EA8;
+  --color-tag-recruit-text: #FFFFFF;
+  --tag-border: 1px solid currentColor;
+  --color-notice-bg: #FFF8E6;
+  --color-notice-border: #D4A017;
+  --color-notice-text: #5A4300;
+
+  /* --- タイポグラフィ --- */
+  --font-heading: "Zen Maru Gothic", sans-serif;
+  --font-body: "Zen Maru Gothic", sans-serif;
+  --font-accent: "Zen Kurenaido", "Zen Maru Gothic", sans-serif;
+  --font-size-base: 16px;
+  --font-size-h1: 3rem;
+  --font-size-h2: 2.2rem;
+  --font-size-h3: 1.4rem;
+  --font-size-small: 0.875rem;
+  --font-weight-heading: 700;
+  --font-weight-body: 400;
+  --line-height-body: 1.9;
+  --letter-spacing-heading: 0.03em;
+
+  /* --- スペーシング・レイアウト --- */
+  --spacing-unit: 8px;
+  --spacing-section: 72px;
+  --spacing-content: 24px;
+  --content-max-width: 1040px;
+  --prose-max-width: 680px;
+  --hero-min-height: 50vh;
+  --hero-align: left;
+  --hero-justify: flex-start;
+
+  /* --- 形 --- */
+  --border-radius: 6px;
+  --border-radius-lg: 8px;
+  --border-radius-button: 6px;
+  --border-radius-tag: 4px;
+  --border-width: 1px;
+  --border-style: solid;
+  --button-border-width: 2px;
+  --shadow: none;
+  --shadow-hover: 0 4px 12px rgba(44, 24, 16, 0.12);
+  --transition-speed: 0.25s;
+
+  /* --- 装飾 --- */
+  --bg-texture: linear-gradient(rgba(192, 57, 43, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(192, 57, 43, 0.07) 1px, transparent 1px);
+  --bg-texture-size: 24px 24px;
+  --hero-bg: linear-gradient(#FBF8F1, #FBF8F1);
+  --hero-text: #2C1810;
+  --header-border-bottom: 3px double #C0392B;
+  --card-tilt: 0deg;
+  --decor-tape: block;
+  --color-tape: rgba(249, 185, 178, 0.85);
+  --image-frame-border: 1.5px dashed #B9A79B;
+  --image-frame-radius: 4px;
+  --image-frame-shadow: none;
+  --image-frame-padding: 6px;
+
+  /* --- タイムライン --- */
+  --timeline-line-width: 2px;
+  --timeline-line-style: solid;
+  --timeline-line-color: #C0392B;
+  --timeline-dot-size: 12px;
+  --timeline-dot-radius: 50%;
+  --timeline-dot-bg: #FFFFFF;
+  --timeline-dot-border: 2px solid #C0392B;
+  --timeline-dot-shadow: none;
+  --timeline-month-bg: #FFF6B8;
+  --timeline-month-text: #2C1810;
+  --timeline-goal-bg: #FFF6B8;
+  --timeline-goal-text: #2C1810;
+  --timeline-goal-border: 2px dashed #C0392B;
+
+  /* --- v2 追加 --- */
+  --font-display: "Zen Kurenaido", "Zen Maru Gothic", sans-serif;
+  --font-weight-display: 400;
+  --section-title-bg: none;
+  --section-title-border-bottom: 2px solid #C0392B;
+  --hero-now-bg: #FFF6B8;
+  --hero-now-border: 0;
+  --hero-now-text: #2C1810;
+  --timeline-month-border: 0;
+  --timeline-month-tilt: -1.5deg;
+  --timeline-month-shadow: 0 2px 4px rgba(44, 24, 16, 0.15);
+  --tag-tilt: 0deg;
+  --figure-tape: none;
+}

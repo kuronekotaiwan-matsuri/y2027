@@ -1,0 +1,128 @@
+/* v2 案10 手書きチラシ
+   商店街の手書きチラシ。レトロ看板書体と手書き見出し、黒の太枠にずらし影、判子とテープ。 */
+@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Zen+Kurenaido&family=RocknRoll+One&display=swap");
+
+:root {
+  /* --- カラー --- */
+  --color-primary: #B7332A;
+  --color-primary-contrast: #FFFBF2;
+  --color-secondary: #1F3A5F;
+  --color-accent: #D9A62E;
+  --color-background: #FBF3E4;
+  --color-background-alt: #F8E8D0;
+  --color-surface: #FFFBF2;
+  --color-text: #2B2118;
+  --color-text-light: #6A5A48;
+  --color-border: #2B2118;
+  --color-link: #1F3A5F;
+  --color-header-bg: #B7332A;
+  --color-header-text: #FFFBF2;
+  --color-footer-bg: #2B2118;
+  --color-footer-text: #F3E4C8;
+  --color-button-primary-bg: #B7332A;
+  --color-button-primary-text: #FFFBF2;
+  --color-button-secondary-bg: transparent;
+  --color-button-secondary-text: #2B2118;
+  --color-button-secondary-border: #2B2118;
+
+  /* --- 物語・立場・タグ --- */
+  --color-story-official: #B7332A;
+  --color-story-official-text: #FFFBF2;
+  --color-story-personal: #1F3A5F;
+  --color-story-personal-text: #F3E4C8;
+  --color-role-bg: #FFFBF2;
+  --color-role-text: #2B2118;
+  --role-border: 1.5px solid #2B2118;
+  --color-tag-consider-bg: transparent;
+  --color-tag-consider-text: #B7332A;
+  --color-tag-decided-bg: #B7332A;
+  --color-tag-decided-text: #FFFBF2;
+  --color-tag-rejected-bg: transparent;
+  --color-tag-rejected-text: #6A5A48;
+  --tag-rejected-decoration: line-through;
+  --color-tag-recruit-bg: #D9A62E;
+  --color-tag-recruit-text: #2B2118;
+  --tag-border: 2px double currentColor;
+  --color-notice-bg: #FFF3D6;
+  --color-notice-border: #D9A62E;
+  --color-notice-text: #5A4300;
+
+  /* --- タイポグラフィ --- */
+  --font-heading: "Zen Kurenaido", "Zen Maru Gothic", sans-serif;
+  --font-body: "Zen Maru Gothic", sans-serif;
+  --font-accent: "Zen Kurenaido", "Zen Maru Gothic", sans-serif;
+  --font-size-base: 16px;
+  --font-size-h1: 3rem;
+  --font-size-h2: 2.2rem;
+  --font-size-h3: 1.6rem;
+  --font-size-small: 0.875rem;
+  --font-weight-heading: 400;
+  --font-weight-body: 400;
+  --line-height-body: 1.85;
+  --letter-spacing-heading: 0.04em;
+
+  /* --- スペーシング・レイアウト --- */
+  --spacing-unit: 8px;
+  --spacing-section: 72px;
+  --spacing-content: 24px;
+  --content-max-width: 1040px;
+  --prose-max-width: 680px;
+  --hero-min-height: 50vh;
+  --hero-align: center;
+  --hero-justify: center;
+
+  /* --- 形 --- */
+  --border-radius: 2px;
+  --border-radius-lg: 2px;
+  --border-radius-button: 2px;
+  --border-radius-tag: 50px;
+  --border-width: 2px;
+  --border-style: solid;
+  --button-border-width: 2px;
+  --shadow: 3px 3px 0 #2B2118;
+  --shadow-hover: 5px 5px 0 #2B2118;
+  --transition-speed: 0.15s;
+
+  /* --- 装飾 --- */
+  --bg-texture: linear-gradient(rgba(43, 33, 24, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(43, 33, 24, 0.06) 1px, transparent 1px);
+  --bg-texture-size: 24px 24px;
+  --hero-bg: repeating-linear-gradient(90deg, #B7332A 0 40px, #A32B23 40px 80px);
+  --hero-text: #FFFBF2;
+  --header-border-bottom: 4px double #D9A62E;
+  --card-tilt: 0deg;
+  --decor-tape: block;
+  --color-tape: rgba(217, 166, 46, 0.8);
+  --image-frame-border: 2px solid #2B2118;
+  --image-frame-radius: 0;
+  --image-frame-shadow: 3px 3px 0 #2B2118;
+  --image-frame-padding: 0;
+
+  /* --- タイムライン --- */
+  --timeline-line-width: 3px;
+  --timeline-line-style: solid;
+  --timeline-line-color: #B7332A;
+  --timeline-dot-size: 16px;
+  --timeline-dot-radius: 50%;
+  --timeline-dot-bg: #FFFBF2;
+  --timeline-dot-border: 3px double #B7332A;
+  --timeline-dot-shadow: none;
+  --timeline-month-bg: #B7332A;
+  --timeline-month-text: #FFFBF2;
+  --timeline-goal-bg: #D9A62E;
+  --timeline-goal-text: #2B2118;
+  --timeline-goal-border: 2px solid #2B2118;
+
+  /* --- v2 追加 --- */
+  --font-display: "RocknRoll One", "Zen Maru Gothic", sans-serif;
+  --font-weight-display: 400;
+  --section-title-bg: none;
+  --section-title-border-bottom: 3px solid #2B2118;
+  --hero-now-bg: #FFFBF2;
+  --hero-now-border: 2px solid #2B2118;
+  --hero-now-text: #2B2118;
+  --timeline-month-border: 0;
+  --timeline-month-tilt: -1deg;
+  --timeline-month-shadow: 2px 2px 0 #2B2118;
+  --tag-tilt: -3deg;
+  --figure-tape: block;
+}

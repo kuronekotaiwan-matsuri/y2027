@@ -1,0 +1,128 @@
+/* v2 案09 テープと縞
+   07 の付箋・テープ・ポラロイドに、09 の日よけ縞ヒーローとレトロ看板書体。色は2026年の赤と紺。 */
+@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Klee+One:wght@400;600&family=RocknRoll+One&display=swap");
+
+:root {
+  /* --- カラー --- */
+  --color-primary: #C0392B;
+  --color-primary-contrast: #FFFFFF;
+  --color-secondary: #F9B9B2;
+  --color-accent: #1F3A5F;
+  --color-background: #FBF9F4;
+  --color-background-alt: #FDE9E6;
+  --color-surface: #FFFFFF;
+  --color-text: #2C1810;
+  --color-text-light: #6B4C3B;
+  --color-border: #E3D9CE;
+  --color-link: #1F3A5F;
+  --color-header-bg: #FFFFFF;
+  --color-header-text: #C0392B;
+  --color-footer-bg: #1F3A5F;
+  --color-footer-text: #F3E4C8;
+  --color-button-primary-bg: #C0392B;
+  --color-button-primary-text: #FFFFFF;
+  --color-button-secondary-bg: #FFFFFF;
+  --color-button-secondary-text: #C0392B;
+  --color-button-secondary-border: #C0392B;
+
+  /* --- 物語・立場・タグ --- */
+  --color-story-official: #C0392B;
+  --color-story-official-text: #FFFFFF;
+  --color-story-personal: #1F3A5F;
+  --color-story-personal-text: #FFFFFF;
+  --color-role-bg: #FFF6B8;
+  --color-role-text: #5A4A00;
+  --role-border: 0;
+  --color-tag-consider-bg: #FFF6B8;
+  --color-tag-consider-text: #5A4A00;
+  --color-tag-decided-bg: #CDEFD3;
+  --color-tag-decided-text: #1F5B2E;
+  --color-tag-rejected-bg: #F1EDE8;
+  --color-tag-rejected-text: #6B4C3B;
+  --tag-rejected-decoration: line-through;
+  --color-tag-recruit-bg: #1F3A5F;
+  --color-tag-recruit-text: #FFFFFF;
+  --tag-border: 0;
+  --color-notice-bg: #FFF6B8;
+  --color-notice-border: #E5C63C;
+  --color-notice-text: #5A4A00;
+
+  /* --- タイポグラフィ --- */
+  --font-heading: "Klee One", "Zen Maru Gothic", sans-serif;
+  --font-body: "Zen Maru Gothic", sans-serif;
+  --font-accent: "Klee One", "Zen Maru Gothic", sans-serif;
+  --font-size-base: 16px;
+  --font-size-h1: 2.75rem;
+  --font-size-h2: 2rem;
+  --font-size-h3: 1.5rem;
+  --font-size-small: 0.875rem;
+  --font-weight-heading: 600;
+  --font-weight-body: 400;
+  --line-height-body: 1.85;
+  --letter-spacing-heading: 0.04em;
+
+  /* --- スペーシング・レイアウト --- */
+  --spacing-unit: 8px;
+  --spacing-section: 76px;
+  --spacing-content: 24px;
+  --content-max-width: 1080px;
+  --prose-max-width: 700px;
+  --hero-min-height: 55vh;
+  --hero-align: center;
+  --hero-justify: center;
+
+  /* --- 形 --- */
+  --border-radius: 4px;
+  --border-radius-lg: 6px;
+  --border-radius-button: 50px;
+  --border-radius-tag: 2px;
+  --border-width: 1px;
+  --border-style: solid;
+  --button-border-width: 2px;
+  --shadow: 0 2px 4px rgba(44, 24, 16, 0.10), 0 8px 18px rgba(44, 24, 16, 0.06);
+  --shadow-hover: 0 4px 8px rgba(44, 24, 16, 0.12), 0 14px 28px rgba(44, 24, 16, 0.10);
+  --transition-speed: 0.25s;
+
+  /* --- 装飾 --- */
+  --bg-texture: radial-gradient(rgba(44, 24, 16, 0.12) 1px, transparent 1.2px);
+  --bg-texture-size: 18px 18px;
+  --hero-bg: repeating-linear-gradient(90deg, #C0392B 0 40px, #B03224 40px 80px);
+  --hero-text: #FFFFFF;
+  --header-border-bottom: 3px double #C0392B;
+  --card-tilt: -0.6deg;
+  --decor-tape: block;
+  --color-tape: rgba(255, 246, 184, 0.9);
+  --image-frame-border: 0;
+  --image-frame-radius: 2px;
+  --image-frame-shadow: 0 2px 4px rgba(44, 24, 16, 0.10), 0 8px 18px rgba(44, 24, 16, 0.10);
+  --image-frame-padding: 10px 10px 28px;
+
+  /* --- タイムライン --- */
+  --timeline-line-width: 2px;
+  --timeline-line-style: dashed;
+  --timeline-line-color: #C0392B;
+  --timeline-dot-size: 14px;
+  --timeline-dot-radius: 50%;
+  --timeline-dot-bg: #FFF6B8;
+  --timeline-dot-border: 2px solid #2C1810;
+  --timeline-dot-shadow: none;
+  --timeline-month-bg: #1F3A5F;
+  --timeline-month-text: #F3E4C8;
+  --timeline-goal-bg: #C0392B;
+  --timeline-goal-text: #FFFFFF;
+  --timeline-goal-border: 0;
+
+  /* --- v2 追加 --- */
+  --font-display: "RocknRoll One", "Zen Maru Gothic", sans-serif;
+  --font-weight-display: 400;
+  --section-title-bg: linear-gradient(transparent 62%, #F9B9B2 62%);
+  --section-title-border-bottom: 0;
+  --hero-now-bg: #FFF6B8;
+  --hero-now-border: 0;
+  --hero-now-text: #2C1810;
+  --timeline-month-border: 0;
+  --timeline-month-tilt: 0deg;
+  --timeline-month-shadow: none;
+  --tag-tilt: 0deg;
+  --figure-tape: block;
+}
