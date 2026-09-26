@@ -1,0 +1,21 @@
+1:"$Sreact.fragment"
+2:I[22016,["/y2027/_next/static/chunks/01dvv6vmexhgg.js"],""]
+3:I[97367,["/y2027/_next/static/chunks/01dvv6vmexhgg.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+8:I[97367,["/y2027/_next/static/chunks/01dvv6vmexhgg.js"],"ViewportBoundary"]
+9:I[97367,["/y2027/_next/static/chunks/01dvv6vmexhgg.js"],"MetadataBoundary"]
+b:I[39756,["/y2027/_next/static/chunks/01dvv6vmexhgg.js"],"default"]
+c:I[37457,["/y2027/_next/static/chunks/01dvv6vmexhgg.js"],"default"]
+:HL["/y2027/_next/static/chunks/3sveyyhkr-5sa.css","style"]
+7:X
+e:X
+e:C
+0:{"buildId":"WLcK1RXxJKUJYO52Z8xe-","data":[{"rsc":["$","$1","c",{"children":[["$","section",null,{"className":"Section-module__XdhVda__section","aria-labelledby":"not-found-title","children":["$","div",null,{"className":"Section-module__XdhVda__sectionInner","children":[["$","h1",null,{"id":"not-found-title","className":"SectionTitle-module__KMIBCq__sectionTitle","children":[["$","span",null,{"className":"SectionTitle-module__KMIBCq__sectionTitleText","children":"ページが見つかりません"}],false]}],["$","p",null,{"children":"このページは移動したか、まだ作られていません。祭りと一緒にサイトも育てているので、あとで増えるかもしれません。"}],["$","p",null,{"className":"Section-module__XdhVda__sectionMore","children":["$","$L2",null,{"className":"Button-module__UbsrlW__btn Button-module__UbsrlW__btnSecondary","href":"/","children":"トップへ戻る"}]}]]}]}],[["$","link","0",{"rel":"stylesheet","href":"/y2027/_next/static/chunks/3sveyyhkr-5sa.css","precedence":"next"}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":"$@6","staleTime":"$7","varyParams":null},{"rsc":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L8",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L9",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"ページが見つかりません | 黒猫台湾まつり2027"}],["$","meta","1",{"name":"description","content":"2027年5月開催予定の黒猫台湾まつり2027 公式サイト。川崎・二子新地の大山街道沿いで開かれてきた台湾カルチャーフェスティバルの案内と、祭りができるまでの記録。"}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","meta","3",{"property":"og:title","content":"黒猫台湾まつり2027"}],["$","meta","4",{"property":"og:description","content":"2027年5月開催予定の黒猫台湾まつり2027 公式サイト。川崎・二子新地の大山街道沿いで開かれてきた台湾カルチャーフェスティバルの案内と、祭りができるまでの記録。"}],["$","meta","5",{"property":"og:url","content":"https://kuronekotaiwan-matsuri.github.io/y2027/"}],["$","meta","6",{"property":"og:site_name","content":"黒猫台湾まつり2027"}],["$","meta","7",{"property":"og:locale","content":"ja_JP"}],["$","meta","8",{"property":"og:image","content":"https://kuronekotaiwan-matsuri.github.io/y2027/images/og.png"}],["$","meta","9",{"property":"og:type","content":"website"}],["$","meta","10",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","11",{"name":"twitter:title","content":"黒猫台湾まつり2027"}],["$","meta","12",{"name":"twitter:description","content":"2027年5月開催予定の黒猫台湾まつり2027 公式サイト。川崎・二子新地の大山街道沿いで開かれてきた台湾カルチャーフェスティバルの案内と、祭りができるまでの記録。"}],["$","meta","13",{"name":"twitter:image","content":"https://kuronekotaiwan-matsuri.github.io/y2027/images/og.png"}]]}]}]}],null]}],"isPartial":"$@a","staleTime":"$7","varyParams":null},{"rsc":["$","$1","c",{"children":[null,["$","$Lb",null,{"parallelRouterKey":"children","template":["$","$Lc",null,{}]}]]}],"isPartial":"$@d","staleTime":"$7","varyParams":"$e"}],"isUpgradeableISRFallback":false,"a":"$@f","rootVaryParams":null,"needsRuntimeRequest":"$@10"}
+5:null
+10:true
+7:300
+7:C
+f:0
+a:"$undefined"
+d:"$undefined"
+6:"$undefined"

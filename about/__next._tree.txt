@@ -1,0 +1,4 @@
+:HL["/y2027/_next/static/chunks/166k61w9bmu4i.css","style"]
+:HL["/y2027/_next/static/chunks/3sveyyhkr-5sa.css","style"]
+:HL["https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Klee+One:wght@400;600&display=swap","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"about","param":null,"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"WLcK1RXxJKUJYO52Z8xe-"}
