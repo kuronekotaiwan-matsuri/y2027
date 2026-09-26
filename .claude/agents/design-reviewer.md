@@ -97,6 +97,9 @@ model: inherit
 - PC 幅は `--window-size=1280,2400`。縦に長いページは高さを増やす
 - 別のページは URL 末尾を変える（例: `/y2027/making/`）
 - Bash コマンドはチェインしない。1コマンドずつ実行する
+- 新しいヘッドレス Edge は `--window-size=390` でも viewport が約 492px になる（最小幅の制約）。モバイル幅は、スクラッチパッドに `<iframe src="http://localhost:3000/y2027/" width="390" height="2400">` を置いたラッパー HTML を作り、それを `--window-size=520,2400` で撮る
+- `--virtual-time-budget` の間は CSS transition が途中で止まった状態で写ることがある。選択状態などは `--dump-dom` で HTML を出して属性（`aria-pressed` など）を確認する
+- 本番相当の確認は `npm run build` 後に `npx serve out` で `out/` を配信し、`http://localhost:3000/y2027/` を撮る（`serve` の 404 ページは GitHub Pages と異なるので、404 は dev サーバーで見る）
 
 ## 報告フォーマット
 
