@@ -29,6 +29,7 @@
   }
 }
 
+.pillars h2,
 .pillars h3 {
   margin-bottom: var(--space-1);
   font-size: 1.25rem;

@@ -21,6 +21,7 @@
 }
 
 .articleTitle {
+  text-wrap: balance;
   font-size: var(--font-size-h2);
   margin-bottom: calc(var(--spacing-unit) * 1.5);
   line-height: 1.35;

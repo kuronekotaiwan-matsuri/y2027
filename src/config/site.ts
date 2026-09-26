@@ -275,7 +275,7 @@ export const site: SiteConfig = {
     { bg: '#4F7F4A', text: '#FFFBF2' }, // 緑
     { bg: '#7A3E6B', text: '#FFFBF2' }, // 紫
     { bg: '#2A7F7F', text: '#FFFBF2' }, // 青緑
-    { bg: '#B07A1E', text: '#FFFBF2' }, // 黄土
+    { bg: '#8F6216', text: '#FFFBF2' }, // 黄土
   ],
 
   pastSites: [

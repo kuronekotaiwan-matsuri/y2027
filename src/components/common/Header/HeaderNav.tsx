@@ -16,13 +16,28 @@ function normalize(pathname: string): string {
   return pathname.replace(/\/+$/, '') || '/';
 }
 
-/** メインナビゲーションとハンバーガー（モバイル） */
+/**
+ * メインナビゲーションとハンバーガー（モバイル）
+ * ボタンを nav より前に置き、開いた直後の Tab がメニューに進むようにする（見た目の並びは CSS の order）
+ */
 export default function HeaderNav({ items, instagramUrl }: HeaderNavProps) {
   const [open, setOpen] = useState(false);
   const current = normalize(usePathname() ?? '/');
 
   return (
     <>
+      <button
+        className={styles.siteHamburger}
+        type="button"
+        aria-expanded={open}
+        aria-controls="site-nav"
+        aria-label={open ? 'メニューを閉じる' : 'メニューを開く'}
+        onClick={() => setOpen((value) => !value)}
+      >
+        <span />
+        <span />
+        <span />
+      </button>
       <nav
         id="site-nav"
         className={[styles.siteNav, open ? styles.isOpen : ''].filter(Boolean).join(' ')}
@@ -54,18 +69,6 @@ export default function HeaderNav({ items, instagramUrl }: HeaderNavProps) {
           Instagram
         </a>
       </nav>
-      <button
-        className={styles.siteHamburger}
-        type="button"
-        aria-expanded={open}
-        aria-controls="site-nav"
-        aria-label={open ? 'メニューを閉じる' : 'メニューを開く'}
-        onClick={() => setOpen((value) => !value)}
-      >
-        <span />
-        <span />
-        <span />
-      </button>
     </>
   );
 }

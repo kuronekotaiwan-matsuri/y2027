@@ -1,11 +1,13 @@
 import type { MetadataRoute } from 'next';
+import { site } from '@/config/site';
 import { getContent, getLastUpdated } from '@/lib/content';
 import { absoluteUrl } from '@/lib/urls';
 
 /** 静的エクスポート用（sitemap.xml をビルド時に生成する） */
 export const dynamic = 'force-static';
 
-const STATIC_PATHS = ['/', '/shops/', '/programs/', '/about/', '/making/'];
+/** 静的ページ: トップ + ナビにあるページ（ページを増やしたら site.nav に足すだけでよい） */
+const STATIC_PATHS = ['/', ...site.nav.map((item) => item.href)];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const { stories, records } = getContent();

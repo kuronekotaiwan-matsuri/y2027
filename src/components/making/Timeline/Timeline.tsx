@@ -35,7 +35,11 @@ export default function Timeline({
   const latestSlug = order === 'asc' ? sorted[sorted.length - 1]?.slug : sorted[0]?.slug;
 
   return (
-    <div className={styles.timeline}>
+    <div
+      className={[styles.timeline, sorted.length === 0 ? styles.timelineIsEmpty : '']
+        .filter(Boolean)
+        .join(' ')}
+    >
       {sorted.length === 0 && (
         <div className={styles.timelineEmpty}>
           <EmptyNote>{emptyText}</EmptyNote>

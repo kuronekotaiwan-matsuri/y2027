@@ -1,5 +1,6 @@
 /* セクション見出し: 文字の下に付箋色のマーカー。補足は同じ行の脇に置く */
 .sectionTitle {
+  text-wrap: balance;
   margin-bottom: var(--space-4);
   line-height: 1.3;
   font-family: var(--font-display);

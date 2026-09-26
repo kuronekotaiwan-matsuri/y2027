@@ -47,7 +47,7 @@ export default function Footer({ lastUpdated }: FooterProps) {
               最終更新日: <time dateTime={lastUpdated}>{lastUpdated}</time> ／{' '}
             </>
           )}
-          © {site.event.year} {site.organizer}
+          <span className={styles.copyright}>© {site.event.year} {site.organizer}</span>
         </p>
       </div>
     </footer>

@@ -66,3 +66,16 @@
   letter-spacing: 0;
   opacity: 0.85;
 }
+
+/* 記録が 0 件のとき: 線を消し、空の状態とゴールを左端に揃える */
+.timelineIsEmpty {
+  padding-left: 0;
+}
+
+.timelineIsEmpty::before {
+  display: none;
+}
+
+.timelineIsEmpty .timelineGoal {
+  margin-left: 0;
+}

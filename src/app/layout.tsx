@@ -39,7 +39,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
   const gaId = site.gaMeasurementId;
 
   return (
-    <html lang="ja">
+    <html lang="ja" data-scroll-behavior="smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -64,8 +64,9 @@ gtag('config', '${gaId}');`}
         )}
       </head>
       <body>
+        <a className="skipLink" href="#main">本文へ移動</a>
         <Header />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <Footer lastUpdated={lastUpdated} />
       </body>
     </html>
