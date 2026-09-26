@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ja" data-variant="02">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>見本ページ | design-lab v3</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="lab.css">
+<link rel="stylesheet" href="parts.css">
+</head>
+<body>
+
+<!-- ===== ヘッダー ===== -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-logo" href="#">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path fill="currentColor" d="M5 3l7 6h8l7-6v12a11 11 0 0 1-22 0z"/>
+        <circle cx="12" cy="17" r="1.7" fill="var(--color-header-bg)"/>
+        <circle cx="20" cy="17" r="1.7" fill="var(--color-header-bg)"/>
+      </svg>
+      黒猫台湾まつり2027
+    </a>
+    <nav class="site-nav" aria-label="メインナビゲーション">
+      <a href="#">出店情報</a>
+      <a href="#">プログラム</a>
+      <a href="#">黒猫台湾まつりとは</a>
+      <a href="#" class="is-active">できるまで</a>
+      <a href="#" class="site-nav__insta">Instagram</a>
+    </nav>
+    <button class="site-hamburger" type="button" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+
+<!-- ===== できるまで ===== -->
+<div class="lab-note" id="timeline">できるまで ／ タイムライン</div>
+<section class="section">
+  <div class="section__inner">
+    <h2 class="section-title"><span class="section-title__text">黒猫台湾まつりができるまで</span><a class="timeline__jump section-title__sub" href="#">最新の記録へ</a></h2>
+    <p class="section-lead">2026年の秋から、5月の祭りまで。決まったことも、決まっていないことも、順番に残していきます。上が古く、下が新しい記録です。</p>
+    <div id="filter"></div>
+    <div class="timeline" id="timelineBody"></div>
+  </div>
+</section>
+
+<!-- ===== 記録ページ（公式の記録） ===== -->
+<div class="lab-note" id="record">記録ページ ／ まつり全体の記録を開いたとき</div>
+<section class="section section--alt">
+  <div class="section__inner">
+    <article class="article" id="recordOfficial"></article>
+  </div>
+</section>
+
+<!-- ===== 記録ページ（個人の活動の記録） ===== -->
+<div class="lab-note" id="record-personal">記録ページ ／ 個人の活動の記録を開いたとき（本文は省略）</div>
+<section class="section">
+  <div class="section__inner">
+    <article class="article" id="recordPersonal"></article>
+  </div>
+</section>
+
+<!-- ===== トップ ===== -->
+<div class="lab-note" id="home">トップ ／ できるまで（最新3件と、それぞれがつくっているもの）</div>
+<section class="section section--alt">
+  <div class="section__inner">
+    <h2 class="section-title"><span class="section-title__text">黒猫台湾まつりができるまで</span><span class="section-title__sub">いちばん新しい3件</span></h2>
+    <p class="section-lead">2026年の秋から、5月の祭りまで。決まったことも、決まっていないことも、順番に残していきます。</p>
+    <div class="card-grid" id="homeCards"></div>
+    <div id="homeStories"></div>
+    <div class="section-more"><a class="btn btn--secondary" href="#">すべて見る</a></div>
+  </div>
+</section>
+
+<!-- ===== 作っている人たち ===== -->
+<div class="lab-note" id="people">黒猫台湾まつりとは ／ 作っている人たち</div>
+<section class="section">
+  <div class="section__inner">
+    <h2 class="section-title"><span class="section-title__text">作っている人たち</span></h2>
+    <p class="section-lead">主催は黒猫台湾まつり実行委員会です。2027年は、次の人たちが関わっています。</p>
+    <div id="peopleList"></div>
+  </div>
+</section>
+
+<!-- ===== 書き手ページ ===== -->
+<div class="lab-note" id="person">書き手のページ ／ 「作っている人たち」や「書いた人」から開いたとき</div>
+<section class="section section--alt">
+  <div class="section__inner">
+    <div id="personHeader"></div>
+    <div id="personRecords"></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__logo">黒猫台湾まつり2027</div>
+    <nav class="site-footer__nav"><a href="#">トップ</a><a href="#">出店情報</a><a href="#">プログラム</a><a href="#">黒猫台湾まつりとは</a><a href="#">できるまで</a><a href="#">Instagram</a></nav>
+    <div class="site-footer__meta">© 2027 黒猫台湾まつり実行委員会</div>
+  </div>
+</footer>
+
+<div class="lab-theme" id="labTheme"></div>
+
+<script src="data.js"></script>
+<script src="variants.js"></script>
+<script src="render.js"></script>
+</body>
+</html>

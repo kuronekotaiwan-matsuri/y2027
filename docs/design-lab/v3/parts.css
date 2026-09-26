@@ -1,0 +1,163 @@
+/* ==============================================================
+   v3 追加: 「誰が書いたか」「どこに来たか」の見せ方の部品
+   - 案ごとの差は variants.js のマークアップで表現する
+   - ここは全案共通の部品。色や形はトークンから取る
+   ============================================================== */
+
+/* --- 顔（avatar）。写真が無ければ名前の1文字目、組織は黒猫のマーク --- */
+.avatar {
+  flex: none;
+  display: inline-grid; place-items: center;
+  width: var(--avatar-size, 32px); height: var(--avatar-size, 32px);
+  border-radius: 50%; overflow: hidden;
+  background: var(--color-secondary); color: var(--color-primary-contrast);
+  font-family: var(--font-accent); font-weight: 600; line-height: 1;
+  font-size: calc(var(--avatar-size, 32px) * 0.46);
+  border: 2px solid var(--color-surface);
+  box-shadow: 0 0 0 1px var(--color-border);
+}
+.avatar--sm { --avatar-size: 30px; }
+.avatar--md { --avatar-size: 40px; }
+.avatar--lg { --avatar-size: 72px; }
+.avatar--photo {
+  background: linear-gradient(135deg, #e2b48c 0%, #b26f4c 55%, #6d3e2c 100%);
+  color: #fff; font: 600 0.55rem/1 system-ui, sans-serif; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+.avatar--photo2 { background: linear-gradient(160deg, #9bc2b3 0%, #4f7f7a 50%, #2c4a48 100%); }
+.avatar--lg.avatar--photo { font-size: 0.8rem; }
+.avatar--group { background: var(--color-primary); }
+.avatar--group svg { width: 64%; height: 64%; }
+
+/* --- 署名（byline）: 顔 + 名前 + 立場 を1組で --- */
+.byline { display: inline-flex; align-items: center; gap: 8px; min-width: 0; }
+.byline__name { font-weight: 700; font-size: 0.9rem; }
+.byline__role {
+  font-size: 0.7rem; line-height: 1.5; color: var(--color-text-light);
+  border: 1px solid var(--color-border); border-radius: 3px; padding: 0 5px;
+  white-space: nowrap;
+}
+.timeline__meta--split { justify-content: space-between; }
+
+/* --- 手書きの署名（案01）--- */
+.sign { font-family: var(--font-accent); font-size: var(--font-size-small); color: var(--color-text-light); white-space: nowrap; }
+.sign::before { content: "― "; }
+.sign b { color: var(--color-text); font-weight: 600; }
+.timeline__foot, .card__foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 8px; margin-top: 8px; }
+.timeline__foot .timeline__tags, .card__foot .card__tags { margin-top: 0; }
+
+/* --- 「〇〇さんの『店をつくる』」の1行 --- */
+.series {
+  display: inline-block;
+  font-family: var(--font-accent); font-size: 0.8rem; line-height: 1.5;
+  color: var(--color-secondary);
+  margin-bottom: 4px;
+}
+a.series { text-decoration: underline; text-underline-offset: 3px; }
+
+/* --- 個人の活動の記録は紙の色を変える --- */
+.timeline__card--personal, .card--personal { background: var(--color-background-alt); border-left: 4px solid var(--color-secondary); }
+
+/* --- 吹き出し（案03）--- */
+.timeline__card--bubble {
+  display: grid; grid-template-columns: 40px 1fr; gap: 10px; align-items: start;
+  background: transparent; border: 0; box-shadow: none; padding: 0;
+}
+.bubble {
+  position: relative;
+  background: var(--color-surface);
+  border: var(--border-width) var(--border-style) var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: 12px 16px 14px;
+  box-shadow: var(--shadow);
+}
+.bubble::before {
+  content: "";
+  position: absolute; left: -8px; top: 14px;
+  width: 14px; height: 14px;
+  background: var(--color-surface);
+  border-left: var(--border-width) var(--border-style) var(--color-border);
+  border-bottom: var(--border-width) var(--border-style) var(--color-border);
+  transform: rotate(45deg);
+}
+.bubble--personal { background: var(--color-background-alt); }
+.bubble--personal::before { background: var(--color-background-alt); }
+.bubble__who { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-family: var(--font-accent); font-size: 0.8rem; color: var(--color-text-light); margin-bottom: 6px; }
+.bubble__who b { color: var(--color-text); font-weight: 600; }
+.bubble__thumb { margin-top: 10px; max-width: 240px; border-radius: var(--image-frame-radius, var(--border-radius)); overflow: hidden; }
+.article__who { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: var(--font-size-small); }
+.article__who b { font-weight: 700; }
+
+/* --- 書いた人カード（記録ページの末尾）--- */
+.author-card {
+  display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; align-items: start;
+  margin-top: 44px; padding: 16px 18px;
+  background: var(--color-surface);
+  border: var(--border-width) var(--border-style) var(--color-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow);
+}
+.author-card--noavatar { grid-template-columns: 1fr; }
+.author-card__label { grid-column: 1 / -1; font-family: var(--font-accent); font-size: 0.75rem; color: var(--color-text-light); letter-spacing: 0.08em; }
+.author-card__name { font-weight: 700; font-size: 1.05rem; }
+.author-card__role { font-size: var(--font-size-small); color: var(--color-text-light); margin-left: 8px; }
+.author-card__bio { font-size: var(--font-size-small); margin-top: 2px; }
+.author-card__link { display: inline-block; margin-top: 8px; font-size: var(--font-size-small); color: var(--color-link); text-decoration: underline; text-underline-offset: 3px; }
+
+/* --- まとめて読む（個人の活動）--- */
+.series-box {
+  margin-top: 20px; padding: 12px 16px;
+  background: var(--color-background-alt);
+  border-left: 4px solid var(--color-secondary);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-small);
+}
+.series-box a { color: var(--color-link); text-decoration: underline; text-underline-offset: 3px; }
+
+/* --- パンくず --- */
+.crumb { font-family: var(--font-accent); font-size: var(--font-size-small); color: var(--color-text-light); margin-bottom: 12px; }
+.crumb a { color: var(--color-link); text-decoration: underline; text-underline-offset: 3px; }
+.crumb span::before { content: " › "; }
+.article__back { margin-top: 28px; font-size: var(--font-size-small); }
+.article__back a { color: var(--color-link); text-decoration: underline; text-underline-offset: 3px; }
+.article__topics { font-size: var(--font-size-small); color: var(--color-text-light); margin: -20px 0 28px; }
+.article__topics a { color: var(--color-link); text-decoration: underline; text-underline-offset: 3px; }
+.article__byline { display: inline-flex; align-items: center; gap: 10px; }
+
+/* --- 顔で絞る（案05）--- */
+.faces { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 28px; }
+.face { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 0.75rem; min-width: 52px; }
+.face--active .avatar { box-shadow: 0 0 0 3px var(--color-primary); }
+.face--all .avatar { background: var(--color-primary); font-size: 0.7rem; }
+
+/* --- 作っている人たち --- */
+.people { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 768px) { .people { grid-template-columns: repeat(2, 1fr); } }
+.person-row {
+  display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; align-items: center;
+  padding: 12px 14px;
+  background: var(--color-surface);
+  border: var(--border-width) var(--border-style) var(--color-border);
+  border-radius: var(--border-radius-lg);
+}
+.person-row--noavatar { grid-template-columns: 1fr; }
+.person-row__name { font-weight: 700; }
+.person-row__role { font-size: 0.75rem; color: var(--color-text-light); margin-left: 8px; }
+.person-row__bio { font-size: var(--font-size-small); color: var(--color-text-light); grid-column: 2; }
+.person-row--noavatar .person-row__bio { grid-column: 1; }
+.roles-list { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* --- 書き手ページのヘッダー --- */
+.person-header { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; align-items: center; margin-bottom: 32px; }
+.person-header--noavatar { grid-template-columns: 1fr; }
+.person-header h1 { font-size: 1.9rem; line-height: 1.3; }
+.person-header__role { font-size: var(--font-size-small); color: var(--color-text-light); }
+.person-header__bio { grid-column: 1 / -1; max-width: var(--prose-max-width); }
+.person-header__insta { grid-column: 1 / -1; font-size: var(--font-size-small); }
+.person-header__insta a { color: var(--color-link); text-decoration: underline; text-underline-offset: 3px; }
+
+/* --- トップ: それぞれがつくっているもの --- */
+.story-card__person { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; margin-bottom: 6px; font-family: var(--font-accent); }
+.home-stories { margin-top: 40px; }
+.home-stories__title { font-size: 1.2rem; margin-bottom: 16px; }
+.home-stories__title small { font-family: var(--font-accent); font-weight: 400; font-size: var(--font-size-small); color: var(--color-text-light); margin-left: 8px; }
+.lab-none { padding: 14px 16px; border: 2px dashed var(--color-border); border-radius: var(--border-radius); font-size: var(--font-size-small); color: var(--color-text-light); }
