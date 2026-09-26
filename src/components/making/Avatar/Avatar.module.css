@@ -1,0 +1,49 @@
+/* 顔（avatar）: 骨組みのみ。意匠は web-designer が docs/design-lab/v4/parts.css を参考に付ける */
+.avatar {
+  --avatar-size: var(--avatar-size-sm);
+
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--avatar-bg);
+  color: var(--avatar-text);
+  font-family: var(--font-accent);
+  font-weight: 600;
+  line-height: 1;
+  font-size: calc(var(--avatar-size) * 0.46);
+}
+
+.avatarSm {
+  --avatar-size: var(--avatar-size-sm);
+}
+
+.avatarMd {
+  --avatar-size: var(--avatar-size-md);
+}
+
+.avatarLg {
+  --avatar-size: var(--avatar-size-lg);
+}
+
+.avatarPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 組織: 黒猫のマーク。目の色は背景と同じにして穴に見せる */
+.avatarGroup {
+  --cat-mark-eye: var(--avatar-group-bg);
+
+  background: var(--avatar-group-bg);
+  color: var(--avatar-text);
+}
+
+.avatarGroup svg {
+  width: 64%;
+  height: 64%;
+}

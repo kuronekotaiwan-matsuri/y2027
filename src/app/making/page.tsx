@@ -3,7 +3,7 @@ import Section, { SectionLead } from '@/components/common/Section/Section';
 import SectionTitle from '@/components/common/SectionTitle/SectionTitle';
 import MakingTimeline from '@/components/making/MakingTimeline/MakingTimeline';
 import { site } from '@/config/site';
-import { getContent, toRecordSummary, toStorySummary } from '@/lib/content';
+import { getContent, toPersonSummary, toRecordSummary } from '@/lib/content';
 import { buildMetadata } from '@/lib/metadata';
 import { getGoalMarker } from '@/lib/phase';
 import styles from './page.module.css';
@@ -17,9 +17,9 @@ export const metadata: Metadata = buildMetadata({
   path: '/making/',
 });
 
-/** できるまで（仕様書 5.3）。全物語を合わせた時系列タイムライン */
+/** できるまで（仕様書 5.3）。全記録の時系列タイムライン。顔で絞り込める */
 export default function MakingPage() {
-  const { stories, records } = getContent();
+  const { people, records } = getContent();
   return (
     <Section aria-labelledby="making-title">
       <SectionTitle
@@ -40,7 +40,7 @@ export default function MakingPage() {
       </SectionLead>
       <MakingTimeline
         records={records.map(toRecordSummary)}
-        stories={stories.map(toStorySummary)}
+        people={people.map(toPersonSummary)}
         goal={getGoalMarker(site.event, site.phase)}
         latestId={LATEST_ID}
       />

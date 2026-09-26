@@ -14,19 +14,19 @@
 ## サイトの構成
 
 - 主コンテンツ「祭りの案内」: 決まったことを載せる。準備中のページは「まだ決まっていない」と書かれた状態で公開している
-- サブコンテンツ「できるまで」: 2026年10月から開催までの過程を「物語」と「記録」として時系列で公開する
-  - 物語: 公式の「祭りをつくる」のほか、個人・団体の活動も物語として追加される。個人の物語は公式の企画ではないことを明記する
-  - 記録: 出来事1件。日付、書き手の立場（実行委員、若者チーム、出店者など）、状態タグ（検討中、試作中、決定、ボツ、募集中）を持つ
+- サブコンテンツ「できるまで」: 2026年10月から開催までの過程を「記録」として時系列で公開する。記録には必ず書き手（顔と名前）が付く
+  - 記録: 出来事1件。日付、書き手、状態タグ（検討中、試作中、決定、ボツ、募集中）を持つ
+  - 書き手: 実行委員、若者チーム、出店者、出演者、ボランティア、地域の人・お店、台湾関係者など。公式の発表は「黒猫台湾まつり実行委員会」の名前で書く。書き手ごとに、その人の記録をまとめたページがある
 
 ## ページ
 
-- [トップ](https://kuronekotaiwan-matsuri.github.io/y2027/): 開催予定、最新の記録、案内メニュー
+- [トップ](https://kuronekotaiwan-matsuri.github.io/y2027/): 開催予定、最新の記録、書いている人たち、案内メニュー
 - [出店情報](https://kuronekotaiwan-matsuri.github.io/y2027/shops/): 準備中。出店に関する記録を掲載
 - [プログラム](https://kuronekotaiwan-matsuri.github.io/y2027/programs/): 準備中。プログラムに関する記録を掲載
-- [黒猫台湾まつりとは](https://kuronekotaiwan-matsuri.github.io/y2027/about/): 祭りの説明、これまでの歩み、2027年の挑戦、関わり方
-- [できるまで](https://kuronekotaiwan-matsuri.github.io/y2027/making/): 全物語の時系列タイムライン
+- [黒猫台湾まつりとは](https://kuronekotaiwan-matsuri.github.io/y2027/about/): 祭りの説明、これまでの歩み、2027年の挑戦、作っている人たち、関わり方
+- [できるまで](https://kuronekotaiwan-matsuri.github.io/y2027/making/): 全記録の時系列タイムライン。書き手の顔で絞り込める
 - 記録: https://kuronekotaiwan-matsuri.github.io/y2027/making/records/<slug>/
-- 物語: https://kuronekotaiwan-matsuri.github.io/y2027/making/stories/<slug>/
+- 書き手: https://kuronekotaiwan-matsuri.github.io/y2027/making/people/<id>/
 - サイトマップ: https://kuronekotaiwan-matsuri.github.io/y2027/sitemap.xml
 
 ## 過去のサイト

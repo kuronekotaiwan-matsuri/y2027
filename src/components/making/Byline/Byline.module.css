@@ -1,0 +1,31 @@
+/* 署名: 顔 + 名前 + 立場。骨組みのみ */
+.byline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.bylineName {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* 立場（カード）: 小さな枠 */
+.bylineRole {
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: var(--color-role-text);
+  border: var(--role-border);
+  border-radius: 3px;
+  padding: 0 5px;
+  white-space: nowrap;
+}
+
+/* 立場（記録ページ）: 「（出店者）」の文字 */
+.bylineParen {
+  font-size: 0.8rem;
+  color: var(--color-role-text);
+  margin-left: -4px;
+  white-space: nowrap;
+}

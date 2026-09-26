@@ -1,0 +1,13 @@
+/* パンくず: 骨組みのみ */
+.crumb {
+  margin-bottom: 12px;
+  font-family: var(--font-accent);
+  font-size: var(--font-size-small);
+  color: var(--color-text-light);
+}
+
+.crumb a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

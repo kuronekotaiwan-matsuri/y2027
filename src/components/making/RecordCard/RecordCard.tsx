@@ -1,18 +1,17 @@
 import Link from 'next/link';
-import RoleBadge from '@/components/making/RoleBadge/RoleBadge';
-import StoryBadge from '@/components/making/StoryBadge/StoryBadge';
+import Byline from '@/components/making/Byline/Byline';
 import Tag from '@/components/making/Tag/Tag';
 import { formatDate } from '@/lib/content/select';
-import type { RecordSummary, StorySummary } from '@/lib/content/types';
+import type { PersonSummary, RecordSummary } from '@/lib/content/types';
 import styles from './RecordCard.module.css';
 
 interface RecordCardProps {
   record: RecordSummary;
-  story: StorySummary;
+  person: PersonSummary;
 }
 
-/** 記録カード（トップの最新記録など） */
-export default function RecordCard({ record, story }: RecordCardProps) {
+/** 記録カード（トップの最新記録など。仕様書 6.3）。署名（左）と日付（右）を先頭に */
+export default function RecordCard({ record, person }: RecordCardProps) {
   const href = `/making/records/${record.slug}/`;
   return (
     <article className={styles.card}>
@@ -22,12 +21,11 @@ export default function RecordCard({ record, story }: RecordCardProps) {
         </div>
       )}
       <div className={styles.cardBody}>
-        <div className={styles.cardMeta}>
+        <div className={`${styles.cardMeta} ${styles.cardMetaSplit}`}>
+          <Byline person={person} variant="label" size="sm" />
           <time className={styles.cardDate} dateTime={record.date}>
             {formatDate(record.date)}
           </time>
-          <StoryBadge story={story} />
-          <RoleBadge role={record.author.role} />
         </div>
         <h3 className={styles.cardTitle}>
           <Link href={href}>{record.title}</Link>

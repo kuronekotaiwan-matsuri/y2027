@@ -1,12 +1,5 @@
-/* トップ「できるまで」: 最新の記録カード（3列）と物語カード（2列） */
+/* トップ「できるまで」: 最新の記録カード（3列）と「書いている人たち」 */
 .cardGrid {
-  align-items: start;
-  display: grid;
-  gap: var(--space-3);
-  grid-template-columns: 1fr;
-}
-
-.cardGrid2 {
   align-items: start;
   display: grid;
   gap: var(--space-3);
@@ -17,22 +10,23 @@
   .cardGrid {
     grid-template-columns: repeat(3, 1fr);
   }
-
-  .cardGrid2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
-.storiesTitle {
+/* 書いている人たち（骨組みのみ。意匠は web-designer） */
+.writers {
+  margin-top: var(--space-6);
+}
+
+.writersTitle {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
   gap: var(--space-1);
-  margin: var(--space-6) 0 var(--space-2);
+  margin: 0 0 var(--space-2);
   font-size: var(--font-size-h3);
 }
 
-.storiesTitle small {
+.writersTitle small {
   font-family: var(--font-accent);
   font-size: var(--font-size-small);
   font-weight: var(--font-weight-body);

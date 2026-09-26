@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { site } from '@/config/site';
-import { getContent, getLastUpdated } from '@/lib/content';
+import { getContent, getLastUpdated, recordsByAuthor } from '@/lib/content';
 import { absoluteUrl } from '@/lib/urls';
 
 /** 静的エクスポート用（sitemap.xml をビルド時に生成する） */
@@ -9,8 +9,9 @@ export const dynamic = 'force-static';
 /** 静的ページ: トップ + ナビにあるページ（ページを増やしたら site.nav に足すだけでよい） */
 const STATIC_PATHS = ['/', ...site.nav.map((item) => item.href)];
 
+/** 主コンテンツ、記録、書き手を含む（仕様書 9.5） */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const { stories, records } = getContent();
+  const { people, records } = getContent();
   const lastUpdated = getLastUpdated();
 
   const pages: MetadataRoute.Sitemap = STATIC_PATHS.map((path) => ({
@@ -18,11 +19,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...(lastUpdated ? { lastModified: lastUpdated } : {}),
   }));
 
-  const storyPages: MetadataRoute.Sitemap = stories.map((story) => {
-    const latest = records.filter((r) => r.storySlug === story.slug).map((r) => r.date).sort();
+  const peoplePages: MetadataRoute.Sitemap = people.map((person) => {
+    const latest = recordsByAuthor(records, person.id, 'desc')[0];
+    const lastModified = latest?.date ?? lastUpdated;
     return {
-      url: absoluteUrl(`/making/stories/${story.slug}/`),
-      lastModified: latest[latest.length - 1] ?? story.startDate,
+      url: absoluteUrl(`/making/people/${person.id}/`),
+      ...(lastModified ? { lastModified } : {}),
     };
   });
 
@@ -31,5 +33,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: record.date,
   }));
 
-  return [...pages, ...storyPages, ...recordPages];
+  return [...pages, ...peoplePages, ...recordPages];
 }

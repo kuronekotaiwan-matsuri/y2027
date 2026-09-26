@@ -1,0 +1,48 @@
+/* 書いた人カード: 左に顔（大）、右に名前・立場・自己紹介・リンク。骨組みのみ */
+.authorCard {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 14px;
+  align-items: start;
+  margin-top: var(--space-5);
+  padding: var(--space-2) calc(var(--spacing-unit) * 2.25);
+  background: var(--color-surface);
+  border: var(--border-width) var(--border-style) var(--color-border);
+  border-radius: var(--border-radius-lg);
+}
+
+.authorCardLabel {
+  grid-column: 1 / -1;
+  font-family: var(--font-accent);
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+}
+
+.authorCardBody {
+  min-width: 0;
+}
+
+.authorCardName {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.authorCardRole {
+  margin-left: 8px;
+  font-size: var(--font-size-small);
+  color: var(--color-role-text);
+}
+
+.authorCardBio {
+  margin-top: 2px;
+  font-size: var(--font-size-small);
+}
+
+.authorCardLink {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: var(--font-size-small);
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

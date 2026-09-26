@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import Button from '@/components/common/Button/Button';
+import EmptyNote from '@/components/common/EmptyNote/EmptyNote';
 import Section, { SectionMore } from '@/components/common/Section/Section';
 import SectionTitle from '@/components/common/SectionTitle/SectionTitle';
-import RoleBadge from '@/components/making/RoleBadge/RoleBadge';
+import PeopleList from '@/components/making/PeopleList/PeopleList';
 import { site } from '@/config/site';
+import { getPeople, toPersonSummary } from '@/lib/content';
 import { buildMetadata } from '@/lib/metadata';
 import styles from './page.module.css';
 
@@ -18,7 +20,7 @@ const pastSiteUrl = (year: number) => site.pastSites.find((past) => past.year ==
 
 /** 黒猫台湾まつりとは（仕様書 5.6） */
 export default function AboutPage() {
-  const roles = site.roles.filter((role) => role.key !== 'other');
+  const people = getPeople().map(toPersonSummary);
   return (
     <div className={styles.aboutPage}>
       <Section aria-labelledby="about-title">
@@ -124,15 +126,15 @@ export default function AboutPage() {
         <SectionTitle id="people-title">作っている人たち</SectionTitle>
         <p className={styles.text}>
           主催は{site.organizer}
-          です。これまで主に4人のコアメンバーが企画・運営を担ってきました。2027年は、次のような立場の人たちが関わります。
+          です。これまで主に4人のコアメンバーが企画・運営を担ってきました。2027年は、次の人たちが「できるまで」を書いています。名前を押すと、その人の記録が読めます。
         </p>
-        <ul className={styles.roles}>
-          {roles.map((role) => (
-            <li key={role.key}>
-              <RoleBadge role={role.key} />
-            </li>
-          ))}
-        </ul>
+        {people.length > 0 ? (
+          <PeopleList people={people} />
+        ) : (
+          <EmptyNote>
+            まだ書き手の登録はありません。動き出したら、関わっている人がここに並びます。
+          </EmptyNote>
+        )}
       </Section>
 
       <Section aria-labelledby="join-title">

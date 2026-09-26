@@ -1,0 +1,44 @@
+/* 作っている人たち: 2列（モバイル1列）の行カード。骨組みのみ */
+.people {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .people {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.personRow {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2px 12px;
+  align-items: center;
+  height: 100%;
+  padding: 12px 14px;
+  background: var(--color-surface);
+  border: var(--border-width) var(--border-style) var(--color-border);
+  border-radius: var(--border-radius-lg);
+}
+
+.personRowHead {
+  min-width: 0;
+}
+
+.personRowName {
+  font-weight: 700;
+}
+
+.personRowRole {
+  margin-left: 8px;
+  font-size: 0.75rem;
+  color: var(--color-role-text);
+}
+
+.personRowBio {
+  grid-column: 2;
+  font-size: var(--font-size-small);
+  color: var(--color-text-light);
+}

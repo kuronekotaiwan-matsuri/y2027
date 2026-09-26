@@ -1,5 +1,5 @@
 import { site } from '@/config/site';
-import type { Story, StoryRecord } from '@/lib/content/types';
+import type { MakingRecord, PersonSummary } from '@/lib/content/types';
 import { absoluteUrl } from '@/lib/urls';
 
 const organizationId = `${site.url}#organization`;
@@ -34,8 +34,8 @@ export const siteJsonLd = {
   ],
 };
 
-/** 記録ページ: Article */
-export function recordJsonLd(record: StoryRecord, story: Story) {
+/** 記録ページ: Article。author は書き手（組織なら Organization、それ以外は Person） */
+export function recordJsonLd(record: MakingRecord, person: PersonSummary) {
   const url = absoluteUrl(`/making/records/${record.slug}/`);
   return {
     '@context': 'https://schema.org',
@@ -46,14 +46,18 @@ export function recordJsonLd(record: StoryRecord, story: Story) {
     datePublished: record.date,
     dateModified: record.date,
     inLanguage: 'ja-JP',
-    author: { '@type': 'Person', name: record.author.name },
+    author: {
+      '@type': person.kind === 'group' ? 'Organization' : 'Person',
+      name: person.name,
+      url: absoluteUrl(`/making/people/${person.id}/`),
+    },
     publisher: { '@id': organizationId },
     image: [absoluteUrl(record.thumbnail ?? site.ogImage)],
     mainEntityOfPage: url,
     isPartOf: {
       '@type': 'CreativeWorkSeries',
-      name: story.title,
-      url: absoluteUrl(`/making/stories/${story.slug}/`),
+      name: '黒猫台湾まつりができるまで',
+      url: absoluteUrl('/making/'),
     },
   };
 }

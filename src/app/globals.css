@@ -25,14 +25,18 @@
   --color-button-secondary-text: #1F3A5F;
   --color-button-secondary-border: #1F3A5F;
 
-  /* --- 物語・立場・タグ --- */
-  --color-story-official: #B7332A;
-  --color-story-official-text: #FFFBF2;
-  --color-story-personal: #1F3A5F;
-  --color-story-personal-text: #F3E4C8;
-  --color-role-bg: #FFF3B0;
-  --color-role-text: #5A4A00;
-  --role-border: 0;
+  /* --- 書き手（顔・署名）・立場・タグ --- */
+  --avatar-bg: #1F3A5F;
+  --avatar-text: #FFFBF2;
+  --avatar-group-bg: #B7332A;
+  --avatar-border: 2px solid #FFFBF2;
+  --avatar-ring: 0 0 0 1px #D9C7A6;
+  --avatar-size-sm: 30px;
+  --avatar-size-md: 40px;
+  --avatar-size-lg: 72px;
+  --faces-active-ring: 0 0 0 3px #B7332A;
+  --color-role-text: #6A5A48;
+  --role-border: 1px solid #D9C7A6;
   --color-tag-consider-bg: transparent;
   --color-tag-consider-text: #B7332A;
   --color-tag-decided-bg: #B7332A;
@@ -44,9 +48,6 @@
   --color-tag-recruit-text: #1F3A5F;
   --tag-border: 2px double currentColor;
   --tag-tilt: -2deg;
-  --color-notice-bg: #FFF3D6;
-  --color-notice-border: #D9A62E;
-  --color-notice-text: #5A4300;
 
   /* --- タイポグラフィ --- */
   --font-display: "Klee One", "Zen Maru Gothic", sans-serif;
@@ -137,6 +138,8 @@
   --focus-outline-offset: 3px;
   --hero-now-tilt: -1deg;
   --empty-border: 2px dashed #D9C7A6;
+  /* 付箋色。ヘッダーの準備中の印とスキップリンクが使う（design-system 9章には無い。web-designer が整理する） */
+  --color-role-bg: #FFF3B0;
 }
 
 /* --- リセット（docs/design-lab/v2/lab.css を参考） --- */

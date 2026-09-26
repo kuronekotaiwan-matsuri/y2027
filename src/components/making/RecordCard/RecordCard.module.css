@@ -96,3 +96,8 @@
   gap: 6px;
   flex-wrap: wrap;
 }
+
+/* 先頭の行: 署名を左、日付を右に（design-lab v4 案01） */
+.cardMetaSplit {
+  justify-content: space-between;
+}

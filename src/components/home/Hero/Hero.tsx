@@ -3,14 +3,14 @@ import Button from '@/components/common/Button/Button';
 import EventInfo from '@/components/home/EventInfo/EventInfo';
 import { site, type Phase } from '@/config/site';
 import { monthLabel } from '@/lib/content/select';
-import type { RecordSummary, StorySummary } from '@/lib/content/types';
+import type { RecordSummary } from '@/lib/content/types';
 import { getHeroPlan } from '@/lib/phase';
 import styles from './Hero.module.css';
 
 interface HeroProps {
   phase: Phase;
   /** 最新の記録（making のときの「いま」） */
-  latest?: { record: RecordSummary; story: StorySummary };
+  latest?: RecordSummary;
 }
 
 /** トップのヒーロー。phase で主に置くものと CTA が変わる（仕様書 5.1） */
@@ -36,10 +36,10 @@ export default function Hero({ phase, latest }: HeroProps) {
 
         {plan.showNow &&
           (latest ? (
-            <Link href={`/making/records/${latest.record.slug}/`} className={styles.heroNow}>
+            <Link href={`/making/records/${latest.slug}/`} className={styles.heroNow}>
               <span className={styles.heroNowLabel}>いま</span>
-              <span className={styles.heroNowMonth}>{monthLabel(latest.record.date)}</span>
-              <span className={styles.heroNowTitle}>{latest.record.title}</span>
+              <span className={styles.heroNowMonth}>{monthLabel(latest.date)}</span>
+              <span className={styles.heroNowTitle}>{latest.title}</span>
             </Link>
           ) : (
             <div className={styles.heroNow}>

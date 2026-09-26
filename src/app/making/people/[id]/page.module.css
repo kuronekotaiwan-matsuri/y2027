@@ -1,0 +1,20 @@
+/* 書き手ページ: ヘッダーと自己紹介は本文幅。記録はタイムライン */
+.personPage {
+  max-width: var(--prose-max-width);
+  margin: 0 auto;
+}
+
+/* 戻るリンクだけの区画。上の余白を詰める */
+.backSection {
+  padding-top: var(--space-4);
+}
+
+.back {
+  font-size: var(--font-size-small);
+}
+
+.back a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

@@ -3,14 +3,14 @@ import EmptyNote from '@/components/common/EmptyNote/EmptyNote';
 import TimelineItem from '@/components/making/TimelineItem/TimelineItem';
 import type { GoalMarker } from '@/config/site';
 import { groupByMonth, sortRecordsByDate, type SortOrder } from '@/lib/content/select';
-import type { RecordSummary, StorySummary } from '@/lib/content/types';
+import type { PersonSummary, RecordSummary } from '@/lib/content/types';
 import styles from './Timeline.module.css';
 
 interface TimelineProps {
   records: RecordSummary[];
-  /** records が属する物語（バッジの色と名前に使う） */
-  stories: StorySummary[];
-  /** 上が古い（asc）か、新しい順（desc）か。/making/ と物語ページは asc、準備中ページは desc */
+  /** records の書き手（署名に使う）。author が見つからない記録は描画しない */
+  people: PersonSummary[];
+  /** 上が古い（asc）か、新しい順（desc）か。/making/ と書き手ページは asc、準備中ページは desc */
   order?: SortOrder;
   /** 最下部のゴールマーカー（/making/ のみ） */
   goal?: GoalMarker;
@@ -20,16 +20,16 @@ interface TimelineProps {
   latestId?: string;
 }
 
-/** タイムライン。/making/、物語ページ、準備中ページの関連記録で共用（仕様書 6.3） */
+/** タイムライン。/making/、書き手ページ、準備中ページの関連記録で共用（仕様書 6.3） */
 export default function Timeline({
   records,
-  stories,
+  people,
   order = 'asc',
   goal,
   emptyText = 'まだ記録はありません。書いたものから順に、ここに並びます。',
   latestId,
 }: TimelineProps) {
-  const storyMap = new Map(stories.map((story) => [story.slug, story]));
+  const peopleById = new Map(people.map((person) => [person.id, person]));
   const sorted = sortRecordsByDate(records, order);
   const groups = groupByMonth(sorted);
   const latestSlug = order === 'asc' ? sorted[sorted.length - 1]?.slug : sorted[0]?.slug;
@@ -49,13 +49,13 @@ export default function Timeline({
         <Fragment key={group.month}>
           <div className={styles.timelineMonth}>{group.label}</div>
           {group.records.map((record) => {
-            const story = storyMap.get(record.storySlug);
-            if (!story) return null;
+            const person = peopleById.get(record.author);
+            if (!person) return null;
             return (
               <TimelineItem
                 key={record.slug}
                 record={record}
-                story={story}
+                person={person}
                 id={latestId && record.slug === latestSlug ? latestId : undefined}
               />
             );

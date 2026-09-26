@@ -5,19 +5,20 @@ import StatusBadge from '@/components/common/StatusBadge/StatusBadge';
 import Timeline from '@/components/making/Timeline/Timeline';
 import { site, type PreparingStatus, type TopicKey } from '@/config/site';
 import { formatDate } from '@/lib/content/select';
-import type { RecordSummary, StorySummary } from '@/lib/content/types';
+import type { PersonSummary, RecordSummary } from '@/lib/content/types';
 import styles from './PreparingPage.module.css';
 
 interface PreparingPageProps {
   status: PreparingStatus;
   topic: TopicKey;
-  /** この topic を持つ公式の記録（新しい順に表示する） */
+  /** この topic を持つ記録（新しい順に表示する） */
   records: RecordSummary[];
-  stories: StorySummary[];
+  /** 署名に使う書き手 */
+  people: PersonSummary[];
 }
 
 /** 主コンテンツの準備中ページ（仕様書 5.2） */
-export default function PreparingPage({ status, records, stories }: PreparingPageProps) {
+export default function PreparingPage({ status, records, people }: PreparingPageProps) {
   return (
     <div className={styles.preparingPage}>
       <Section aria-labelledby="page-title">
@@ -41,7 +42,7 @@ export default function PreparingPage({ status, records, stories }: PreparingPag
           </h2>
           <Timeline
             records={records}
-            stories={stories}
+            people={people}
             order="desc"
             emptyText="この話題の記録はまだありません。決まるまでの経緯を、書いたものから順にここに載せます。"
           />

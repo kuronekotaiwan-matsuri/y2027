@@ -1,0 +1,41 @@
+/* 書き手ページのヘッダー: 左に顔（大）、右に名前と立場。自己紹介と Instagram は下に全幅。骨組みのみ */
+.personHeader {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 16px;
+  align-items: center;
+  margin-bottom: var(--space-4);
+}
+
+.personHeaderHead {
+  min-width: 0;
+}
+
+.personHeaderName {
+  font-size: 1.9rem;
+  line-height: 1.3;
+}
+
+.personHeaderRole {
+  font-size: var(--font-size-small);
+  color: var(--color-role-text);
+}
+
+.personHeaderBio {
+  grid-column: 1 / -1;
+  max-width: var(--prose-max-width);
+}
+
+.personHeaderInsta {
+  grid-column: 1 / -1;
+  font-size: var(--font-size-small);
+}
+
+.personHeaderInsta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

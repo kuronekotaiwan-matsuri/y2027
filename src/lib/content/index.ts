@@ -4,7 +4,7 @@
  */
 import { site } from '@/config/site';
 import { loadContent } from './load';
-import type { ContentData, Story, StoryRecord } from './types';
+import type { ContentData, MakingRecord, Person } from './types';
 
 export * from './types';
 export * from './select';
@@ -20,34 +20,30 @@ export function getContent(): ContentData {
   return cache;
 }
 
-export function getStories(): Story[] {
-  return getContent().stories;
+export function getPeople(): Person[] {
+  return getContent().people;
 }
 
-export function getRecords(): StoryRecord[] {
+export function getRecords(): MakingRecord[] {
   return getContent().records;
 }
 
-export function getStory(slug: string): Story | undefined {
-  return getContent().stories.find((story) => story.slug === slug);
+export function getPerson(id: string): Person | undefined {
+  return getContent().people.find((person) => person.id === id);
 }
 
-export function getRecord(slug: string): StoryRecord | undefined {
+export function getRecord(slug: string): MakingRecord | undefined {
   return getContent().records.find((record) => record.slug === slug);
 }
 
 /**
  * 最終更新日（仕様書 6.2）
  * 最新の記録の日付と、主コンテンツ（準備中ページの状況文）の更新日の新しい方。
- * どちらも無いときだけ、物語の開始日を使う。
  */
 export function getLastUpdated(): string | undefined {
-  const { stories, records } = getContent();
+  const { records } = getContent();
   const recordDates = records.map((r) => r.date);
   const preparingDates = Object.values(site.preparing).map((status) => status.updated);
   const candidates = [...recordDates, ...preparingDates].filter(Boolean).sort();
-  if (candidates.length > 0) return candidates[candidates.length - 1];
-
-  const storyDates = stories.map((s) => s.startDate).sort();
-  return storyDates[storyDates.length - 1];
+  return candidates[candidates.length - 1];
 }

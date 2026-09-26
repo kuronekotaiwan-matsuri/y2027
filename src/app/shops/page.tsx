@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import PreparingPage from '@/components/preparing/PreparingPage/PreparingPage';
 import { site } from '@/config/site';
-import { getContent, recordsByTopic } from '@/lib/content';
+import { getContent, recordsByTopic, toPersonSummary, toRecordSummary } from '@/lib/content';
 import { buildMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = buildMetadata({
@@ -12,13 +12,13 @@ export const metadata: Metadata = buildMetadata({
 
 /** 出店情報（準備中。仕様書 5.2） */
 export default function ShopsPage() {
-  const { stories, records } = getContent();
+  const { people, records } = getContent();
   return (
     <PreparingPage
       status={site.preparing.shops}
       topic="shops"
-      records={recordsByTopic(records, 'shops', { officialOnly: true, stories })}
-      stories={stories}
+      records={recordsByTopic(records, 'shops').map(toRecordSummary)}
+      people={people.map(toPersonSummary)}
     />
   );
 }

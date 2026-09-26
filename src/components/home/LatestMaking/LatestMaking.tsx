@@ -2,25 +2,23 @@ import Button from '@/components/common/Button/Button';
 import EmptyNote from '@/components/common/EmptyNote/EmptyNote';
 import Section, { SectionLead, SectionMore } from '@/components/common/Section/Section';
 import SectionTitle from '@/components/common/SectionTitle/SectionTitle';
+import Faces from '@/components/making/Faces/Faces';
 import RecordCard from '@/components/making/RecordCard/RecordCard';
-import StoryCard from '@/components/making/StoryCard/StoryCard';
 import type { Phase } from '@/config/site';
-import type { RecordSummary, StorySummary } from '@/lib/content/types';
+import type { PersonSummary, RecordSummary } from '@/lib/content/types';
 import styles from './LatestMaking.module.css';
 
 interface LatestMakingProps {
   phase: Phase;
   /** 最新の記録（新しい順。通常3件） */
   records: RecordSummary[];
-  /** 進行中の物語（order 順） */
-  stories: StorySummary[];
-  /** 物語 slug → 記録数 */
-  counts: Map<string, number>;
+  /** 書き手（order 順。「書いている人たち」と署名に使う） */
+  people: PersonSummary[];
 }
 
-/** トップ「できるまで」（仕様書 5.1） */
-export default function LatestMaking({ phase, records, stories, counts }: LatestMakingProps) {
-  const storyMap = new Map(stories.map((story) => [story.slug, story]));
+/** トップ「できるまで」（仕様書 5.1）: 最新3件、書いている人たち、すべて見る */
+export default function LatestMaking({ phase, records, people }: LatestMakingProps) {
+  const peopleById = new Map(people.map((person) => [person.id, person]));
   const sub = phase === 'archive' ? '開催の記録と振り返り' : 'いちばん新しい3件';
 
   return (
@@ -35,8 +33,8 @@ export default function LatestMaking({ phase, records, stories, counts }: Latest
       {records.length > 0 ? (
         <div className={styles.cardGrid}>
           {records.map((record) => {
-            const story = storyMap.get(record.storySlug);
-            return story ? <RecordCard key={record.slug} record={record} story={story} /> : null;
+            const person = peopleById.get(record.author);
+            return person ? <RecordCard key={record.slug} record={record} person={person} /> : null;
           })}
         </div>
       ) : (
@@ -45,14 +43,14 @@ export default function LatestMaking({ phase, records, stories, counts }: Latest
         </EmptyNote>
       )}
 
-      <h3 className={styles.storiesTitle}>
-        物語 <small>いま進んでいるもの</small>
-      </h3>
-      <div className={styles.cardGrid2}>
-        {stories.map((story) => (
-          <StoryCard key={story.slug} story={story} recordCount={counts.get(story.slug) ?? 0} />
-        ))}
-      </div>
+      {people.length > 0 && (
+        <div className={styles.writers}>
+          <h3 className={styles.writersTitle}>
+            書いている人たち <small>顔を押すと、その人の記録だけ読めます</small>
+          </h3>
+          <Faces people={people} label="書いている人たち" />
+        </div>
+      )}
 
       <SectionMore>
         <Button href="/making/" variant="secondary">

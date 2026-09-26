@@ -97,3 +97,8 @@
     order: 0;
   }
 }
+
+/* 先頭の行: 署名を左、日付を右に（design-lab v4 案01） */
+.timelineMetaSplit {
+  justify-content: space-between;
+}

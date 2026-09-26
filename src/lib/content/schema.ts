@@ -35,6 +35,7 @@ const stringList = z
   .transform((value) => (typeof value === 'string' ? [value] : value));
 
 const URL_RE = /^https?:\/\//;
+const HTTPS_RE = /^https:\/\//;
 
 /** 語彙違反のメッセージ。何を書いたかも示す */
 function vocabularyError(label: string, allowed: readonly string[]) {
@@ -42,33 +43,35 @@ function vocabularyError(label: string, allowed: readonly string[]) {
     `${label} は次のいずれかです: ${allowed.join(', ')}（現在: "${String(issue.input)}"）`;
 }
 
-export const storyFrontMatterSchema = z.object({
-  title: z.string().min(1, 'title を書いてください'),
-  subtitle: z.string().optional(),
-  kind: z.enum(['official', 'personal'], {
-    error: vocabularyError('kind', ['official（公式）', 'personal（個人・団体）']),
-  }),
-  owner: z.string().min(1, 'owner を書いてください'),
-  startDate: dateField,
-  status: z.enum(['active', 'finished'], {
-    error: vocabularyError('status', ['active（進行中）', 'finished（完了）']),
-  }),
-  color: z
+/** 書き手（仕様書 3.6） */
+export const personFrontMatterSchema = z.object({
+  name: z.string().min(1, 'name を書いてください'),
+  role: z.enum(roleKeys, { error: vocabularyError('role', roleKeys) }),
+  kind: z
+    .enum(['person', 'group'], {
+      error: vocabularyError('kind', ['person（個人）', 'group（組織）']),
+    })
+    .default('person'),
+  avatar: z.string().min(1).optional(),
+  bio: z.string().optional(),
+  instagram: z
     .string()
-    .regex(/^#[0-9a-fA-F]{6}$/, 'color は "#RRGGBB" の形式で書いてください')
+    .regex(HTTPS_RE, 'instagram は https:// で始まる URL を書いてください')
     .optional(),
-  cover: z.string().min(1).optional(),
-  order: z.number({ error: 'order は数値で書いてください' }).int('order は整数で書いてください'),
+  order: z
+    .number({ error: 'order は数値で書いてください' })
+    .int('order は整数で書いてください')
+    .optional(),
   draft: z.boolean({ error: 'draft は true か false です' }).default(false),
 });
 
+/** 記録（仕様書 3.6）。author は書き手の ID。存在確認は load.ts で行う */
 export const recordFrontMatterSchema = z.object({
   title: z.string().min(1, 'title を書いてください'),
   date: dateField,
-  author: z.object({
-    name: z.string().min(1, 'author.name を書いてください'),
-    role: z.enum(roleKeys, { error: vocabularyError('author.role', roleKeys) }),
-  }),
+  author: z
+    .string({ error: 'author は書き手のID（content/people/ のファイル名）を1つ書いてください' })
+    .min(1, 'author を書いてください'),
   summary: z.string().min(1, 'summary を書いてください'),
   tags: stringList,
   topics: stringList.pipe(z.array(z.enum(topicKeys, { error: vocabularyError('topics', topicKeys) }))),
@@ -79,20 +82,11 @@ export const recordFrontMatterSchema = z.object({
   draft: z.boolean({ error: 'draft は true か false です' }).default(false),
 });
 
-export type StoryFrontMatter = z.infer<typeof storyFrontMatterSchema>;
+export type PersonFrontMatter = z.infer<typeof personFrontMatterSchema>;
 export type RecordFrontMatter = z.infer<typeof recordFrontMatterSchema>;
 
-const STORY_REQUIRED = ['title', 'kind', 'owner', 'startDate', 'status', 'order'];
-const RECORD_REQUIRED = ['title', 'date', 'author.name', 'author.role', 'summary'];
-
-function getByPath(data: Record<string, unknown>, dotted: string): unknown {
-  return dotted.split('.').reduce<unknown>((current, key) => {
-    if (current && typeof current === 'object') {
-      return (current as Record<string, unknown>)[key];
-    }
-    return undefined;
-  }, data);
-}
+const PERSON_REQUIRED = ['name', 'role'];
+const RECORD_REQUIRED = ['title', 'date', 'author', 'summary'];
 
 /** 必須項目の欠落を、zod より先に分かりやすい文で報告する */
 function missingIssues(
@@ -102,7 +96,7 @@ function missingIssues(
 ): ContentIssue[] {
   return required
     .filter((field) => {
-      const value = getByPath(data, field);
+      const value = data[field];
       return value === undefined || value === null || value === '';
     })
     .map((field) => ({ file, field, message: `必須項目 ${field} がありません` }));
@@ -130,8 +124,8 @@ function parseWith<T>(
   return { ok: true, data: result.data };
 }
 
-export function parseStoryFrontMatter(data: unknown, file: string): ParseResult<StoryFrontMatter> {
-  return parseWith(storyFrontMatterSchema, STORY_REQUIRED, data, file);
+export function parsePersonFrontMatter(data: unknown, file: string): ParseResult<PersonFrontMatter> {
+  return parseWith(personFrontMatterSchema, PERSON_REQUIRED, data, file);
 }
 
 export function parseRecordFrontMatter(

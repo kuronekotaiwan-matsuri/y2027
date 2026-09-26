@@ -93,11 +93,6 @@ export interface PreparingStatus {
   referenceLabel?: string;
 }
 
-export interface StoryColor {
-  bg: string;
-  text: string;
-}
-
 export interface NavItem {
   label: string;
   href: string;
@@ -142,8 +137,6 @@ export interface SiteConfig {
   roles: RoleDefinition[];
   topics: TopicDefinition[];
   tags: TagDefinition[];
-  /** 物語の色。[0] は公式（固定）、[1] 以降を個人・団体の物語に order 順で割り当てる */
-  storyPalette: StoryColor[];
   pastSites: PastSite[];
 }
 
@@ -243,7 +236,7 @@ export const site: SiteConfig = {
     { key: 'shop', label: '出店者' },
     { key: 'performer', label: '出演者' },
     { key: 'volunteer', label: 'ボランティア' },
-    { key: 'local', label: '地域の人・地域店舗' },
+    { key: 'local', label: '地域の人・お店' },
     { key: 'taiwan', label: '台湾関係者' },
     { key: 'other', label: 'その他' },
   ],
@@ -258,7 +251,7 @@ export const site: SiteConfig = {
     { key: 'poster', label: 'ポスター・チラシ' },
   ],
 
-  // 推奨タグ（仕様書 3.4）。自由記述も許すが、ここにあるものは状態に応じた見た目になる
+  // 推奨タグ（仕様書 3.3）。自由記述も許すが、ここにあるものは状態に応じた見た目になる
   tags: [
     { label: '検討中', status: 'consider' },
     { label: '試作中', status: 'trial' },
@@ -266,16 +259,6 @@ export const site: SiteConfig = {
     { label: 'ボツ', status: 'rejected' },
     { label: '募集中', status: 'recruit' },
     { label: '開催情報', status: 'info' },
-  ],
-
-  // docs/design-system.md 2章「物語の色」
-  storyPalette: [
-    { bg: '#B7332A', text: '#FFFBF2' }, // 公式
-    { bg: '#1F3A5F', text: '#F3E4C8' }, // 個人・団体の1本目
-    { bg: '#4F7F4A', text: '#FFFBF2' }, // 緑
-    { bg: '#7A3E6B', text: '#FFFBF2' }, // 紫
-    { bg: '#2A7F7F', text: '#FFFBF2' }, // 青緑
-    { bg: '#8F6216', text: '#FFFBF2' }, // 黄土
   ],
 
   pastSites: [

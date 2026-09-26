@@ -1,20 +1,22 @@
 import Link from 'next/link';
-import RoleBadge from '@/components/making/RoleBadge/RoleBadge';
-import StoryBadge from '@/components/making/StoryBadge/StoryBadge';
+import Byline from '@/components/making/Byline/Byline';
 import Tag from '@/components/making/Tag/Tag';
 import { formatDate } from '@/lib/content/select';
-import type { RecordSummary, StorySummary } from '@/lib/content/types';
+import type { PersonSummary, RecordSummary } from '@/lib/content/types';
 import styles from './TimelineItem.module.css';
 
 interface TimelineItemProps {
   record: RecordSummary;
-  story: StorySummary;
+  person: PersonSummary;
   /** 「最新の記録へ」のジャンプ先にするときの id */
   id?: string;
 }
 
-/** タイムラインの1項目。カード全体が記録ページへのリンク */
-export default function TimelineItem({ record, story, id }: TimelineItemProps) {
+/**
+ * タイムラインの1項目（仕様書 5.3）。先頭の行に署名（左）と日付（右）、タイトル、要約、状態タグ、サムネイル。
+ * カード全体が記録ページへのリンク。
+ */
+export default function TimelineItem({ record, person, id }: TimelineItemProps) {
   const cardClass = [styles.timelineCard, record.thumbnail ? styles.timelineCardThumb : '']
     .filter(Boolean)
     .join(' ');
@@ -22,12 +24,11 @@ export default function TimelineItem({ record, story, id }: TimelineItemProps) {
     <article className={styles.timelineItem} id={id}>
       <Link className={cardClass} href={`/making/records/${record.slug}/`}>
         <div>
-          <div className={styles.timelineMeta}>
+          <div className={`${styles.timelineMeta} ${styles.timelineMetaSplit}`}>
+            <Byline person={person} variant="label" size="sm" />
             <time className={styles.timelineDate} dateTime={record.date}>
               {formatDate(record.date, 'short')}
             </time>
-            <StoryBadge story={story} />
-            <RoleBadge role={record.author.role} />
           </div>
           <h3 className={styles.timelineTitle}>{record.title}</h3>
           <p className={styles.timelineSummary}>{record.summary}</p>

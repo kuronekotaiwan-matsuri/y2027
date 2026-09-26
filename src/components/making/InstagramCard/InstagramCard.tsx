@@ -1,7 +1,7 @@
 import InstagramIcon from '@/components/common/InstagramIcon/InstagramIcon';
 import styles from './InstagramCard.module.css';
 
-/** Instagram 投稿へのリンクカード（仕様書 3.5。公式埋め込みは使わない） */
+/** Instagram 投稿へのリンクカード（仕様書 3.4。公式埋め込みは使わない） */
 export default function InstagramCard({ url }: { url: string }) {
   const display = url.replace(/^https?:\/\/(www\.)?/, '');
   return (

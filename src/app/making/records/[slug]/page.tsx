@@ -2,13 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Section from '@/components/common/Section/Section';
 import RecordArticle from '@/components/making/RecordArticle/RecordArticle';
-import {
-  adjacentRecords,
-  adjacentRecordsInStory,
-  getRecord,
-  getRecords,
-  getStory,
-} from '@/lib/content';
+import { adjacentRecords, getPerson, getRecord, getRecords, toPersonSummary } from '@/lib/content';
 import { recordJsonLd } from '@/lib/jsonld';
 import { buildMetadata } from '@/lib/metadata';
 import { slugParamsOrPlaceholder, type SlugParam as Params } from '@/lib/staticParams';
@@ -27,10 +21,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const record = getRecord(slug);
-  const story = record ? getStory(record.storySlug) : undefined;
-  if (!record || !story) return {};
+  if (!record) return {};
+  // title は記録タイトルだけ。「| 黒猫台湾まつり2027」は共通処理が付ける（仕様書 5.4）
   return buildMetadata({
-    title: `${record.title} | ${story.title}`,
+    title: record.title,
     description: record.summary,
     path: `/making/records/${record.slug}/`,
     type: 'article',
@@ -43,22 +37,21 @@ export default async function RecordPage({ params }: { params: Promise<Params> }
   const { slug } = await params;
   const record = getRecord(slug);
   if (!record) notFound();
-  const story = getStory(record.storySlug);
-  if (!story) notFound();
+  const person = getPerson(record.author);
+  if (!person) notFound();
 
-  const records = getRecords();
+  const personSummary = toPersonSummary(person);
 
   return (
     <Section>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(recordJsonLd(record, story)) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(recordJsonLd(record, personSummary)) }}
       />
       <RecordArticle
         record={record}
-        story={story}
-        adjacentInStory={adjacentRecordsInStory(records, slug)}
-        adjacentOverall={adjacentRecords(records, slug)}
+        person={personSummary}
+        adjacent={adjacentRecords(getRecords(), slug)}
       />
     </Section>
   );

@@ -1,19 +1,24 @@
 /**
- * 記録と物語の選択・整形。fs を使わない純粋関数だけを置く。
+ * 記録と書き手の選択・整形。fs を使わない純粋関数だけを置く。
  * client component からも import できる。
  */
-import { site, type StoryColor, type TopicKey } from '@/config/site';
-import type { RecordSummary, Story, StoryBase, StoryRecord, StorySummary } from './types';
+import type { TopicKey } from '@/config/site';
+import type { MakingRecord, Person, PersonSummary, RecordSummary } from './types';
 
 type DateSortable = { date: string; slug: string };
-type OrderSortable = { order: number; slug: string };
+type PersonSortable = { id: string; order?: number };
+type Authored = { author: string };
 
 export type SortOrder = 'asc' | 'desc';
+
+function compareText(a: string, b: string): number {
+  return a < b ? -1 : a > b ? 1 : 0;
+}
 
 /** 日付昇順、同日は slug 昇順（ファイル名順） */
 export function compareRecords(a: DateSortable, b: DateSortable): number {
   if (a.date !== b.date) return a.date < b.date ? -1 : 1;
-  return a.slug < b.slug ? -1 : a.slug > b.slug ? 1 : 0;
+  return compareText(a.slug, b.slug);
 }
 
 export function sortRecordsByDate<T extends DateSortable>(records: T[], order: SortOrder = 'asc'): T[] {
@@ -21,8 +26,16 @@ export function sortRecordsByDate<T extends DateSortable>(records: T[], order: S
   return order === 'asc' ? sorted : sorted.reverse();
 }
 
-export function sortStoriesByOrder<T extends OrderSortable>(stories: T[]): T[] {
-  return [...stories].sort((a, b) => a.order - b.order || (a.slug < b.slug ? -1 : a.slug > b.slug ? 1 : 0));
+/** 書き手の並び: order 昇順（order の無い人は後ろ）、同順は id 昇順（仕様書 3.2） */
+export function comparePeople(a: PersonSortable, b: PersonSortable): number {
+  const ao = a.order ?? Number.POSITIVE_INFINITY;
+  const bo = b.order ?? Number.POSITIVE_INFINITY;
+  if (ao !== bo) return ao < bo ? -1 : 1;
+  return compareText(a.id, b.id);
+}
+
+export function sortPeople<T extends PersonSortable>(people: T[]): T[] {
+  return [...people].sort(comparePeople);
 }
 
 /** 最新 N 件（新しい順） */
@@ -30,38 +43,26 @@ export function latestRecords<T extends DateSortable>(records: T[], count: numbe
   return sortRecordsByDate(records, 'desc').slice(0, count);
 }
 
-export function recordsByStory<T extends DateSortable & { storySlug: string }>(
+/** ある書き手の記録（仕様書 5.5。既定は上が古い） */
+export function recordsByAuthor<T extends DateSortable & Authored>(
   records: T[],
-  storySlug: string,
+  authorId: string,
   order: SortOrder = 'asc',
 ): T[] {
   return sortRecordsByDate(
-    records.filter((r) => r.storySlug === storySlug),
+    records.filter((r) => r.author === authorId),
     order,
   );
 }
 
-export interface RecordsByTopicOptions {
-  /** 公式の物語の記録だけにする（仕様書 3.8。準備中ページはこれを使う） */
-  officialOnly?: boolean;
-  /** officialOnly のときに参照する物語 */
-  stories?: Pick<StorySummary, 'slug' | 'kind'>[];
-  order?: SortOrder;
-}
-
-export function recordsByTopic<T extends DateSortable & { storySlug: string; topics: TopicKey[] }>(
+/** ある topic を持つ記録（仕様書 5.2。準備中ページは新しい順） */
+export function recordsByTopic<T extends DateSortable & { topics: TopicKey[] }>(
   records: T[],
   topic: TopicKey,
-  options: RecordsByTopicOptions = {},
+  order: SortOrder = 'desc',
 ): T[] {
-  const { officialOnly = false, stories = [], order = 'desc' } = options;
-  const officialSlugs = new Set(stories.filter((s) => s.kind === 'official').map((s) => s.slug));
   return sortRecordsByDate(
-    records.filter((r) => {
-      if (!r.topics.includes(topic)) return false;
-      if (officialOnly && !officialSlugs.has(r.storySlug)) return false;
-      return true;
-    }),
+    records.filter((r) => r.topics.includes(topic)),
     order,
   );
 }
@@ -101,7 +102,7 @@ export interface Adjacent<T> {
   next?: T;
 }
 
-/** 時系列での前後の記録 */
+/** 全体の時系列での前後の記録（仕様書 5.4） */
 export function adjacentRecords<T extends DateSortable>(records: T[], slug: string): Adjacent<T> {
   const sorted = sortRecordsByDate(records, 'asc');
   const index = sorted.findIndex((r) => r.slug === slug);
@@ -109,49 +110,18 @@ export function adjacentRecords<T extends DateSortable>(records: T[], slug: stri
   return { prev: sorted[index - 1], next: sorted[index + 1] };
 }
 
-/** 同じ物語の中での前後の記録 */
-export function adjacentRecordsInStory<T extends DateSortable & { storySlug: string }>(
-  records: T[],
-  slug: string,
-): Adjacent<T> {
-  const target = records.find((r) => r.slug === slug);
-  if (!target) return {};
-  return adjacentRecords(recordsByStory(records, target.storySlug), slug);
-}
-
-export function countRecordsByStory(records: { storySlug: string }[]): Map<string, number> {
+/** 書き手 ID → 記録数 */
+export function countRecordsByAuthor(records: Authored[]): Map<string, number> {
   const counts = new Map<string, number>();
   for (const record of records) {
-    counts.set(record.storySlug, (counts.get(record.storySlug) ?? 0) + 1);
+    counts.set(record.author, (counts.get(record.author) ?? 0) + 1);
   }
   return counts;
 }
 
-/**
- * 物語の色を割り当てる（docs/design-system.md 2章）。
- * - 公式は palette[0]（赤）で固定
- * - color 指定があればそれを使う（自動割当の枠は消費しない）
- * - それ以外は order 順に palette[1] 以降を割り当てる。足りなければ繰り返す
- */
-export function assignStoryColors<T extends Pick<StoryBase, 'slug' | 'kind' | 'order' | 'customColor'>>(
-  stories: T[],
-  palette: StoryColor[] = site.storyPalette,
-): (T & { color: StoryColor })[] {
-  const official = palette[0] ?? { bg: '#B7332A', text: '#FFFBF2' };
-  const rest = palette.length > 1 ? palette.slice(1) : [official];
-  const colors = new Map<string, StoryColor>();
-  let next = 0;
-  for (const story of sortStoriesByOrder(stories)) {
-    if (story.kind === 'official') {
-      colors.set(story.slug, official);
-    } else if (story.customColor) {
-      colors.set(story.slug, { bg: story.customColor, text: official.text });
-    } else {
-      colors.set(story.slug, rest[next % rest.length]);
-      next += 1;
-    }
-  }
-  return stories.map((story) => ({ ...story, color: colors.get(story.slug) ?? official }));
+/** 「〇〇さん」。組織は名前だけ（仕様書 3.8） */
+export function nameWithSan(person: Pick<PersonSummary, 'name' | 'kind'>): string {
+  return person.kind === 'group' ? person.name : `${person.name}さん`;
 }
 
 /** "2026-10-05" → "2026.10.05" / "10.05" / "2026年10月5日" */
@@ -167,12 +137,12 @@ export function formatDate(date: string, style: 'dot' | 'short' | 'ja' = 'dot'):
   }
 }
 
-export function toRecordSummary(record: StoryRecord): RecordSummary {
+export function toRecordSummary(record: MakingRecord): RecordSummary {
   const { bodyHtml: _bodyHtml, ...summary } = record;
   return summary;
 }
 
-export function toStorySummary(story: Story): StorySummary {
-  const { bodyHtml: _bodyHtml, ...summary } = story;
+export function toPersonSummary(person: Person): PersonSummary {
+  const { bodyHtml: _bodyHtml, ...summary } = person;
   return summary;
 }
