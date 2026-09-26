@@ -31,6 +31,30 @@
 - ドキュメント、コメント、コミットメッセージ、ユーザーへの応答は日本語
 - コード内の識別子は英語
 
+## サブエージェント（`.claude/agents/`）
+
+本番サイトの実装では、次の3つを使い分ける。メインのセッションは計画、依頼、統合、git を担当する。
+
+| エージェント | 担当 | 使うとき |
+|---|---|---|
+| `frontend-engineer` | Next.js のページ、content パイプライン、データ・設定、テスト、ビルド設定 | ページやデータ構造を作る、content を触る、ビルド・lint・型を直す |
+| `web-designer` | マークアップの意匠、CSS Modules、余白・文字組み・色、文言、デザインシステムの適用 | 見た目を作る・直す、デザインシステムを更新する |
+| `design-reviewer` | 読み取り専用のレビュー。スクリーンショットと grep で、デザイン・仕様・アクセシビリティ・静的サイトの正しさを確認 | ページを実装した後、公開前 |
+
+基本の流れ: `frontend-engineer`（骨組みとデータ）→ `web-designer`（見た目）→ `design-reviewer`（確認）→ 指摘があれば担当に戻す。
+見た目とロジックが分けにくい小さな変更は、どちらか1つに任せてよい。
+
+見た目の判断基準は Anthropic 公式の `frontend-design` プラグインの原則を日本語で `web-designer` に組み込んである。
+プラグイン自体を入れるとメインのセッションでも同じ指針がスキルとして使える（任意）: `/plugin install frontend-design@claude-plugins-official`
+
+## 実装の約束
+
+- スタック: Next.js（App Router、`output: 'export'`、`basePath: '/y2027'`）+ TypeScript strict + CSS Modules + CSS custom properties。Tailwind は使わない
+- コンポーネント: `src/components/<group>/<Name>/<Name>.tsx` と `<Name>.module.css`（PascalCase）。ページは `src/app/`
+- デザイントークンは `src/app/globals.css` の `:root` に置き、`docs/design-system.md` 9章と一致させる
+- content の読み込み・検証・変換は `src/lib/content/` に閉じる。不正な front-matter はビルドを失敗させる
+- 完了の条件: `npm run lint`、`npx tsc --noEmit`、`npm test`、`npm run build` がすべて通ること
+
 ## 使い捨ての作業物
 
 - `docs/design-lab/` はデザイン選定用の使い捨てツール。サイト本体（`src/`）から独立させ、ビルド不要の静的 HTML で作る
