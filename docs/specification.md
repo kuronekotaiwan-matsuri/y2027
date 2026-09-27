@@ -251,6 +251,7 @@
 
 ```text
 content/
+├─ README.md                        # このフォルダの書き方（短い版。詳細は docs/writing-guide.md）
 ├─ people/                          # 書き手（1人1ファイル）
 │  ├─ committee.md                  # 黒猫台湾まつり実行委員会（組織。公式発表用）
 │  ├─ ikeda.md                      # 池田（実行委員）
