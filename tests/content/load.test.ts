@@ -53,6 +53,12 @@ describe('loadContent: 正常系（本番 = draft を除外）', () => {
     expect(byId.get('haru')?.instagram).toBe('https://www.instagram.com/haru/');
   });
 
+  it('shortName は任意。書いた人だけが持つ', () => {
+    const byId = new Map(data.people.map((person) => [person.id, person]));
+    expect(byId.get('committee')?.shortName).toBe('実行委員会');
+    expect(byId.get('ikeda')?.shortName).toBeUndefined();
+  });
+
   it('YAML の日付を YYYY-MM-DD の文字列にそろえる', () => {
     expect(data.records[0].date).toBe('2026-10-05');
   });

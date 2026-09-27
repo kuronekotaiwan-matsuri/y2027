@@ -8,6 +8,8 @@ export interface Person {
   /** ファイル名から .md を除いたもの。記録の author から参照する */
   id: string;
   name: string;
+  /** 顔の下や「〇〇の記録」の見出しで使う短い名前（任意。組織名が長いとき）。無ければ name を使う */
+  shortName?: string;
   role: RoleKey;
   kind: PersonKind;
   /** basePath 付与済み */

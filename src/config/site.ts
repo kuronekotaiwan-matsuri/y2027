@@ -60,8 +60,17 @@ export interface EventInfoItem {
   decided: boolean;
 }
 
+/**
+ * タイムライン最下部のゴールマーカー。語の途中で折り返さないよう、日付・名前・状態を分けて持つ。
+ * 設定の goal は3つとも書く。開催後（archive）は heldLabel を title に入れた形になる（lib/phase.ts）
+ */
 export interface GoalMarker {
-  label: string;
+  /** 例: 2027.05 */
+  date?: string;
+  /** 例: 黒猫台湾まつり2027 */
+  title: string;
+  /** 例: 開催（予定） */
+  status?: string;
   note?: string;
 }
 
@@ -162,7 +171,9 @@ export const site: SiteConfig = {
     scheduleNote: '日程・会場未定',
     heldLabel: undefined,
     goal: {
-      label: '2027.05 黒猫台湾まつり2027 開催（予定）',
+      date: '2027.05',
+      title: '黒猫台湾まつり2027',
+      status: '開催（予定）',
       note: '日程が決まったら、ここに日付が入ります。',
     },
     items: [

@@ -90,10 +90,13 @@ export function getGuideSectionTitle(phase: Phase, year: number): string {
   return phase === 'archive' ? `${year}年の記録` : '開催情報と案内';
 }
 
-/** タイムライン最下部のゴールマーカー。開催後は開催の表示に置き換わる */
+/**
+ * タイムライン最下部のゴールマーカー。
+ * 開催後（archive）に heldLabel があれば、日付・状態を持たない開催の表示（title だけ）に置き換わる
+ */
 export function getGoalMarker(event: EventConfig, phase: Phase): GoalMarker {
   if (phase === 'archive' && event.heldLabel) {
-    return { label: event.heldLabel };
+    return { title: event.heldLabel };
   }
   return { ...event.goal };
 }

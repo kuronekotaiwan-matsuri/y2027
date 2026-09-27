@@ -110,6 +110,7 @@ export function loadContent(options: LoadOptions = {}): ContentData {
     peopleById.set(id, {
       id,
       name: meta.name,
+      shortName: meta.shortName,
       role: meta.role,
       kind: meta.kind,
       avatar: meta.avatar ? withBasePath(meta.avatar, basePath) : undefined,

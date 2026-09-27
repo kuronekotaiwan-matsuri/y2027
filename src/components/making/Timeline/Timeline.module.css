@@ -57,6 +57,13 @@
   letter-spacing: var(--letter-spacing-heading);
 }
 
+/* ゴールの日付・名前・状態。語の途中で折れないよう、span ごとに折り返す（見た目の調整は別途） */
+.timelineGoalDate,
+.timelineGoalTitle,
+.timelineGoalStatus {
+  display: inline-block;
+}
+
 .timelineGoal small {
   display: block;
   margin-top: 2px;

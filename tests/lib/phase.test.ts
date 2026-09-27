@@ -67,18 +67,29 @@ describe('ゴールマーカーと見出し', () => {
     edition: 5,
     scheduleLabel: '2027年5月 開催予定',
     scheduleNote: '日程・会場未定',
-    goal: { label: '2027.05 黒猫台湾まつり2027 開催（予定）', note: '日程が決まったら' },
+    goal: {
+      date: '2027.05',
+      title: '黒猫台湾まつり2027',
+      status: '開催（予定）',
+      note: '日程が決まったら',
+    },
     items: [],
   };
 
-  it('開催前は設定のゴールをそのまま使う', () => {
+  it('開催前は設定のゴール（日付・名前・状態・注記）をそのまま使う', () => {
     expect(getGoalMarker(event, 'making')).toEqual(event.goal);
     expect(getGoalMarker(event, 'event')).toEqual(event.goal);
   });
 
-  it('archive で heldLabel があれば開催の表示に置き換わる', () => {
+  it('返した値を変えても設定は変わらない', () => {
+    const marker = getGoalMarker(event, 'making');
+    marker.title = '変更';
+    expect(event.goal.title).toBe('黒猫台湾まつり2027');
+  });
+
+  it('archive で heldLabel があれば開催の表示（title だけ。日付・状態・注記なし）に置き換わる', () => {
     expect(getGoalMarker({ ...event, heldLabel: '2027.05.29 開催しました' }, 'archive')).toEqual({
-      label: '2027.05.29 開催しました',
+      title: '2027.05.29 開催しました',
     });
     // heldLabel が無ければ従来どおり
     expect(getGoalMarker(event, 'archive')).toEqual(event.goal);

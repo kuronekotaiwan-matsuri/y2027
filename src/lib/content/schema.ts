@@ -46,6 +46,7 @@ function vocabularyError(label: string, allowed: readonly string[]) {
 /** 書き手（仕様書 3.6） */
 export const personFrontMatterSchema = z.object({
   name: z.string().min(1, 'name を書いてください'),
+  shortName: z.string().min(1, 'shortName を書くなら1文字以上にしてください').optional(),
   role: z.enum(roleKeys, { error: vocabularyError('role', roleKeys) }),
   kind: z
     .enum(['person', 'group'], {

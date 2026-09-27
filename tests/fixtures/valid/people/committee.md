@@ -1,5 +1,6 @@
 ---
 name: 黒猫台湾まつり実行委員会
+shortName: 実行委員会
 role: committee
 kind: group
 order: 1

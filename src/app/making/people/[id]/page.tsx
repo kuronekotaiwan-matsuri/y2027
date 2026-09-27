@@ -13,6 +13,7 @@ import {
   getRecords,
   nameWithSan,
   recordsByAuthor,
+  shortNameWithSan,
   toPersonSummary,
   toRecordSummary,
 } from '@/lib/content';
@@ -66,7 +67,8 @@ export default async function PersonPage({ params }: { params: Promise<Params> }
       </Section>
 
       <Section alt aria-labelledby="person-records-title">
-        <SectionTitle id="person-records-title">{nameWithSan(person)}の記録</SectionTitle>
+        {/* 見出しは短い名前（shortName、無ければ name）。h1 と署名は name のまま */}
+        <SectionTitle id="person-records-title">{shortNameWithSan(person)}の記録</SectionTitle>
         <Timeline
           records={personRecords}
           people={[summary]}

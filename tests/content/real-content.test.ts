@@ -13,6 +13,8 @@ describe('content/（実データ）', () => {
     const committee = data.people[0];
     expect(committee.kind).toBe('group');
     expect(committee.role).toBe('committee');
+    // 顔の下や「〇〇の記録」の見出しで使う短い名前
+    expect(committee.shortName).toBe('実行委員会');
     expect(data.people.every((person) => !person.isDraft)).toBe(true);
     expect(data.records.every((record) => !record.isDraft)).toBe(true);
     // 記録の author はすべて公開中の書き手

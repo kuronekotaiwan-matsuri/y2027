@@ -1,6 +1,8 @@
 import { Fragment } from 'react';
 import EmptyNote from '@/components/common/EmptyNote/EmptyNote';
-import TimelineItem from '@/components/making/TimelineItem/TimelineItem';
+import TimelineItem, {
+  type TimelineHeadingLevel,
+} from '@/components/making/TimelineItem/TimelineItem';
 import type { GoalMarker } from '@/config/site';
 import { groupByMonth, sortRecordsByDate, type SortOrder } from '@/lib/content/select';
 import type { PersonSummary, RecordSummary } from '@/lib/content/types';
@@ -18,6 +20,8 @@ interface TimelineProps {
   emptyText?: string;
   /** 最後（最新）の項目に付ける id。「最新の記録へ」のジャンプ先 */
   latestId?: string;
+  /** 各記録のタイトルの見出しレベル。既定は h3。h1 の直下に置くページ（/making/）では h2 */
+  headingLevel?: TimelineHeadingLevel;
 }
 
 /** タイムライン。/making/、書き手ページ、準備中ページの関連記録で共用（仕様書 6.3） */
@@ -28,6 +32,7 @@ export default function Timeline({
   goal,
   emptyText = 'まだ記録はありません。書いたものから順に、ここに並びます。',
   latestId,
+  headingLevel = 'h3',
 }: TimelineProps) {
   const peopleById = new Map(people.map((person) => [person.id, person]));
   const sorted = sortRecordsByDate(records, order);
@@ -57,6 +62,7 @@ export default function Timeline({
                 record={record}
                 person={person}
                 id={latestId && record.slug === latestSlug ? latestId : undefined}
+                headingLevel={headingLevel}
               />
             );
           })}
@@ -64,7 +70,12 @@ export default function Timeline({
       ))}
       {goal && (
         <div className={styles.timelineGoal}>
-          {goal.label}
+          {/* 日付・名前・状態を別の span にし、折り返しが語の途中で起きないようにする */}
+          {goal.date && <span className={styles.timelineGoalDate}>{goal.date}</span>}
+          {goal.date && ' '}
+          <span className={styles.timelineGoalTitle}>{goal.title}</span>
+          {goal.status && ' '}
+          {goal.status && <span className={styles.timelineGoalStatus}>{goal.status}</span>}
           {goal.note && <small>{goal.note}</small>}
         </div>
       )}

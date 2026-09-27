@@ -1,31 +1,16 @@
 'use client';
 
-import { useCallback, useSyncExternalStore } from 'react';
-import FacesFilter, { FACES_ALL } from '@/components/making/FacesFilter/FacesFilter';
+import FacesFilter from '@/components/making/FacesFilter/FacesFilter';
 import Timeline from '@/components/making/Timeline/Timeline';
 import type { GoalMarker } from '@/config/site';
 import { nameWithSan } from '@/lib/content/select';
 import type { PersonSummary, RecordSummary } from '@/lib/content/types';
-
-const QUERY_KEY = 'by';
-const CHANGE_EVENT = 'making:by-change';
-
-function subscribe(callback: () => void): () => void {
-  window.addEventListener('popstate', callback);
-  window.addEventListener(CHANGE_EVENT, callback);
-  return () => {
-    window.removeEventListener('popstate', callback);
-    window.removeEventListener(CHANGE_EVENT, callback);
-  };
-}
-
-function readSelectedFromUrl(): string {
-  return new URLSearchParams(window.location.search).get(QUERY_KEY) ?? FACES_ALL;
-}
-
-function readSelectedOnServer(): string {
-  return FACES_ALL;
-}
+import {
+  matchesSelectedAuthor,
+  resolveSelectedAuthor,
+  setSelectedAuthor,
+  useSelectedAuthorRaw,
+} from './selectedAuthor';
 
 interface MakingTimelineProps {
   /** 全件（本文なし）。絞り込みはクライアント側で行う（仕様書 9.2） */
@@ -38,36 +23,27 @@ interface MakingTimelineProps {
 
 /**
  * 顔で絞る付きタイムライン（/making/。仕様書 5.3）。
- * 選択中の書き手は URL のクエリ ?by=<id> に持ち、共有できるようにする。
+ * 選択中の書き手は URL のクエリ ?by=<id> に持ち、共有できるようにする（selectedAuthor.ts）。
+ * /making/ は h1 の直下にタイムラインを置くので、記録タイトルは h2 にする。
  */
 export default function MakingTimeline({ records, people, goal, latestId }: MakingTimelineProps) {
-  const selectedRaw = useSyncExternalStore(subscribe, readSelectedFromUrl, readSelectedOnServer);
-  const selectedPerson = people.find((person) => person.id === selectedRaw);
-  const selected = selectedPerson ? selectedPerson.id : FACES_ALL;
-
-  const select = useCallback((id: string) => {
-    const url = new URL(window.location.href);
-    if (id === FACES_ALL) {
-      url.searchParams.delete(QUERY_KEY);
-    } else {
-      url.searchParams.set(QUERY_KEY, id);
-    }
-    window.history.replaceState(window.history.state, '', url.toString());
-    window.dispatchEvent(new Event(CHANGE_EVENT));
-  }, []);
-
-  const visible =
-    selected === FACES_ALL ? records : records.filter((record) => record.author === selected);
+  const selected = resolveSelectedAuthor(
+    people.map((person) => person.id),
+    useSelectedAuthorRaw(),
+  );
+  const selectedPerson = people.find((person) => person.id === selected);
+  const visible = records.filter((record) => matchesSelectedAuthor(record.author, selected));
 
   return (
     <>
-      <FacesFilter people={people} selected={selected} onSelect={select} />
+      <FacesFilter people={people} selected={selected} onSelect={setSelectedAuthor} />
       <Timeline
         records={visible}
         people={people}
         order="asc"
         goal={goal}
         latestId={latestId}
+        headingLevel="h2"
         emptyText={
           selectedPerson
             ? `${nameWithSan(selectedPerson)}の記録はまだありません。書いたものから順に、ここに並びます。`

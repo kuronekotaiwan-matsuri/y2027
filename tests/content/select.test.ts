@@ -4,12 +4,14 @@ import {
   adjacentRecords,
   countRecordsByAuthor,
   formatDate,
+  getShortName,
   groupByMonth,
   latestRecords,
   monthLabel,
   nameWithSan,
   recordsByAuthor,
   recordsByTopic,
+  shortNameWithSan,
   sortPeople,
   sortRecordsByDate,
 } from '@/lib/content/select';
@@ -185,6 +187,23 @@ describe('表示用の文字', () => {
     expect(nameWithSan({ name: '池田', kind: 'person' })).toBe('池田さん');
     expect(nameWithSan({ name: '黒猫台湾まつり実行委員会', kind: 'group' })).toBe(
       '黒猫台湾まつり実行委員会',
+    );
+  });
+
+  it('getShortName: shortName があればそれ、無ければ name', () => {
+    expect(getShortName({ name: '黒猫台湾まつり実行委員会', shortName: '実行委員会' })).toBe(
+      '実行委員会',
+    );
+    expect(getShortName({ name: '池田' })).toBe('池田');
+  });
+
+  it('shortNameWithSan: 短い名前に「さん」。組織は名前だけ', () => {
+    expect(
+      shortNameWithSan({ name: '黒猫台湾まつり実行委員会', shortName: '実行委員会', kind: 'group' }),
+    ).toBe('実行委員会');
+    expect(shortNameWithSan({ name: '池田', kind: 'person' })).toBe('池田さん');
+    expect(shortNameWithSan({ name: '山田 太郎', shortName: '山田', kind: 'person' })).toBe(
+      '山田さん',
     );
   });
 

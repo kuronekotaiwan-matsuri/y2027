@@ -2,10 +2,9 @@
 
 import Avatar, { avatarClass } from '@/components/making/Avatar/Avatar';
 import styles from '@/components/making/Faces/Faces.module.css';
+import { FACES_ALL } from '@/components/making/MakingTimeline/selectedAuthor';
+import { getShortName } from '@/lib/content/select';
 import type { PersonSummary } from '@/lib/content/types';
-
-/** 「すべて」を表す選択値 */
-export const FACES_ALL = 'all';
 
 /** 説明文の id（aria-describedby 用。1ページに1つ） */
 const HINT_ID = 'faces-filter-hint';
@@ -21,6 +20,7 @@ interface FacesFilterProps {
 /**
  * 顔で絞る（仕様書 5.3）。「すべて」と各書き手の顔をボタンで並べ、aria-pressed で選択状態を示す（仕様書 9.6）。
  * 状態は持たない。URL との同期は MakingTimeline が行う。
+ * 顔の下の名前は短い名前（shortName、無ければ name）。列の幅を揃えるため
  */
 export default function FacesFilter({ people, selected, onSelect }: FacesFilterProps) {
   const faceClass = (active: boolean) =>
@@ -56,7 +56,7 @@ export default function FacesFilter({ people, selected, onSelect }: FacesFilterP
               onClick={() => onSelect(person.id)}
             >
               <Avatar person={person} size="md" />
-              <span className={styles.faceName}>{person.name}</span>
+              <span className={styles.faceName}>{getShortName(person)}</span>
             </button>
           );
         })}

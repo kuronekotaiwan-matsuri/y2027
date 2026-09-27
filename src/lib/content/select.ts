@@ -119,9 +119,25 @@ export function countRecordsByAuthor(records: Authored[]): Map<string, number> {
   return counts;
 }
 
+function withSan(name: string, kind: PersonSummary['kind']): string {
+  return kind === 'group' ? name : `${name}さん`;
+}
+
 /** 「〇〇さん」。組織は名前だけ（仕様書 3.8） */
 export function nameWithSan(person: Pick<PersonSummary, 'name' | 'kind'>): string {
-  return person.kind === 'group' ? person.name : `${person.name}さん`;
+  return withSan(person.name, person.kind);
+}
+
+/** 顔の下など、幅が限られる場所で使う名前。shortName が無ければ name（仕様書 3.2） */
+export function getShortName(person: Pick<PersonSummary, 'name' | 'shortName'>): string {
+  return person.shortName ?? person.name;
+}
+
+/** nameWithSan の短い名前版。「〇〇の記録」の見出しで使う */
+export function shortNameWithSan(
+  person: Pick<PersonSummary, 'name' | 'shortName' | 'kind'>,
+): string {
+  return withSan(getShortName(person), person.kind);
 }
 
 /** "2026-10-05" → "2026.10.05" / "10.05" / "2026年10月5日" */
