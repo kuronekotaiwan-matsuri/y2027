@@ -22,7 +22,7 @@
   padding: 0 5px;
   border: var(--role-border);
   border-radius: 3px;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   line-height: 1.5;
   color: var(--color-role-text);
   white-space: nowrap;

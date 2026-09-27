@@ -64,8 +64,9 @@
   margin-top: var(--space-4);
 }
 
+/* 戻るリンク: 前後の記録と同じ「移動」のまとまりとして、近くに置く */
 .articleBack {
-  margin-top: var(--space-4);
+  margin-top: var(--space-3);
   font-size: var(--font-size-small);
 }
 

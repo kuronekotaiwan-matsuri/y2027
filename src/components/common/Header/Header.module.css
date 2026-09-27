@@ -86,7 +86,7 @@
   background: var(--color-sticky-bg);
   color: var(--color-sticky-text);
   font-family: var(--font-accent);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   line-height: 1.7;
   white-space: nowrap;
 }

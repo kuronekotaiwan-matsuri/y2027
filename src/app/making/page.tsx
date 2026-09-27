@@ -28,6 +28,7 @@ export default function MakingPage() {
       <SectionTitle
         as="h1"
         id="making-title"
+        keepAll
         sub={
           // 顔で絞った結果が 0 件のときは client 側で hidden になる
           <LatestRecordLink
@@ -40,7 +41,8 @@ export default function MakingPage() {
           </LatestRecordLink>
         }
       >
-        黒猫台湾まつりができるまで
+        {/* モバイルで語の途中で折れないよう、折り返し位置を指定する */}
+        黒猫台湾まつりが<wbr />できるまで
       </SectionTitle>
       <SectionLead>
         2026年の秋から、5月の祭りまで。決まったことも、決まっていないことも、順番に残していきます。上が古く、下が新しい記録です。

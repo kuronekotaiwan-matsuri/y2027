@@ -17,6 +17,12 @@
   box-decoration-break: clone;
 }
 
+/* 固定文言の長い見出し: 日本語は文字ごとに折り返せるので、<wbr /> の位置でだけ折れるようにする */
+.sectionTitleTextKeepAll {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
 .sectionTitleSub {
   display: inline-block;
   margin-left: calc(var(--spacing-unit) * 1.5);

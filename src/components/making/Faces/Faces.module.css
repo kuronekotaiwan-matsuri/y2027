@@ -43,10 +43,9 @@
   box-shadow: 0 0 0 3px var(--color-border);
 }
 
-/* 名前: 長い組織名は「黒猫台湾まつり／実行委員会」で折れる幅に */
+/* 名前: 短い名前（shortName）を1行で。押せる範囲を示す下線はホバーで出す */
 .faceName {
   display: block;
-  max-width: 7.5em;
   text-decoration: underline;
   text-decoration-color: transparent;
   text-underline-offset: 3px;
@@ -70,6 +69,6 @@
 /* 「すべて」の丸: 赤い丸に「全部」の文字。人の顔（1文字）と違う見た目にして、人ではないと分かるように */
 .faceAllMark {
   background: var(--avatar-group-bg);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.02em;
 }

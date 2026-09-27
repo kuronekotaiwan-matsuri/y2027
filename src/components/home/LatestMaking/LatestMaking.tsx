@@ -23,8 +23,9 @@ export default function LatestMaking({ phase, records, people }: LatestMakingPro
 
   return (
     <Section id="making" alt aria-labelledby="making-title">
-      <SectionTitle id="making-title" sub={sub}>
-        黒猫台湾まつりができるまで
+      <SectionTitle id="making-title" sub={sub} keepAll>
+        {/* モバイルで語の途中で折れないよう、折り返し位置を指定する */}
+        黒猫台湾まつりが<wbr />できるまで
       </SectionTitle>
       <SectionLead>
         2026年の秋から、5月の祭りまで。決まったことも、決まっていないことも、順番に残していきます。

@@ -10,8 +10,8 @@ export default function CatMark({ className }: CatMarkProps) {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" className={className}>
       <path fill="currentColor" d="M5 3l7 6h8l7-6v12a11 11 0 0 1-22 0z" />
-      <circle cx="12" cy="17" r="1.7" fill="var(--cat-mark-eye, #FBF3E4)" />
-      <circle cx="20" cy="17" r="1.7" fill="var(--cat-mark-eye, #FBF3E4)" />
+      <circle cx="12" cy="17" r="1.7" fill="var(--cat-mark-eye, var(--color-background))" />
+      <circle cx="20" cy="17" r="1.7" fill="var(--cat-mark-eye, var(--color-background))" />
     </svg>
   );
 }

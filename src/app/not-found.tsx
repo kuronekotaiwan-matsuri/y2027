@@ -12,8 +12,9 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <Section aria-labelledby="not-found-title">
-      <SectionTitle as="h1" id="not-found-title">
-        ページが見つかりません
+      <SectionTitle as="h1" id="not-found-title" keepAll>
+        {/* モバイルで語の途中で折れないよう、折り返し位置を指定する */}
+        ページが<wbr />見つかりません
       </SectionTitle>
       <p className={styles.text}>
         お探しのページは、移動したか、まだ作られていません。サイトは祭りと一緒に少しずつ育てているので、あとで載るかもしれません。

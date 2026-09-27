@@ -15,7 +15,8 @@ export default function GuideSection({ phase }: GuideSectionProps) {
   const { event } = site;
   return (
     <Section id="guide" aria-labelledby="guide-title">
-      <SectionTitle id="guide-title" sub={event.scheduleLabel}>
+      {/* 見出しは短い固定文言。モバイルで補足が入らないときは、見出しの途中ではなく補足の前で折る */}
+      <SectionTitle id="guide-title" sub={event.scheduleLabel} keepAll>
         {getGuideSectionTitle(phase, event.year)}
       </SectionTitle>
       <div className={styles.eventInfo}>

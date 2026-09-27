@@ -28,16 +28,16 @@ export default function Pager({
     <nav className={styles.pager} aria-label={label}>
       {prev ? (
         <Link href={prev.href} className={styles.pagerPrev}>
-          <span>← {prevLabel}</span>
-          {prev.title}
+          <span className={styles.pagerLabel}>← {prevLabel}</span>
+          <span className={styles.pagerTitle}>{prev.title}</span>
         </Link>
       ) : (
         <span className={styles.pagerEmpty} />
       )}
       {next ? (
         <Link href={next.href} className={styles.pagerNext}>
-          <span>{nextLabel} →</span>
-          {next.title}
+          <span className={styles.pagerLabel}>{nextLabel} →</span>
+          <span className={styles.pagerTitle}>{next.title}</span>
         </Link>
       ) : (
         <span className={styles.pagerEmpty} />

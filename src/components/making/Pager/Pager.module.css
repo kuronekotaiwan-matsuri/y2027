@@ -1,35 +1,29 @@
-/* 前後の記録: PC は左右、モバイルは縦に積む */
+/*
+  前後の記録（記録ページの末尾）: 書いた人カードを末尾の視覚的な終点にし、こちらは「移動」だと読める軽い形にする。
+  箱にせず、罫線1本の下にペン字の小ラベル（← 前の記録／次の記録 →）とタイトルの下線リンクだけを置く。
+  PC は左右に分け、モバイルは縦に積む
+*/
 .pager {
   display: grid;
   grid-template-columns: 1fr;
-  gap: calc(var(--spacing-unit) * 1.5);
-  margin-top: var(--space-3);
+  gap: var(--space-1);
+  margin-top: var(--space-4);
+  padding-top: var(--space-2);
+  border-top: var(--border-width) var(--border-style) var(--color-border);
 }
 
-.pager + .pager {
-  margin-top: calc(var(--spacing-unit) * 1.5);
-}
-
+/* リンク全体を押せる範囲にし、44px を確保する */
 .pagerPrev,
 .pagerNext {
   display: block;
   min-height: var(--tap-target);
-  padding: calc(var(--spacing-unit) * 1.5) var(--space-2);
-  border: var(--border-width) var(--border-style) var(--color-border);
-  border-radius: var(--border-radius);
-  background: var(--color-surface);
+  padding: 4px 0;
   font-size: var(--font-size-small);
   line-height: 1.5;
-  transition: box-shadow var(--transition-speed);
 }
 
-.pagerPrev:hover,
-.pagerNext:hover {
-  box-shadow: var(--shadow);
-}
-
-.pagerPrev span,
-.pagerNext span {
+/* 小ラベル: ペン字で薄く。タイトルの上に置く */
+.pagerLabel {
   display: block;
   margin-bottom: 2px;
   font-family: var(--font-accent);
@@ -37,6 +31,14 @@
   color: var(--color-text-light);
 }
 
+/* タイトル: 本文中のリンクと同じ下線 */
+.pagerTitle {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* 片方しか無いとき、PC で「次」を右に置くための空き */
 .pagerEmpty {
   display: none;
 }
@@ -44,6 +46,7 @@
 @media (min-width: 768px) {
   .pager {
     grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
   }
 
   .pagerNext {
