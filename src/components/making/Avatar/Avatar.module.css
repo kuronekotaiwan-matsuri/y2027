@@ -37,6 +37,7 @@
 
 /* 写真: 縁の内側いっぱいに。縁の色は面色なので、写真の周りに細い白枠が出る */
 .avatarPhoto {
+  border-radius: var(--border-radius);
   background: var(--color-background-alt);
 }
 
