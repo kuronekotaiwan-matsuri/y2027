@@ -47,6 +47,17 @@
 見た目の判断基準は Anthropic 公式の `frontend-design` プラグインの原則を日本語で `web-designer` に組み込んである。
 プラグイン自体を入れるとメインのセッションでも同じ指針がスキルとして使える（任意）: `/plugin install frontend-design@claude-plugins-official`
 
+### SEO の確認（読み取り専用）
+
+wshobson/agents（MIT）の `seo-technical-optimization` プラグインから2本を取り込んである。本文は原文のまま、tools を読み取り専用に限定している。
+
+| エージェント | 担当 | 使うとき |
+|---|---|---|
+| `seo-structure-architect` | 見出し階層、JSON-LD、内部リンク、パンくず、sitemap・robots | ページ構造や構造化データを変えたあと、公開前 |
+| `seo-meta-optimizer` | title・description・OGP の文字数と見え方 | ページを増やしたあと、開催情報が更新されたあと |
+
+依頼するときは、`out/` のビルド結果から親が集めた事実（title・description の文面、JSON-LD の有無など）を事実票として渡し、読むファイルを行範囲つきで列挙する。宣伝調の文案（パワーワード、CTA、記号）は出さないよう明記する。コンセプト（`docs/concept/concept.md` 4章・6章）と合わない提案は採用しない。
+
 ## 実装の約束
 
 - スタック: Next.js（App Router、`output: 'export'`、`basePath: '/y2027'`）+ TypeScript strict + CSS Modules + CSS custom properties。Tailwind は使わない
