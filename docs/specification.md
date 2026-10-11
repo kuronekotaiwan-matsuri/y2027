@@ -178,6 +178,7 @@
 | role | 立場（下表） |
 | kind | `person`（既定） / `group`（組織。署名に立場を添えず、画像が無いときの顔は黒猫のマーク） |
 | avatar | 顔写真やイラスト（任意。`/images/people/<id>.jpg`）。組織にも指定できる。無いときは名前の1文字目を丸の中に出す（組織は黒猫のマーク） |
+| avatarBackground | 画像の地の色（任意）。背景が透明なイラストやロゴのときだけ `cream`（既定）`paper` `yellow` `red` `navy` から選ぶ。写真なら書かない。語彙と対応する色は `site.ts` とデザインシステム2章で管理する |
 | bio | 一言の自己紹介（1〜2文。例: 「実行委員。2023年の第1回から関わっています。」） |
 | instagram | 本人のアカウントURL（任意） |
 | order | 「作っている人たち」と「顔で絞る」での並び順（任意。既定はID順） |
@@ -291,6 +292,7 @@ shortName: 池田         # 任意。顔の下や「〇〇の記録」の見出�
 role: committee         # 3.2 の立場から1つ
 kind: person            # person | group。任意。既定 person
 avatar: /images/people/ikeda.jpg   # 任意
+avatarBackground: cream            # 任意。画像が透明なときの地の色。cream | paper | yellow | red | navy
 bio: 実行委員。2023年の第1回から関わっています。   # 任意だが推奨
 instagram: https://www.instagram.com/xxxx/         # 任意
 order: 2                # 任意

@@ -1,4 +1,4 @@
-import type { RoleKey, TopicKey } from '@/config/site';
+import type { AvatarBackgroundKey, RoleKey, TopicKey } from '@/config/site';
 
 /** 書き手の種類。group は組織（署名に立場を添えず、顔は黒猫のマーク） */
 export type PersonKind = 'person' | 'group';
@@ -14,6 +14,8 @@ export interface Person {
   kind: PersonKind;
   /** basePath 付与済み */
   avatar?: string;
+  /** 画像の地の色（任意）。背景が透明な画像のときに見える。無ければクリーム */
+  avatarBackground?: AvatarBackgroundKey;
   /** 一言の自己紹介 */
   bio?: string;
   instagram?: string;

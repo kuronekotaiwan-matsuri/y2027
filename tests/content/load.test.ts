@@ -63,6 +63,11 @@ describe('loadContent: 正常系（本番 = draft を除外）', () => {
     expect(data.records[0].date).toBe('2026-10-05');
   });
 
+  it('avatarBackground は語彙のまま渡す。無ければ undefined（表示側で既定の cream）', () => {
+    expect(data.people[1].avatarBackground).toBe('navy');
+    expect(data.people[0].avatarBackground).toBeUndefined();
+  });
+
   it('avatar と thumbnail に basePath を付ける', () => {
     expect(data.people[1].avatar).toBe('/y2027/images/people/ikeda.jpg');
     expect(data.people[0].avatar).toBeUndefined();
@@ -162,12 +167,14 @@ describe('loadContent: 異常系はビルドを失敗させる', () => {
     expect(error.message).toContain('food');
   });
 
-  it('不正な kind / instagram / ID / 日付形式 / 旧形式の author をまとめて報告する', () => {
+  it('不正な kind / instagram / avatarBackground / ID / 日付形式 / 旧形式の author をまとめて報告する', () => {
     const error = loadExpectingError('invalid-values');
     const fields = error.issues.map((issue) => `${issue.file}:${issue.field ?? ''}`);
     expect(fields).toContain('tests/fixtures/invalid-values/people/bad_id.md:');
     expect(fields).toContain('tests/fixtures/invalid-values/people/committee.md:kind');
     expect(fields).toContain('tests/fixtures/invalid-values/people/lin.md:instagram');
+    expect(fields).toContain('tests/fixtures/invalid-values/people/lin.md:avatarBackground');
+    expect(error.message).toContain('cream, paper, yellow, red, navy');
     expect(fields).toContain('tests/fixtures/invalid-values/records/2026-10-05-bad-date.md:date');
     expect(fields).toContain(
       'tests/fixtures/invalid-values/records/2026-10-06-old-author.md:author',

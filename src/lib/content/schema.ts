@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { roleKeys, topicKeys } from '@/config/site';
+import { avatarBackgroundKeys, roleKeys, topicKeys } from '@/config/site';
 
 /** 検証エラー1件。ファイルパスと項目名を必ず持つ */
 export interface ContentIssue {
@@ -54,6 +54,11 @@ export const personFrontMatterSchema = z.object({
     })
     .default('person'),
   avatar: z.string().min(1).optional(),
+  avatarBackground: z
+    .enum(avatarBackgroundKeys, {
+      error: vocabularyError('avatarBackground', avatarBackgroundKeys),
+    })
+    .optional(),
   bio: z.string().optional(),
   instagram: z
     .string()

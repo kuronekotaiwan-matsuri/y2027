@@ -114,6 +114,7 @@ export function loadContent(options: LoadOptions = {}): ContentData {
       role: meta.role,
       kind: meta.kind,
       avatar: meta.avatar ? withBasePath(meta.avatar, basePath) : undefined,
+      avatarBackground: meta.avatarBackground,
       bio: meta.bio,
       instagram: meta.instagram,
       order: meta.order,

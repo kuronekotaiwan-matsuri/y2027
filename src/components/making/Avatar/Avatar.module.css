@@ -47,6 +47,23 @@
   object-fit: cover;
 }
 
+/* 画像の地の色（avatarBackground）。既定の cream は .avatarPhoto の background。語彙は site.ts */
+.avatarPhoto[data-bg='paper'] {
+  background: var(--color-surface);
+}
+
+.avatarPhoto[data-bg='yellow'] {
+  background: var(--color-accent);
+}
+
+.avatarPhoto[data-bg='red'] {
+  background: var(--color-primary);
+}
+
+.avatarPhoto[data-bg='navy'] {
+  background: var(--color-secondary);
+}
+
 /* 組織: 黒猫のマーク。目の色は背景と同じにして穴に見せる */
 .avatarGroup {
   --cat-mark-eye: var(--avatar-group-bg);

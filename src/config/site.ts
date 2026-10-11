@@ -42,6 +42,18 @@ export interface TopicDefinition {
   path?: string;
 }
 
+/**
+ * 顔の地の色（仕様書 3.2）。背景が透明な画像のときに見える色で、
+ * 値は globals.css のトークンに対応させる（Avatar.module.css）
+ */
+export type AvatarBackgroundKey = 'cream' | 'paper' | 'yellow' | 'red' | 'navy';
+
+export interface AvatarBackgroundDefinition {
+  key: AvatarBackgroundKey;
+  /** 書き手向けの説明。content/README の表と合わせる */
+  label: string;
+}
+
 export type TagStatus = 'consider' | 'trial' | 'decided' | 'rejected' | 'recruit' | 'info';
 
 export interface TagDefinition {
@@ -145,6 +157,7 @@ export interface SiteConfig {
   guideMenu: GuideMenuItem[];
   roles: RoleDefinition[];
   topics: TopicDefinition[];
+  avatarBackgrounds: AvatarBackgroundDefinition[];
   tags: TagDefinition[];
   pastSites: PastSite[];
 }
@@ -252,6 +265,14 @@ export const site: SiteConfig = {
     { key: 'other', label: 'その他' },
   ],
 
+  avatarBackgrounds: [
+    { key: 'cream', label: 'クリーム（既定。面色 #F3E4C8）' },
+    { key: 'paper', label: '紙の白（#FFFBF2）' },
+    { key: 'yellow', label: '黄（#D9A62E）' },
+    { key: 'red', label: '赤（#B7332A）' },
+    { key: 'navy', label: '紺（#1F3A5F）' },
+  ],
+
   topics: [
     { key: 'event', label: '開催情報' },
     { key: 'shops', label: '出店情報', path: '/shops/' },
@@ -283,6 +304,11 @@ export const roleKeys: RoleKey[] = site.roles.map((r) => r.key);
 
 /** topics の語彙（検証用） */
 export const topicKeys: TopicKey[] = site.topics.map((t) => t.key);
+
+/** avatarBackground の語彙（検証用） */
+export const avatarBackgroundKeys: AvatarBackgroundKey[] = site.avatarBackgrounds.map(
+  (b) => b.key,
+);
 
 export function getRoleLabel(role: RoleKey): string {
   return site.roles.find((r) => r.key === role)?.label ?? role;

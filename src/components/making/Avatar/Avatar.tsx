@@ -16,7 +16,7 @@ export function avatarClass(size: AvatarSize, ...extra: (string | undefined)[]):
 }
 
 interface AvatarProps {
-  person: Pick<PersonSummary, 'name' | 'kind' | 'avatar'>;
+  person: Pick<PersonSummary, 'name' | 'kind' | 'avatar' | 'avatarBackground'>;
   size?: AvatarSize;
   /** ファーストビューに置くときは false（遅延読み込みしない） */
   lazy?: boolean;
@@ -30,8 +30,13 @@ interface AvatarProps {
  */
 export default function Avatar({ person, size = 'sm', lazy = true, className }: AvatarProps) {
   if (person.avatar) {
+    // 地の色は data-bg で切り替える（Avatar.module.css）。無指定は cream
     return (
-      <span className={avatarClass(size, styles.avatarPhoto, className)} aria-hidden="true">
+      <span
+        className={avatarClass(size, styles.avatarPhoto, className)}
+        data-bg={person.avatarBackground}
+        aria-hidden="true"
+      >
         <img
           src={person.avatar}
           alt=""
