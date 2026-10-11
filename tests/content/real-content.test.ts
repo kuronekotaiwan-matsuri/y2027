@@ -7,9 +7,9 @@ import { loadContent } from '@/lib/content/load';
  * 書き手が front-matter を間違えたとき、build より先にここで気づける。
  */
 describe('content/（実データ）', () => {
-  it('本番（draft 除外）で検証が通り、公開する書き手は実行委員会と池田', () => {
+  it('本番（draft 除外）で検証が通り、公開する書き手は実行委員会・池田・イケダ', () => {
     const data = loadContent({ includeDrafts: false, warn: () => {} });
-    expect(data.people.map((person) => person.id)).toEqual(['committee', 'ikeda']);
+    expect(data.people.map((person) => person.id)).toEqual(['committee', 'ikeda', 'ikeda-shop']);
     const committee = data.people[0];
     expect(committee.kind).toBe('group');
     expect(committee.role).toBe('committee');
@@ -22,11 +22,12 @@ describe('content/（実データ）', () => {
     expect(data.records.every((record) => ids.has(record.author))).toBe(true);
   });
 
-  it('開発時（draft 込み）でも検証が通り、イケダ（出店者）とその記録は isDraft', () => {
+  it('開発時（draft 込み）でも検証が通り、イケダ（出店者）の書きかけの記録は isDraft', () => {
     const data = loadContent({ includeDrafts: true, warn: () => {} });
     expect(data.people.map((person) => person.id)).toEqual(['committee', 'ikeda', 'ikeda-shop']);
     const shop = data.people.find((person) => person.id === 'ikeda-shop');
-    expect(shop?.isDraft).toBe(true);
+    // 書き手としては公開済み（2026-10-11）。記録はまだ書きかけなので draft のまま
+    expect(shop?.isDraft).toBe(false);
     expect(shop?.role).toBe('shop');
     const shopRecords = data.records.filter((record) => record.author === 'ikeda-shop');
     expect(shopRecords.length).toBeGreaterThan(0);
