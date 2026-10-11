@@ -180,7 +180,7 @@ export const site: SiteConfig = {
   event: {
     year: 2027,
     edition: 5,
-    // 日程は 2026-10-11 に決定（記録 2026-10-11-date-decided）。会場は大筋のみで詳細は調整中
+    // 日程は 2026-10-09 のキックオフで決定（記録 2026-10-09-date-decided）。会場は大筋のみで詳細は調整中
     scheduleLabel: '2027年5月29日（土）・30日（日）開催予定',
     scheduleNote: '会場はこれまでと同じ二子新地のあたり。詳細は調整中',
     heldLabel: undefined,
