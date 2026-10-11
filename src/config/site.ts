@@ -180,19 +180,25 @@ export const site: SiteConfig = {
   event: {
     year: 2027,
     edition: 5,
-    scheduleLabel: '2027年5月 開催予定',
-    scheduleNote: '日程・会場未定',
+    // 日程は 2026-10-11 に決定（記録 2026-10-11-date-decided）。会場は大筋のみで詳細は調整中
+    scheduleLabel: '2027年5月29日（土）・30日（日）開催予定',
+    scheduleNote: '会場はこれまでと同じ二子新地のあたり。詳細は調整中',
     heldLabel: undefined,
     goal: {
-      date: '2027.05',
+      date: '2027.05.29–30',
       title: '黒猫台湾まつり2027',
-      status: '開催（予定）',
-      note: '日程が決まったら、ここに日付が入ります。',
+      status: '開催予定',
+      note: '会場はこれまでと同じ二子新地のあたり。詳細が決まったら、ここに書きます。',
     },
     items: [
-      { key: 'date', label: '日程', value: '未定', decided: false },
+      { key: 'date', label: '日程', value: '2027年5月29日（土）・30日（日）', decided: true },
       { key: 'time', label: '時間', value: '未定', decided: false },
-      { key: 'venue', label: '会場', value: '未定', decided: false },
+      {
+        key: 'venue',
+        label: '会場',
+        value: '二子新地駅前から大山街道沿いと二子神社の予定。詳細は調整中',
+        decided: false,
+      },
       { key: 'fee', label: '入場料', value: '未定', decided: false },
     ],
   },
