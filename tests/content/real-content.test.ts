@@ -22,16 +22,13 @@ describe('content/（実データ）', () => {
     expect(data.records.every((record) => ids.has(record.author))).toBe(true);
   });
 
-  it('開発時（draft 込み）でも検証が通り、イケダ（出店者）の書きかけの記録は isDraft', () => {
+  it('開発時（draft 込み）でも検証が通り、記録は日付昇順', () => {
     const data = loadContent({ includeDrafts: true, warn: () => {} });
     expect(data.people.map((person) => person.id)).toEqual(['committee', 'ikeda', 'ikeda-shop']);
     const shop = data.people.find((person) => person.id === 'ikeda-shop');
-    // 書き手としては公開済み（2026-10-11）。記録はまだ書きかけなので draft のまま
+    // 書き手としては公開済み（2026-10-11）。記録は本人が書いたときに増える
     expect(shop?.isDraft).toBe(false);
     expect(shop?.role).toBe('shop');
-    const shopRecords = data.records.filter((record) => record.author === 'ikeda-shop');
-    expect(shopRecords.length).toBeGreaterThan(0);
-    expect(shopRecords.every((record) => record.isDraft)).toBe(true);
     // 日付昇順
     const dates = data.records.map((record) => record.date);
     expect(dates).toEqual([...dates].sort());
