@@ -24,17 +24,11 @@ interface AvatarProps {
 }
 
 /**
- * 顔（仕様書 6.3）。写真があればそれ、無ければ名前の1文字目、組織は黒猫のマーク。
+ * 顔（仕様書 6.3）。画像（avatar）があれば個人も組織もそれ。
+ * 無ければ、個人は名前の1文字目、組織は黒猫のマーク。
  * 装飾扱い（aria-hidden）にし、名前は隣にテキストで出す（仕様書 9.6）。
  */
 export default function Avatar({ person, size = 'sm', lazy = true, className }: AvatarProps) {
-  if (person.kind === 'group') {
-    return (
-      <span className={avatarClass(size, styles.avatarGroup, className)} aria-hidden="true">
-        <CatMark />
-      </span>
-    );
-  }
   if (person.avatar) {
     return (
       <span className={avatarClass(size, styles.avatarPhoto, className)} aria-hidden="true">
@@ -44,6 +38,13 @@ export default function Avatar({ person, size = 'sm', lazy = true, className }: 
           loading={lazy ? 'lazy' : undefined}
           decoding="async"
         />
+      </span>
+    );
+  }
+  if (person.kind === 'group') {
+    return (
+      <span className={avatarClass(size, styles.avatarGroup, className)} aria-hidden="true">
+        <CatMark />
       </span>
     );
   }

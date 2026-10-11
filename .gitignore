@@ -144,3 +144,5 @@ vite.config.ts.timestamp-*
 
 # Next.js が生成する型定義（build / dev / typegen で再生成される）
 next-env.d.ts
+
+temp/
