@@ -145,7 +145,7 @@ export interface SiteConfig {
   email: string;
   /** OGP の共通画像（/images/... の形。basePath は付けない） */
   ogImage: string;
-  /** Google Analytics 測定ID。未確認のあいだは undefined（読み込まない） */
+  /** Google Analytics 測定ID。undefined のときは読み込まない */
   gaMeasurementId?: string;
   phase: Phase;
   event: EventConfig;
@@ -173,7 +173,8 @@ export const site: SiteConfig = {
   instagram: 'https://www.instagram.com/kuronekotw_fes/',
   email: 'kuronekotaiwan.matsuri@gmail.com',
   ogImage: '/images/og.png',
-  gaMeasurementId: undefined,
+  // 2027年用のプロパティ（2026年の G-5JW9C3WY72 とは別）
+  gaMeasurementId: 'G-VDER797CPB',
 
   phase: 'making',
 

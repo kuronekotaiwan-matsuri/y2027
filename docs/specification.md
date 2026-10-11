@@ -706,7 +706,7 @@ design-lab（`docs/design-lab/`）で2ラウンドの比較を行い、第2ラ�
 - JSON-LD: サイト共通に Organization + WebSite。開催日が確定したら Festival（Event）を追加する。記録ページには Article（author は書き手の名前。組織なら Organization）を付ける
 - `sitemap.xml` をビルド時に生成する（主コンテンツ、記録、書き手を含む）
 - `robots.txt`、`llms.txt` を用意する（2026年に準じる）
-- Google Analytics（2026年と同じ測定IDを継続するか、公開前に確認）。`src/config/site.ts` の `gaMeasurementId` に測定IDを入れると有効になる
+- Google Analytics（gtag.js）。2027年用に新しいプロパティを作り、測定ID `G-VDER797CPB` を `src/config/site.ts` の `gaMeasurementId` に設定済み（2026年の `G-5JW9C3WY72` とは別）
 
 ### 9.6 アクセシビリティ
 
@@ -802,6 +802,5 @@ y2027/
 | キャッチコピー | 案あり（5.1）。design-lab の見本では「黒猫台湾まつりは、5月に始まるのではない。」を使用 | 実装時に確認 |
 | 書き手の顔写真 | 未定（無いあいだは名前の1文字目で代用） | 本人に確認して `public/images/people/` に置く |
 | 「イケダ（出店者）」の開始 | 検討中（`draft: true` で登録だけしておく） | 本人が始めた時点で `draft` を外し、最初の記録で同じ人だと明かす |
-| Google Analytics の測定ID | 2026年のIDを継続するか未確認 | 公開前に確認 |
 | 過去サイトへのリンク | 2025、2026を載せる方針 | フッターと「まつりとは」に配置 |
 | 雛形生成スクリプト | 推奨だが任意 | 実装工程で判断 |
