@@ -701,11 +701,15 @@ design-lab（`docs/design-lab/`）で2ラウンドの比較を行い、第2ラ�
 
 ### 9.5 SEO・共有
 
-- 各ページに `title`、`description`、canonical、OGPを設定する
-- 記録ページのOGP画像は `thumbnail`、なければ共通画像
-- JSON-LD: サイト共通に Organization + WebSite。開催日が確定したら Festival（Event）を追加する。記録ページには Article（author は書き手の名前。組織なら Organization）を付ける
+- 各ページに `title`、`description`、canonical、OGPを設定する。`description` の日程は `src/config/site.ts` の `scheduleLabel` から組み立てる（日付を2か所に書かない）
+- 記録ページのOGP画像は `thumbnail`、なければ共通画像。共通画像（1200×630）を使うときだけ寸法と alt を付ける。書き手ページの Twitter カードは `summary`（OGP が正方形の顔写真のため）
+- JSON-LD:
+  - サイト共通（layout）に Organization + WebSite
+  - トップに Festival。`site.event.startDate` が設定されている間だけ出す（location は `venueName`、無ければ `items` の会場文。入場料が未定のうちは offers を入れない。延期・変更時は `eventStatus` を変えて `previousStartDate` を足す）
+  - 記録ページに Article（author は書き手。人なら Person、組織なら共通の Organization を `@id` で参照）と BreadcrumbList
+  - 書き手ページに ProfilePage（mainEntity は人なら Person、組織なら Organization の参照。`dateModified` は最新の記録の日付）と BreadcrumbList
 - `sitemap.xml` をビルド時に生成する（主コンテンツ、記録、書き手を含む）
-- `robots.txt`、`llms.txt` を用意する（2026年に準じる）
+- `robots.txt` を用意する（2026年に準じる）。`llms.txt` は `src/app/llms.txt/route.ts` がビルド時に `site.ts`（日程・会場・未定項目・ナビ・過去サイト・連絡先）から生成する。手で編集しない
 - Google Analytics（gtag.js）。2027年用に新しいプロパティを作り、測定ID `G-VDER797CPB` を `src/config/site.ts` の `gaMeasurementId` に設定済み（2026年の `G-5JW9C3WY72` とは別）
 
 ### 9.6 アクセシビリティ

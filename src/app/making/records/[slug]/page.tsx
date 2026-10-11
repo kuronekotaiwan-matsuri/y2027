@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Section from '@/components/common/Section/Section';
 import RecordArticle from '@/components/making/RecordArticle/RecordArticle';
 import { adjacentRecords, getPerson, getRecord, getRecords, toPersonSummary } from '@/lib/content';
-import { recordJsonLd } from '@/lib/jsonld';
+import { breadcrumbJsonLd, recordJsonLd } from '@/lib/jsonld';
 import { buildMetadata } from '@/lib/metadata';
 import { slugParamsOrPlaceholder, type SlugParam as Params } from '@/lib/staticParams';
 
@@ -47,6 +47,14 @@ export default async function RecordPage({ params }: { params: Promise<Params> }
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(recordJsonLd(record, personSummary)) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd({ name: record.title, path: `/making/records/${slug}/` }),
+          ),
+        }}
       />
       <RecordArticle
         record={record}

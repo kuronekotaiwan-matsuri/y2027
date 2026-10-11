@@ -94,6 +94,12 @@ export interface EventConfig {
   scheduleLabel: string;
   /** 準備中の補足（例: 日程・会場未定） */
   scheduleNote: string;
+  /** 開催初日（YYYY-MM-DD）。JSON-LD（Festival）用。未確定なら省略（省略中は Festival を出さない） */
+  startDate?: string;
+  /** 開催最終日（YYYY-MM-DD）。JSON-LD 用。未確定なら省略（startDate と同じ日として扱う） */
+  endDate?: string;
+  /** JSON-LD の Place.name。省略すると items の会場の表示文をそのまま使う。正式な会場名が決まったら短く書く */
+  venueName?: string;
   /** 開催後の表示文（archive で使う）。未開催なら省略 */
   heldLabel?: string;
   /** タイムライン最下部のゴールマーカー */
@@ -162,12 +168,17 @@ export interface SiteConfig {
   pastSites: PastSite[];
 }
 
+/**
+ * 開催予定の表示文。description と event.scheduleLabel の両方で使う（日付の二重管理を避ける）。
+ * 日程は 2026-10-09 のキックオフで決定（記録 2026-10-09-date-decided）
+ */
+const scheduleLabel = '2027年5月29日（土）・30日（日）開催予定';
+
 export const site: SiteConfig = {
   name: '黒猫台湾まつり2027',
   url: 'https://kuronekotaiwan-matsuri.github.io/y2027/',
   basePath: '/y2027',
-  description:
-    '2027年5月開催予定の黒猫台湾まつり2027 公式サイト。川崎・二子新地の大山街道沿いで開かれてきた台湾カルチャーフェスティバルの案内と、祭りができるまでの記録。',
+  description: `${scheduleLabel}の黒猫台湾まつり2027 公式サイト。川崎・二子新地の大山街道沿いで開かれてきた台湾カルチャーフェスティバルの案内と、祭りができるまでの記録。`,
   catchphrase: '黒猫台湾まつりは、5月に始まるのではない。',
   organizer: '黒猫台湾まつり実行委員会',
   instagram: 'https://www.instagram.com/kuronekotw_fes/',
@@ -181,9 +192,11 @@ export const site: SiteConfig = {
   event: {
     year: 2027,
     edition: 5,
-    // 日程は 2026-10-09 のキックオフで決定（記録 2026-10-09-date-decided）。会場は大筋のみで詳細は調整中
-    scheduleLabel: '2027年5月29日（土）・30日（日）開催予定',
+    // 日程は確定。会場は大筋のみで詳細は調整中（venueName は正式名称が決まったら入れる）
+    scheduleLabel,
     scheduleNote: '会場はこれまでと同じ二子新地のあたり。詳細は調整中',
+    startDate: '2027-05-29',
+    endDate: '2027-05-30',
     heldLabel: undefined,
     goal: {
       date: '2027.05.29–30',
@@ -281,7 +294,8 @@ export const site: SiteConfig = {
   ],
 
   topics: [
-    { key: 'event', label: '開催情報' },
+    // 開催情報は独立したページが無く、トップのヒーロー（id="event"）に載る
+    { key: 'event', label: '開催情報', path: '/#event' },
     { key: 'shops', label: '出店情報', path: '/shops/' },
     { key: 'programs', label: 'プログラム', path: '/programs/' },
     { key: 'venue', label: '会場マップ' },

@@ -26,7 +26,8 @@ export default function Hero({ phase, latest }: HeroProps) {
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
       <div className={styles.heroInner}>
-        <p className={styles.heroEyebrow}>
+        {/* id="event" は「開催情報」への飛び先（topics の path）。phase によらず常に描画される要素に付ける */}
+        <p id="event" className={styles.heroEyebrow}>
           第{event.edition}回 ／ {event.scheduleLabel}
         </p>
         <h1 id="hero-title" className={styles.heroTitle}>

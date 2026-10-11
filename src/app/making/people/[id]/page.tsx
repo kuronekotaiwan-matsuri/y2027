@@ -17,6 +17,7 @@ import {
   toPersonSummary,
   toRecordSummary,
 } from '@/lib/content';
+import { breadcrumbJsonLd, personJsonLd } from '@/lib/jsonld';
 import { buildMetadata } from '@/lib/metadata';
 import { idParamsOrPlaceholder, type IdParam as Params } from '@/lib/staticParams';
 import styles from './page.module.css';
@@ -43,6 +44,8 @@ export async function generateMetadata({
       person.bio ?? `${nameWithSan(person)}が書いている、黒猫台湾まつり2027ができるまでの記録です。`,
     path: `/making/people/${person.id}/`,
     image: person.avatar,
+    // 顔写真は正方形なので大画像カードにしない
+    card: 'summary',
   });
 }
 
@@ -55,9 +58,23 @@ export default async function PersonPage({ params }: { params: Promise<Params> }
   const summary = toPersonSummary(person);
   const personRecords = recordsByAuthor(getRecords(), id, 'asc').map(toRecordSummary);
   const hasBody = person.bodyHtml.trim().length > 0;
+  // ProfilePage の dateModified は最新の記録の日付（sitemap と同じ基準）
+  const lastRecordDate = personRecords[personRecords.length - 1]?.date;
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd(summary, lastRecordDate)) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd({ name: person.name, path: `/making/people/${id}/` }),
+          ),
+        }}
+      />
       <Section aria-labelledby="person-name">
         <div className={styles.personPage}>
           <Crumb />

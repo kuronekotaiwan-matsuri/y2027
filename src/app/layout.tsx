@@ -7,7 +7,7 @@ import Header from '@/components/common/Header/Header';
 import { site } from '@/config/site';
 import { getLastUpdated } from '@/lib/content';
 import { siteJsonLd } from '@/lib/jsonld';
-import { absoluteUrl } from '@/lib/urls';
+import { defaultOgImage } from '@/lib/metadata';
 
 /** Google Fonts（docs/design-system.md 3章） */
 const FONTS_URL =
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: site.name,
     description: site.description,
     url: site.url,
-    images: [{ url: absoluteUrl(site.ogImage) }],
+    images: [defaultOgImage],
   },
   twitter: {
     card: 'summary_large_image',
