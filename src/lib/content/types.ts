@@ -38,7 +38,10 @@ export type PersonSummary = Omit<Person, 'bodyHtml'>;
 export interface MakingRecord {
   /** ファイル名から .md を除いたもの。サイト全体で一意 */
   slug: string;
+  /** 折り返し記号 `|` を取り除いた平文。<title>・JSON-LD・ページャなど、折り返さない場所で使う */
   title: string;
+  /** title を折り返し記号 `|` の位置で分けた断片（見出しの表示用）。記号が無ければ要素1つ */
+  titleSegments: string[];
   /** YYYY-MM-DD。出来事の日 */
   date: string;
   /** 書き手の ID（content/people/ に存在することを検証済み） */

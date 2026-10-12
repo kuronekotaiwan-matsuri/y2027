@@ -69,8 +69,8 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* タイトルはカードの幅なりに折り返す（balance で行をそろえると語の途中で折れる）。折り返す位置は RecordTitle が決める */
 .cardTitle {
-  text-wrap: balance;
   font-size: 1.1rem;
   line-height: 1.4;
   margin-bottom: 6px;

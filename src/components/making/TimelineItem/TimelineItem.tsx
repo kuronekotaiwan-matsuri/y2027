@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Byline from '@/components/making/Byline/Byline';
+import RecordTitle from '@/components/making/RecordTitle/RecordTitle';
 import Tag from '@/components/making/Tag/Tag';
 import { formatDate } from '@/lib/content/select';
 import type { PersonSummary, RecordSummary } from '@/lib/content/types';
@@ -44,7 +45,9 @@ export default function TimelineItem({
               {formatDate(record.date, 'short')}
             </time>
           </div>
-          <Heading className={styles.timelineTitle}>{record.title}</Heading>
+          <Heading className={styles.timelineTitle}>
+            <RecordTitle segments={record.titleSegments} />
+          </Heading>
           <p className={styles.timelineSummary}>{record.summary}</p>
           {record.tags.length > 0 && (
             <div className={styles.timelineTags}>

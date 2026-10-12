@@ -15,6 +15,7 @@ const websiteId = 'https://kuronekotaiwan-matsuri.github.io/y2027/#website';
 const record: MakingRecord = {
   slug: '2026-10-05-kickoff',
   title: '今年も動き始めました',
+  titleSegments: ['今年も動き始めました'],
   date: '2026-10-05',
   author: 'ikeda',
   summary: '要約。',

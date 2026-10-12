@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Byline from '@/components/making/Byline/Byline';
+import RecordTitle from '@/components/making/RecordTitle/RecordTitle';
 import Tag from '@/components/making/Tag/Tag';
 import { formatDate } from '@/lib/content/select';
 import type { PersonSummary, RecordSummary } from '@/lib/content/types';
@@ -28,7 +29,9 @@ export default function RecordCard({ record, person }: RecordCardProps) {
           </time>
         </div>
         <h3 className={styles.cardTitle}>
-          <Link href={href}>{record.title}</Link>
+          <Link href={href}>
+            <RecordTitle segments={record.titleSegments} />
+          </Link>
         </h3>
         <p className={styles.cardSummary}>{record.summary}</p>
         {record.tags.length > 0 && (

@@ -14,6 +14,7 @@ import {
   shortNameWithSan,
   sortPeople,
   sortRecordsByDate,
+  splitTitle,
 } from '@/lib/content/select';
 
 interface TestRecord {
@@ -211,5 +212,36 @@ describe('表示用の文字', () => {
     expect(formatDate('2026-10-05')).toBe('2026.10.05');
     expect(formatDate('2026-10-05', 'short')).toBe('10.05');
     expect(formatDate('2026-10-05', 'ja')).toBe('2026年10月5日');
+  });
+});
+
+describe('splitTitle: タイトルの折り返し位置（仕様書 3.1）', () => {
+  it('記号が無ければ、平文と断片1つ', () => {
+    expect(splitTitle('開催日が決まりました')).toEqual({
+      title: '開催日が決まりました',
+      titleSegments: ['開催日が決まりました'],
+    });
+  });
+
+  it('| の位置で分け、平文からは記号を取り除く', () => {
+    expect(splitTitle('出店する側にも挑戦します。|まずはアイデアから')).toEqual({
+      title: '出店する側にも挑戦します。まずはアイデアから',
+      titleSegments: ['出店する側にも挑戦します。', 'まずはアイデアから'],
+    });
+  });
+
+  it('全角の ｜ と、記号の前後の空白も同じ扱い', () => {
+    expect(splitTitle('開催日が決まりました ｜ 5月16日です')).toEqual({
+      title: '開催日が決まりました5月16日です',
+      titleSegments: ['開催日が決まりました', '5月16日です'],
+    });
+  });
+
+  it('先頭・末尾・連続の記号は無視する', () => {
+    expect(splitTitle('|a||b|')).toEqual({ title: 'ab', titleSegments: ['a', 'b'] });
+  });
+
+  it('記号だけなら平文は空（load 側でエラーにする）', () => {
+    expect(splitTitle(' | ')).toEqual({ title: '', titleSegments: [] });
   });
 });

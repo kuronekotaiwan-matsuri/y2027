@@ -6,6 +6,7 @@ import Crumb from '@/components/making/Crumb/Crumb';
 import InstagramCard from '@/components/making/InstagramCard/InstagramCard';
 import Pager, { type PagerLink } from '@/components/making/Pager/Pager';
 import Prose from '@/components/making/Prose/Prose';
+import RecordTitle from '@/components/making/RecordTitle/RecordTitle';
 import Tag from '@/components/making/Tag/Tag';
 import { getTopic } from '@/config/site';
 import { formatDate, type Adjacent } from '@/lib/content/select';
@@ -34,7 +35,9 @@ export default function RecordArticle({ record, person, adjacent }: RecordArticl
     <article className={styles.article}>
       <header className={styles.articleHeader}>
         <Crumb />
-        <h1 className={styles.articleTitle}>{record.title}</h1>
+        <h1 className={styles.articleTitle}>
+          <RecordTitle segments={record.titleSegments} />
+        </h1>
         {/* 署名（顔 + 「イケダ（出店者）」）／ 日付 ／ 状態タグ */}
         <div className={styles.articleMeta}>
           <span className={styles.articleByline}>

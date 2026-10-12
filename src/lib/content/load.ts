@@ -9,7 +9,7 @@ import { site } from '@/config/site';
 import { isAbsoluteUrl, withBasePath } from '@/lib/urls';
 import { markdownToHtml } from './markdown';
 import { parsePersonFrontMatter, parseRecordFrontMatter, type ContentIssue } from './schema';
-import { sortPeople, sortRecordsByDate } from './select';
+import { sortPeople, sortRecordsByDate, splitTitle } from './select';
 import type { ContentData, MakingRecord, Person } from './types';
 
 export interface LoadOptions {
@@ -152,6 +152,13 @@ export function loadContent(options: LoadOptions = {}): ContentData {
     }
     const meta = parsed.data;
 
+    // 折り返し記号 | を取り除く。記号だけの title は平文が空になるので弾く
+    const { title, titleSegments } = splitTitle(meta.title);
+    if (title === '') {
+      issues.push({ file, field: 'title', message: 'title は折り返し記号 | 以外の文字も書いてください' });
+      continue;
+    }
+
     const author = peopleById.get(meta.author);
     if (!author) {
       // ID 自体はあるが書き手の検証に失敗している場合は、書き手側のエラーだけを報告する
@@ -180,7 +187,8 @@ export function loadContent(options: LoadOptions = {}): ContentData {
     if (meta.thumbnail) checkImage(meta.thumbnail, file, 'thumbnail');
     records.push({
       slug,
-      title: meta.title,
+      title,
+      titleSegments,
       date: meta.date,
       author: meta.author,
       summary: meta.summary,

@@ -67,6 +67,28 @@ export function recordsByTopic<T extends DateSortable & { topics: TopicKey[] }>(
   );
 }
 
+/** タイトルの折り返し位置を示す記号。日本語入力のまま打てるよう全角の ｜ も受け付け、前後の空白は捨てる */
+const TITLE_BREAK_RE = /\s*[|｜]\s*/;
+
+export interface SplitTitle {
+  /** 記号を取り除いた平文 */
+  title: string;
+  /** 記号で分けた断片。空の断片（先頭・末尾・連続の記号）は除く */
+  titleSegments: string[];
+}
+
+/**
+ * front-matter の title を折り返し記号 `|` で分ける（仕様書 3.1）。
+ * 見出しでは断片の間でだけ折り返し、平文では記号をそのまま取り除く。
+ */
+export function splitTitle(raw: string): SplitTitle {
+  const titleSegments = raw
+    .split(TITLE_BREAK_RE)
+    .map((segment) => segment.trim())
+    .filter((segment) => segment !== '');
+  return { title: titleSegments.join(''), titleSegments };
+}
+
 /** "2026-10-05" → "2026.10" */
 export function monthLabel(date: string): string {
   return `${date.slice(0, 4)}.${date.slice(5, 7)}`;

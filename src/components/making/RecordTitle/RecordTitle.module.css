@@ -1,0 +1,7 @@
+/* 記録のタイトル: 句読点の後と <wbr />（front-matter の | ）の位置でだけ折り返す。
+   keep-all は日本語の文字どうしの間での折り返しを抑えるが、句読点の後は折り返せる。
+   どこでも折り返せないほど長い語は overflow-wrap: anywhere で幅のところで折る（カードの幅を押し広げない） */
+.recordTitle {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}

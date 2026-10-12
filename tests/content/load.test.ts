@@ -209,3 +209,30 @@ describe('loadContent: 異常系はビルドを失敗させる', () => {
     expect(data).toEqual({ people: [], records: [] });
   });
 });
+
+describe('loadContent: タイトルの折り返し位置（仕様書 3.1）', () => {
+  const data = loadContent({ ...fixture('valid'), includeDrafts: true, warn: () => {} });
+  const bySlug = new Map(data.records.map((record) => [record.slug, record]));
+
+  it('title の | を取り除いた平文と、| で分けた断片を持つ', () => {
+    const youth = bySlug.get('2026-11-15-youth');
+    expect(youth?.title).toBe('若者メンバーが企画を始めました');
+    expect(youth?.titleSegments).toEqual(['若者メンバーが', '企画を始めました']);
+  });
+
+  it('記号の無い title は断片1つ', () => {
+    const kickoff = bySlug.get('2026-10-05-kickoff');
+    expect(kickoff?.titleSegments).toEqual(['今年も動き始めました']);
+  });
+
+  it('記号だけの title はビルドを失敗させる', () => {
+    const error = loadExpectingError('invalid-title');
+    expect(error.issues).toEqual([
+      expect.objectContaining({
+        file: 'tests/fixtures/invalid-title/records/2026-10-05-kickoff.md',
+        field: 'title',
+        message: 'title は折り返し記号 | 以外の文字も書いてください',
+      }),
+    ]);
+  });
+});
