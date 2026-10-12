@@ -8,6 +8,7 @@ import { site } from '@/config/site';
 import { getLastUpdated } from '@/lib/content';
 import { siteJsonLd } from '@/lib/jsonld';
 import { defaultOgImage } from '@/lib/metadata';
+import { withBasePath } from '@/lib/urls';
 
 /** Google Fonts（docs/design-system.md 3章） */
 const FONTS_URL =
@@ -44,6 +45,8 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="stylesheet" href={FONTS_URL} />
+        {/* favicon.ico は public/ に置いて手で出す。src/app/favicon.ico の規約は basePath 付きだとトップページで <link> が出ない（Next.js の isFavicon が /favicon.ico 固定のため） */}
+        <link rel="icon" href={withBasePath('/favicon.ico')} sizes="16x16 32x32 48x48" type="image/x-icon" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
