@@ -13,9 +13,9 @@
   padding: 0 var(--spacing-content);
 }
 
-/* 見出しの下に置くリード文。見出しに近づける */
+/* 見出しの下に置くリード文。見出しに近づける。
+   1〜2文の短い文なので幅を固定しない（固定すると PC で文末だけが折り返る） */
 .sectionLead {
-  max-width: var(--prose-max-width);
   margin: calc(var(--space-1) * -1) 0 var(--space-4);
   color: var(--color-text-light);
 }
