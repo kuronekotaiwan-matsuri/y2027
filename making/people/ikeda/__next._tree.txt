@@ -1,5 +1,5 @@
 :HL["/y2027/_next/static/chunks/44szcgqgd5iye.css","style"]
-:HL["/y2027/_next/static/chunks/11qo391zvy4-o.css","style"]
+:HL["/y2027/_next/static/chunks/3u9-zizcohltk.css","style"]
 :HL["https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Klee+One:wght@400;600&display=swap","style"]
 :HL["/y2027/images/people/ikeda.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"making","param":null,"prefetchHints":4160,"slots":{"children":{"name":"people","param":null,"prefetchHints":4192,"slots":{"children":{"name":"id","param":{"type":"d","key":"ikeda","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}}}},"staleTime":300,"buildId":"MSCtMwm7yGGuzPH7yKFZj"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"making","param":null,"prefetchHints":4160,"slots":{"children":{"name":"people","param":null,"prefetchHints":4192,"slots":{"children":{"name":"id","param":{"type":"d","key":"ikeda","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}}}},"staleTime":300,"buildId":"DQ5tkAQVWrpFDqPz2l0LZ"}
