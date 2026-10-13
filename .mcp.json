@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "analytics-mcp": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["--from", "analytics-mcp==0.7.0", "analytics-mcp"],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "${APPDATA}/gcloud-kuroneko-ga/application_default_credentials.json"
+      }
+    }
+  }
+}
