@@ -92,6 +92,7 @@ scripts\ga-mcp-login.cmd
 - **403 PERMISSION_DENIED で GA のデータが読めない**: GA 側でサービスアカウントが閲覧者になっているか、プロパティ ID が合っているかを確認する
 - **`Request had insufficient authentication scopes`（GSC）**: 権限借用のトークンに Search Console のスコープが付いていない。`server.py` は ADC ファイルを読んでスコープを明示しているので通常は出ない。`google.auth.default()` を使う別のコードから呼ぶ場合は、ADC ファイルの `scopes` に `webmasters.readonly` が要る（`scripts\ga-mcp-login.cmd adc` を実行し直すと付く）
 - **GSC の集計が空**: 表示回数がまだ無いか、直近2〜3日はデータが未確定
+- **GSC のサイトマップが「取得できませんでした」と出る**: 送信直後で Google がまだ取りに来ていないときもこう表示される。`list_sitemaps` で `isPending: true` かつ `errors: 0` なら待てばよい。`lastDownloaded` が付いてもエラーが残るときだけ、配信（200 と `application/xml`）と XML の妥当性を疑う
 - **`has not been used in project ... before or it is disabled`**: `kuronekotaiwan-2027` で API が無効になっている。上の `gcloud services enable` を再実行する
 - **サーバーが起動しない**: `uvx --from analytics-mcp==0.7.0 python -c "import analytics_mcp.server"` や `uv run --no-project scripts/gsc-mcp/server.py` で依存の取得が通るか見る。`uv` が古いときは `winget upgrade astral-sh.uv`
 - **別の PC で使う**: `uv`（`uvx`）と gcloud CLI を入れ、「2. 初回設定の手順」の「ローカル」以降をやり直す。GCP・GA・GSC の設定は共通
