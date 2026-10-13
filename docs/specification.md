@@ -709,7 +709,7 @@ design-lab（`docs/design-lab/`）で2ラウンドの比較を行い、第2ラ�
   - 記録ページに Article（author は書き手。人なら Person、組織なら共通の Organization を `@id` で参照）と BreadcrumbList
   - 書き手ページに ProfilePage（mainEntity は人なら Person、組織なら Organization の参照。`dateModified` は最新の記録の日付）と BreadcrumbList
 - `sitemap.xml` をビルド時に生成する（主コンテンツ、記録、書き手を含む）
-- `robots.txt` を用意する（2026年に準じる）。`llms.txt` は `src/app/llms.txt/route.ts` がビルド時に `site.ts`（日程・会場・未定項目・ナビ・過去サイト・連絡先）から生成する。手で編集しない
+- `robots.txt` を用意する（2026年に準じる）。ただしクローラーが読むのはホスト直下の `https://kuronekotaiwan-matsuri.github.io/robots.txt` だけで、`/y2027/robots.txt` は読まれない。年ごとのサイトマップの場所は root リポジトリ（`kuronekotaiwan-matsuri.github.io` の `app-top/public/robots.txt`）に書いてある（2026-10-13 追加）。`llms.txt` は `src/app/llms.txt/route.ts` がビルド時に `site.ts`（日程・会場・未定項目・ナビ・過去サイト・連絡先）から生成する。手で編集しない
 - Google Analytics（gtag.js）。2027年用に新しいプロパティを作り、測定ID `G-VDER797CPB` を `src/config/site.ts` の `gaMeasurementId` に設定済み（2026年の `G-5JW9C3WY72` とは別）。GA と Search Console の集計を Claude Code から読む MCP の設定と手順は `docs/analytics-mcp.md`
 
 ### 9.6 アクセシビリティ
