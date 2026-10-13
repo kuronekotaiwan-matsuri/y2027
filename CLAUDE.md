@@ -66,9 +66,9 @@ wshobson/agents（MIT）の `seo-technical-optimization` プラグインから2�
 - content の読み込み・検証・変換は `src/lib/content/` に閉じる。不正な front-matter はビルドを失敗させる
 - 完了の条件: `npm run lint`、`npx tsc --noEmit`、`npm test`、`npm run build` がすべて通ること
 
-## Google Analytics の参照
+## Google Analytics と Search Console の参照
 
-- `.mcp.json` の `analytics-mcp`（読み取り専用）でサイトのアクセス集計を読める。仕組み・初回設定・プロパティ ID は `docs/analytics-mcp.md`
+- `.mcp.json` の `analytics-mcp`（GA）と `search-console-mcp`（GSC）はどちらも読み取り専用。仕組み・初回設定・プロパティ ID は `docs/analytics-mcp.md`
 - 数値を文書やコミットに書くときは、期間と指標名（セッション、ユーザー、表示回数のどれか）を添える
 - 認証が切れていたら `scripts\ga-mcp-login.cmd adc` をユーザーに実行してもらう（ブラウザが開くため、セッション内では実行できない）
 

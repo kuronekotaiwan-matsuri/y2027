@@ -1,5 +1,5 @@
 @echo off
-rem Sign-in helper for the Google Analytics MCP server (see docs/analytics-mcp.md).
+rem Sign-in helper for the Google Analytics / Search Console MCP servers (see docs/analytics-mcp.md).
 rem Comments are in English on purpose: cmd.exe reads batch files in the console
 rem code page, and Japanese text in a .cmd file is garbled or mis-parsed on some setups.
 rem
@@ -17,7 +17,7 @@ set "CLOUDSDK_CONFIG=%APPDATA%\gcloud-kuroneko-ga"
 set "GA_ACCOUNT=kuronekotaiwan.matsuri@gmail.com"
 set "GA_PROJECT=kuronekotaiwan-2027"
 set "GA_SA=ga-mcp-reader@%GA_PROJECT%.iam.gserviceaccount.com"
-set "GA_SCOPES=https://www.googleapis.com/auth/analytics.readonly,https://www.googleapis.com/auth/cloud-platform"
+set "GA_SCOPES=https://www.googleapis.com/auth/analytics.readonly,https://www.googleapis.com/auth/webmasters.readonly,https://www.googleapis.com/auth/cloud-platform"
 
 if "%~1"=="adc" goto adc
 

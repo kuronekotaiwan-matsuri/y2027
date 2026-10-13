@@ -3,7 +3,24 @@
     "analytics-mcp": {
       "type": "stdio",
       "command": "uvx",
-      "args": ["--from", "analytics-mcp==0.7.0", "analytics-mcp"],
+      "args": [
+        "--from",
+        "analytics-mcp==0.7.0",
+        "analytics-mcp"
+      ],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "${APPDATA}/gcloud-kuroneko-ga/application_default_credentials.json"
+      }
+    },
+    "search-console-mcp": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "run",
+        "--quiet",
+        "--no-project",
+        "scripts/gsc-mcp/server.py"
+      ],
       "env": {
         "GOOGLE_APPLICATION_CREDENTIALS": "${APPDATA}/gcloud-kuroneko-ga/application_default_credentials.json"
       }

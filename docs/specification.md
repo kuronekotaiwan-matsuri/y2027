@@ -710,7 +710,7 @@ design-lab（`docs/design-lab/`）で2ラウンドの比較を行い、第2ラ�
   - 書き手ページに ProfilePage（mainEntity は人なら Person、組織なら Organization の参照。`dateModified` は最新の記録の日付）と BreadcrumbList
 - `sitemap.xml` をビルド時に生成する（主コンテンツ、記録、書き手を含む）
 - `robots.txt` を用意する（2026年に準じる）。`llms.txt` は `src/app/llms.txt/route.ts` がビルド時に `site.ts`（日程・会場・未定項目・ナビ・過去サイト・連絡先）から生成する。手で編集しない
-- Google Analytics（gtag.js）。2027年用に新しいプロパティを作り、測定ID `G-VDER797CPB` を `src/config/site.ts` の `gaMeasurementId` に設定済み（2026年の `G-5JW9C3WY72` とは別）。集計を Claude Code から読む MCP の設定と手順は `docs/analytics-mcp.md`
+- Google Analytics（gtag.js）。2027年用に新しいプロパティを作り、測定ID `G-VDER797CPB` を `src/config/site.ts` の `gaMeasurementId` に設定済み（2026年の `G-5JW9C3WY72` とは別）。GA と Search Console の集計を Claude Code から読む MCP の設定と手順は `docs/analytics-mcp.md`
 
 ### 9.6 アクセシビリティ
 
