@@ -20,8 +20,6 @@
 }
 
 .siteLogo {
-  --cat-mark-eye: var(--color-header-bg);
-
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
@@ -33,9 +31,10 @@
   border-radius: var(--border-radius);
 }
 
-.siteLogo svg {
+/* 黒猫の画像（favicon と同じ図）。横長なので高さで合わせる */
+.siteLogo img {
   flex: none;
-  width: 28px;
+  width: auto;
   height: 28px;
 }
 

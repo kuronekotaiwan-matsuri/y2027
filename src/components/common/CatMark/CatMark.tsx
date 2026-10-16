@@ -3,7 +3,8 @@ interface CatMarkProps {
 }
 
 /**
- * 黒猫のマーク。ヘッダーのロゴと、組織の書き手の顔（Avatar）で共用する。
+ * 黒猫のマーク（SVG の図形）。組織の書き手の顔（Avatar）で使う。
+ * ヘッダーのロゴは favicon と同じ画像（public/images/cat-mark.png）で、これは使わない。
  * 本体は currentColor。目の色は CSS custom property `--cat-mark-eye` で決める（置く側の背景色にする）。
  */
 export default function CatMark({ className }: CatMarkProps) {

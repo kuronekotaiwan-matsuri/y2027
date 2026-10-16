@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import CatMark from '@/components/common/CatMark/CatMark';
 import { site } from '@/config/site';
+import { withBasePath } from '@/lib/urls';
 import HeaderNav from './HeaderNav';
 import styles from './Header.module.css';
 
@@ -10,7 +10,14 @@ export default function Header() {
     <header className={styles.siteHeader}>
       <div className={styles.siteHeaderInner}>
         <Link className={styles.siteLogo} href="/">
-          <CatMark />
+          {/* favicon と同じ黒猫（素材集から切り出した画像）。名前はテキストで続くので alt は空 */}
+          <img
+            src={withBasePath('/images/cat-mark.png')}
+            alt=""
+            width={178}
+            height={143}
+            decoding="async"
+          />
           {site.name}
         </Link>
         <HeaderNav items={site.nav} instagramUrl={site.instagram} />
