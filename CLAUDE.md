@@ -58,6 +58,18 @@ wshobson/agents（MIT）の `seo-technical-optimization` プラグインから2�
 
 依頼するときは、`out/` のビルド結果から親が集めた事実（title・description の文面、JSON-LD の有無など）を事実票として渡し、読むファイルを行範囲つきで列挙する。宣伝調の文案（パワーワード、CTA、記号）は出さないよう明記する。コンセプト（`docs/concept/concept.md` 4章・6章）と合わない提案は採用しない。
 
+## 記事の書き手（`.claude/skills/`）
+
+記事（`content/records/` の記録）は、書き手ごとの人格をスキルとして定義し、それを呼んでから書く。`content/people/<ID>.md` の書き手1人につき `.claude/skills/writer-<ID>/SKILL.md` を1つ置く。
+
+| スキル | 書き手 | 対応する people |
+|---|---|---|
+| `/writer-ikeda` | 実行委員の池田。中の人として見たこと、考えていること、迷っていること | `content/people/ikeda.md` |
+
+- 記事を書く依頼を受けたら、書き始める前に、その書き手のスキル（例: `/writer-ikeda`）を実行するようユーザーに勧める。スキルは `disable-model-invocation: true` なので Claude 側からは呼べない。ユーザーがプロンプトに `/writer-<ID>` と打つ必要がある
+- スキルを呼ばずに書くと、文体や立場（公式のお知らせは `committee`、出店者の話は `ikeda-shop`）が混ざりやすい。勧めたうえでユーザーが「そのまま書いて」と言ったときだけ、スキルの本文を読んで同じ約束で書く
+- 人格が増えたら（`committee`、`ikeda-shop`、新しい実行委員など）、`writer-ikeda` を雛形に `.claude/skills/writer-<ID>/SKILL.md` を作り、この表に1行足す。構成は「立場」「触ってよい範囲」「書き方」「手順」の4節で揃える
+
 ## 実装の約束
 
 - スタック: Next.js（App Router、`output: 'export'`、`basePath: '/y2027'`）+ TypeScript strict + CSS Modules + CSS custom properties。Tailwind は使わない
