@@ -1,15 +1,16 @@
 ---
 name: polish
-description: 推敲。content/records/ の記録や下書きを yomiyasu（AI が生成した日本語の不自然な比喩、曖昧な主述、不要な装飾を直すスキル）で整える。先に yomiyasu が最新版か確かめてから使う。記録を書き終えたあと、ビルドとコミットの前に呼ぶ。「AIっぽさを消して」「読みやすくして」と頼まれたときも使う。
+description: 推敲。content/records/ の記録を書いたあと専用。yomiyasu（AI が生成した日本語の不自然な比喩、曖昧な主述、不要な装飾を直すスキル）で整える。先に yomiyasu が最新版か確かめてから使う。コード、docs、設定、コミットメッセージの修正では使わない。
 ---
 # 推敲: yomiyasu を最新版で使う
 
 yomiyasu は Claude Code のプラグイン `yomiyasu@yomiyasu`（nanaism/yomiyasu、MIT）としてプロジェクト範囲に入れてある。数日おきに更新されるので、使う前に最新版か確かめる。
 このスキルが決めるのは「最新版の確認」と「黒猫台湾まつりの記録に合う頼み方」だけで、推敲そのものは yomiyasu に任せる。
+yomiyasu を読み込むのは記事を書くときだけにする。コード、docs、設定、コミットメッセージの修正では、このスキルも yomiyasu も呼ばない。
 
 ## 1. 最新版か確かめる
 
-`node scripts/yomiyasu-check-update.mjs` を実行する。プロンプトに `yomiyasu` か `/polish` が含まれていれば UserPromptSubmit フックが同じ結果を先に出している。`yomiyasu:` で始まる行が文脈にすでにあれば、実行しなくてよい。
+`node scripts/yomiyasu-check-update.mjs` を実行する。「配置:」の行に出るフォルダが、yomiyasu の `SKILL.md` と `scripts/` の場所。
 
 結果ごとの動き:
 
@@ -20,7 +21,7 @@ yomiyasu は Claude Code のプラグイン `yomiyasu@yomiyasu`（nanaism/yomiya
 
 ## 2. yomiyasu に渡す
 
-Skill ツールで `yomiyasu:yomiyasu` を呼ぶ（素の `yomiyasu` は Unknown skill になる）。依頼文に次を入れる。
+1 で出た「配置:」のフォルダの `SKILL.md` を Read で読み、その手順に従う。Skill ツールでは呼ばない（プラグインの skill は `.claude/settings.json` の `skillOverrides` で Claude の一覧から外してある。入れた直後のセッションでは一覧にも載らない）。SKILL.md の `<スキル配置ディレクトリ>` は、そのフォルダに読み替える。依頼の条件は次のとおり。
 
 - 対象: 指定されたファイル。指定がなければ、このセッションで直前に書いた記録
 - 書き手と読み手: 書き手は front-matter の `author` の人。`ikeda` なら「実行委員の池田。個人として書いている」、`committee` なら「黒猫台湾まつり実行委員会。組織の窓口として書いている」。読み手は「黒猫台湾まつりに関心のある一般の人（general）」

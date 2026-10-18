@@ -1,14 +1,11 @@
 #!/usr/bin/env node
 // yomiyasu（AI が生成した日本語を推敲するスキル。プラグイン yomiyasu@yomiyasu）の
-// 導入済みの版と、GitHub の最新リリースを比べる。
+// 導入済みの版と、GitHub の最新リリースを比べる。/polish スキルが最初に実行する。
 //
 // 使い方:
 //   node scripts/yomiyasu-check-update.mjs
-//       結果を1〜5行で出す。/polish スキルが最初に実行する
-//   node scripts/yomiyasu-check-update.mjs --hook
-//       UserPromptSubmit フック用。標準入力のプロンプトに「yomiyasu」か「/polish」が
-//       含まれるときだけ同じ結果を出す（出力は Claude の文脈に入る）
 //
+// 出力は1〜5行。「配置:」の行は、導入済みの SKILL.md と scripts/ があるフォルダ。
 // ネットワークに出られないときは「確認できません」と出すだけで、作業は止めない。
 // 終了コードは常に 0。
 
@@ -62,7 +59,8 @@ function installedVersion() {
       // 読めなければ installed_plugins.json の値のまま
     }
   }
-  return { version: String(version ?? "unknown"), scope: pick.scope };
+  const skillDir = pick.installPath ? path.join(pick.installPath, "skills", "yomiyasu") : null;
+  return { version: String(version ?? "unknown"), scope: pick.scope, skillDir };
 }
 
 async function latestRelease() {
@@ -100,32 +98,7 @@ function compareVersions(a, b) {
   return 0;
 }
 
-function readStdin() {
-  return new Promise((resolve) => {
-    if (process.stdin.isTTY) {
-      resolve("");
-      return;
-    }
-    let data = "";
-    process.stdin.setEncoding("utf8");
-    process.stdin.on("data", (chunk) => (data += chunk));
-    process.stdin.on("end", () => resolve(data));
-    process.stdin.on("error", () => resolve(""));
-  });
-}
-
 async function main() {
-  if (process.argv.includes("--hook")) {
-    const input = await readStdin();
-    let prompt = "";
-    try {
-      prompt = JSON.parse(input)?.prompt ?? "";
-    } catch {
-      prompt = input;
-    }
-    if (!/yomiyasu|\/polish\b/i.test(prompt)) return;
-  }
-
   const installed = installedVersion();
   const latest = await latestRelease();
   const lines = [];
@@ -154,6 +127,9 @@ async function main() {
     lines.push("  1. claude plugin marketplace update yomiyasu");
     lines.push(`  2. claude plugin update ${PLUGIN_ID}`);
     lines.push("  3. Claude Code を再起動する（更新は再起動後に反映され、今のセッションは現行版のまま）");
+  }
+  if (installed?.skillDir) {
+    lines.push(`  配置: ${installed.skillDir}`);
   }
 
   process.stdout.write(lines.join("\n") + "\n");

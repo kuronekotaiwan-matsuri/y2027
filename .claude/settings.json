@@ -10,18 +10,7 @@
   "enabledPlugins": {
     "yomiyasu@yomiyasu": true
   },
-  "hooks": {
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node scripts/yomiyasu-check-update.mjs --hook",
-            "timeout": 15,
-            "statusMessage": "yomiyasu の最新版を確認中"
-          }
-        ]
-      }
-    ]
+  "skillOverrides": {
+    "yomiyasu:yomiyasu": "user-invocable-only"
   }
 }

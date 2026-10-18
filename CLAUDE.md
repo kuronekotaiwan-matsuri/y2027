@@ -74,8 +74,8 @@ wshobson/agents（MIT）の `seo-technical-optimization` プラグインから2�
 
 記録を書き終えたら、ビルドとコミットの前に `/polish` で推敲する。中身は nanaism/yomiyasu（MIT。AI が生成した日本語の不自然な比喩、曖昧な主述、不要な装飾を直すスキル）で、Claude Code のプラグイン `yomiyasu@yomiyasu` としてプロジェクト範囲（`.claude/settings.json`）に入れてある。初めてこのリポジトリを開いた人は、プラグインの導入を承認する。
 
-- yomiyasu は数日おきに更新される。`/polish` は最初に `node scripts/yomiyasu-check-update.mjs` を実行して GitHub の最新リリースと比べ、新しければ `claude plugin marketplace update yomiyasu` と `claude plugin update yomiyasu@yomiyasu` を1つずつ実行して再起動を促す。プロンプトに `yomiyasu` か `/polish` が含まれるときは、UserPromptSubmit フックが同じ確認を先に行う
-- yomiyasu を直接呼ぶときの名前は `yomiyasu:yomiyasu`（プラグイン名つき）。素の `yomiyasu` は Unknown skill になる
+- yomiyasu は数日おきに更新される。`/polish` は最初に `node scripts/yomiyasu-check-update.mjs` を実行して GitHub の最新リリースと比べ、新しければ `claude plugin marketplace update yomiyasu` と `claude plugin update yomiyasu@yomiyasu` を1つずつ実行して再起動を促す
+- yomiyasu は記事（`content/records/`）を書くときだけ使う。コード、docs、設定、コミットメッセージの修正では `/polish` も yomiyasu も呼ばない。プラグインの skill は `skillOverrides` で Claude の一覧から外してあり（ユーザーが `/yomiyasu:yomiyasu` と打つことはできる）、`/polish` はプラグインの配置先の SKILL.md を直接読む
 - 検査スクリプトは Python。この環境では `python3` ではなく `python` で実行する。検査の記録 `.yomiyasu/` はコミットしない
 - 最終稿を `content/records/` に別名で作らない（ビルドが拾い、別の記録として公開される）。スクラッチパッドで検査を通してから原文に写す
 
