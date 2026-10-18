@@ -70,6 +70,15 @@ wshobson/agents（MIT）の `seo-technical-optimization` プラグインから2�
 - スキルを呼ばずに書くと、文体や立場（公式のお知らせは `committee`、出店者の話は `ikeda-shop`）が混ざりやすい。勧めたうえでユーザーが「そのまま書いて」と言ったときだけ、スキルの本文を読んで同じ約束で書く
 - 人格が増えたら（`committee`、`ikeda-shop`、新しい実行委員など）、`writer-ikeda` を雛形に `.claude/skills/writer-<ID>/SKILL.md` を作り、この表に1行足す。構成は「立場」「触ってよい範囲」「書き方」「手順」の4節で揃える
 
+### 推敲（`/polish`）
+
+記録を書き終えたら、ビルドとコミットの前に `/polish` で推敲する。中身は nanaism/yomiyasu（MIT。AI が生成した日本語の不自然な比喩、曖昧な主述、不要な装飾を直すスキル）で、Claude Code のプラグイン `yomiyasu@yomiyasu` としてプロジェクト範囲（`.claude/settings.json`）に入れてある。初めてこのリポジトリを開いた人は、プラグインの導入を承認する。
+
+- yomiyasu は数日おきに更新される。`/polish` は最初に `node scripts/yomiyasu-check-update.mjs` を実行して GitHub の最新リリースと比べ、新しければ `claude plugin marketplace update yomiyasu` と `claude plugin update yomiyasu@yomiyasu` を1つずつ実行して再起動を促す。プロンプトに `yomiyasu` か `/polish` が含まれるときは、UserPromptSubmit フックが同じ確認を先に行う
+- yomiyasu を直接呼ぶときの名前は `yomiyasu:yomiyasu`（プラグイン名つき）。素の `yomiyasu` は Unknown skill になる
+- 検査スクリプトは Python。この環境では `python3` ではなく `python` で実行する。検査の記録 `.yomiyasu/` はコミットしない
+- 最終稿を `content/records/` に別名で作らない（ビルドが拾い、別の記録として公開される）。スクラッチパッドで検査を通してから原文に写す
+
 ## 実装の約束
 
 - スタック: Next.js（App Router、`output: 'export'`、`basePath: '/y2027'`）+ TypeScript strict + CSS Modules + CSS custom properties。Tailwind は使わない

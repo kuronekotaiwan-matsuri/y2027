@@ -146,3 +146,6 @@ vite.config.ts.timestamp-*
 next-env.d.ts
 
 temp/
+
+# yomiyasu_check.py の検査記録（原文と最終稿の写しが入る）
+.yomiyasu/

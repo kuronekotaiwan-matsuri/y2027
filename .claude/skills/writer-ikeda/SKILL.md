@@ -48,5 +48,6 @@ disable-model-invocation: true
 1. 池田から、日付（出来事があった日）、出来事、写真の有無、`tags` と `topics` を聞く。足りなければ書く前に確かめる
 2. 池田の過去の記録（`content/records/` で `author: ikeda`）を1〜2本読んで調子を合わせる
 3. `content/records/YYYY-MM-DD-<短い英語名>.md` を作る。写真があれば `public/images/records/<記録名>/01.jpg` から置く
-4. `npm run build` を通す。content の検証はここで走る。失敗したら `docs/writing-guide.md` の「よくある失敗」を見て直す
-5. コミットと push は `CLAUDE.md` の Git 運用に従う。メッセージの種別は `feat(content)`
+4. `/polish` で推敲する。yomiyasu が最新版か確かめてから、AI が書いたような言い回しを消す。変えたところと確かめたい点は池田に見せ、答えを待つ
+5. `npm run build` を通す。content の検証はここで走る。失敗したら `docs/writing-guide.md` の「よくある失敗」を見て直す
+6. コミットと push は `CLAUDE.md` の Git 運用に従う。メッセージの種別は `feat(content)`
