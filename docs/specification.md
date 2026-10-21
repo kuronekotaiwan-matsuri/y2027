@@ -705,7 +705,7 @@ design-lab（`docs/design-lab/`）で2ラウンドの比較を行い、第2ラ�
 - 記録ページのOGP画像は `thumbnail`、なければ共通画像。共通画像（1200×630）を使うときだけ寸法と alt を付ける。書き手ページの Twitter カードは `summary`（OGP が正方形の顔写真のため）
 - JSON-LD:
   - サイト共通（layout）に Organization + WebSite
-  - トップに Festival。`site.event.startDate` が設定されている間だけ出す（location は `venueName`、無ければ `items` の会場文。入場料が未定のうちは offers を入れない。延期・変更時は `eventStatus` を変えて `previousStartDate` を足す）
+  - トップに Festival。`site.event.startDate` が設定されている間だけ出す（location は `venueName`、無ければ `items` の会場文。入場料が未定のうちは offers を、出演者が未定のうちは performer を入れない。Search Console はこの2つを推奨項目の不足として「重大ではない問題」と警告する（2026-10-21 に通知あり）が、本文が「未定」のまま構造化データだけ埋めると食い違うので、決まるまで対応しない。決まったら offers（無料なら price 0 と isAccessibleForFree: true。2026年は入場無料だった）と performer を足し、Search Console の「強化 > イベント」で修正を検証する。延期・変更時は `eventStatus` を変えて `previousStartDate` を足す）
   - 記録ページに Article（author は書き手。人なら Person、組織なら共通の Organization を `@id` で参照）と BreadcrumbList
   - 書き手ページに ProfilePage（mainEntity は人なら Person、組織なら Organization の参照。`dateModified` は最新の記録の日付）と BreadcrumbList
 - `sitemap.xml` をビルド時に生成する（主コンテンツ、記録、書き手を含む）

@@ -50,9 +50,14 @@ export const siteJsonLd = {
 
 /**
  * トップ: Festival（仕様書 9.5）。開催日（event.startDate）が確定している間だけ出す。
- * 入場料が未定のため offers / isAccessibleForFree は入れない。
+ * 入場料が未定のため offers / isAccessibleForFree、出演者が未定のため performer は入れない。
+ * Search Console はこの2つを推奨項目の不足として「重大ではない問題」と警告する（2026-10-21 に通知あり）が、
+ * 本文の「未定」と食い違うので、決まるまで対応しない。
  * - 延期・変更時は eventStatus を EventPostponed / EventRescheduled にし、previousStartDate を足す
  * - 開始時刻が決まったら startDate を `2027-05-29T10:00:00+09:00` の形にする
+ * - 入場料が決まったら offers を足す（無料なら price 0 と isAccessibleForFree: true。2026年は入場無料だった）
+ * - 出演者が決まったら performer を Person / PerformingGroup で足す
+ * - 足したあと Search Console の「強化 > イベント」で修正を検証する
  */
 export function festivalJsonLd(event: EventConfig = site.event) {
   if (!event.startDate) return undefined;
