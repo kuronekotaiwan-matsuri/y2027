@@ -3,3 +3,5 @@ japanese@v1 2026-11-07
 git-autonomous@v1 2026-11-07
 beads@v2.0 2026-11-07
 handoff@v2.1 2026-11-07
+infra-readme@v1 2026-11-07
+smallpiece-link@v1 2026-11-07
