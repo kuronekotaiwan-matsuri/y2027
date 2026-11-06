@@ -149,3 +149,10 @@ temp/
 
 # yomiyasu_check.py の検査記録（原文と最終稿の写しが入る）
 .yomiyasu/
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
+.beads/proxieddb/
+*.gate.lock*
