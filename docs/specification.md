@@ -738,6 +738,7 @@ design-lab（`docs/design-lab/`）で2ラウンドの比較を行い、第2ラ�
 - GitHub Actions: `main` へのpushで `npm ci` → `npm run build` → `out/` を `gh-pages` に公開（2026年と同じ方式）
 - 公開URL: `https://kuronekotaiwan-matsuri.github.io/y2027/`
 - 公開時に、ルートリポジトリ `kuronekotaiwan-matsuri.github.io` のリダイレクト先を `/y2027/` に更新する（別リポジトリの作業）
+- 使っている外部サービス（GitHub、Google 系、Instagram など）とアカウント、設定の場所の一覧は `docs/infrastructure.md`
 
 ### 9.10 リポジトリ構成（予定）
 

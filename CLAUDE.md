@@ -8,6 +8,7 @@
 - コンセプト: `docs/concept/concept.md`（判断に迷ったらここに戻る）
 - サイト仕様書: `docs/specification.md`
 - デザインシステム: `docs/design-system.md`（デザイン工程で作成）
+- 外部サービスの一覧: `docs/infrastructure.md`（GitHub、Google 系、Instagram など。足す・やめるときは更新する）
 - 過去サイト: `../y2026`, `../y2025`。参考程度に見る。踏襲する義務はなく、GitHub Pages で動作すればよい
 - 公開URL: `https://kuronekotaiwan-matsuri.github.io/y2027/`（`basePath` は `/y2027`）
 
