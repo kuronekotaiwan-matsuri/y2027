@@ -12,5 +12,18 @@
   },
   "skillOverrides": {
     "yomiyasu:yomiyasu": "user-invocable-only"
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bd prime --hook-json --memories-only"
+          }
+        ]
+      }
+    ]
   }
 }
